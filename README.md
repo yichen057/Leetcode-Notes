@@ -19,7 +19,18 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 ## Progress
 
-- Total Problems: 45+
+| Folder | Count |
+|--------|-------|
+| array | 8 |
+| binary-search | 1 |
+| binary-tree | 13 |
+| hash-table | 5 |
+| linked-list | 7 |
+| stack-queue | 5 |
+| string | 9 |
+| two-pointers | 3 |
+| **Total** | **51** |
+
 - Language: Python
 
 ## Topics Covered
@@ -31,7 +42,3 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 - Stacks & Queues
 - Binary Trees
 - String Manipulation
-
----
-
-*Happy Coding!*

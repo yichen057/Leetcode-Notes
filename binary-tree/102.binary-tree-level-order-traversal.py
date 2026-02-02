@@ -73,7 +73,7 @@ class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
     # root 是 TreeNode 类的一个实例（Instance）, 虽然它叫 root（根），但它本质上和你后面遍历到的 cur、node 是同一种东西，只是因为它排在最前面，是我们抓取整棵树的“入口”，所以给了它一个特殊的名字叫 root
     # root有三个属性: 1) 数据 (val)：比如数字 1; 2)左指针 (left)：指向左下方的另一个盒子（对象）; 3)右指针 (right)：指向右下方的另一个盒子（对象）
-    # root是变量名。 Optional[TreeNode]: 这是类型提示（Type Hint）。它的意思是：root 这个变量，要么是 TreeNode 类型的对象，要么是 None（空）。它绝对不是一个整数（int），也不是一个列表（list）
+    # root是变量名。 Optional[TreeNode]: 这是类型提示（Type Hint）。它的意思是：root 这个变量，要么是二叉树的 TreeNode 类型(TreeNode只适用于二叉树题)的对象，要么是 None（空）。它绝对不是一个整数（int），也不是一个列表（list）
         if not root:# 判断root是否为空, 还可以写为: if root is None:明确判断是否为None
             return []
         queue = collections.deque([root]) # queue 队列：它是一个“缓冲区”。当你把第n层的节点一个个从队首取出时，你同时把它们的第 n+1 层孩子节点一个个塞进队尾

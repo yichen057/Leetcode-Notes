@@ -1,0 +1,107 @@
+#
+# @lc app=leetcode id=111 lang=python3
+# @lcpr version=30307
+#
+# [111] Minimum Depth of Binary Tree
+#
+# https://leetcode.com/problems/minimum-depth-of-binary-tree/description/
+#
+# algorithms
+# Easy (52.18%)
+# Likes:    7788
+# Dislikes: 1362
+# Total Accepted:    1.6M
+# Total Submissions: 3.1M
+# Testcase Example:  '[3,9,20,null,null,15,7]\n[2,null,3,null,4,null,5,null,6]'
+#
+# Given a binary tree, find its minimum depth.
+# 
+# The minimum depth is the number of nodes along the shortest path from the
+# root node down to the nearest leaf node.
+# 
+# Note: A leaf is a node with no children.
+# 
+# 
+# Example 1:
+# 
+# Input: root = [3,9,20,null,null,15,7]
+# Output: 2
+# 
+# 
+# Example 2:
+# 
+# Input: root = [2,null,3,null,4,null,5,null,6]
+# Output: 5
+# 
+# 
+# 
+# Constraints:
+# 
+# 
+# The number of nodes in the tree is in the range [0, 10^5].
+# -1000 <= Node.val <= 1000
+# 
+# 
+#
+
+import sys
+import os
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+from typing import *
+from common.node import *
+
+# @lc code=start
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+# 相对于 104.二叉树的最大深度 ，本题还也可以使用层序遍历的方式来解决，思路是一样的。
+# 需要注意的是，只有当左右孩子都为空的时候，才说明遍历的最低点了。如果其中一个孩子为空则不是最低点
+class Solution:
+    def minDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        
+        queue = collections.deque([root])
+        depth = 0
+
+        while queue:
+            depth += 1
+            for _ in range(len(queue)):
+                cur = queue.popleft()
+
+                if not cur.left and not cur.right: # 只有当左右孩子都为空的时候，才说明遍历的最低点了。如果其中一个孩子为空则不是最低点
+                    return depth
+                
+                if cur.left:
+                    queue.append(cur.left)
+                if cur.right:
+                    queue.append(cur.right)
+                    
+        return depth
+    
+# @lc code=end
+
+if __name__ == '__main__':
+    solution = Solution()
+    # your test code here
+
+
+
+
+#
+# @lcpr case=start
+# [3,9,20,null,null,15,7]\n
+# @lcpr case=end
+
+# @lcpr case=start
+# [2,null,3,null,4,null,5,null,6]\n
+# @lcpr case=end
+
+#
+

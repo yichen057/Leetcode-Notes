@@ -82,9 +82,30 @@ class Solution:
                     queue.append(cur.left)
                 if cur.right:
                     queue.append(cur.right)
-                    
+
         return depth
-    
+# 方法二: 后序递归遍历, 从底部向上计数, 求的是根节点的最小高度, 符合题目要求的最小深度
+# 最小深度: 根节点到最近叶子节点的最小距离;
+# 叶子节点: 左右孩子都为空
+Class Solution2:
+    def minDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        return self.getDepth(root)
+    def getDepth(self, node:Optional[TreeNode]) -> int:
+        if not node:
+            return 0
+        leftDepth = self.getDepth(node.left) # 左
+        rightDepth = self.getDepth(node.right) # 右
+        # 中的逻辑: 注意此时不能直接写height = 1+min(leftDepth, rightDepth), 因为这种情况如果左不为空右为空或者左为空右不为空时, 会把根节点单边为null空的子节点统计进去, 本题不考虑这种情况
+        if node.left is None and node.right: # 左子树为空, 右字数不为空
+            return 1 + rightDepth
+        if node.left and node.right is None: # 右子树为空, 左子树不为空
+            return 1+ leftDepth
+        result =  1+ min(leftDepth, rightDepth) # 左右子树都不为空
+        return result
+# 当左右子树都为空时, 此时他就是叶子节点, 上述逻辑仍然适用: 1+0=1
+
 # @lc code=end
 
 if __name__ == '__main__':

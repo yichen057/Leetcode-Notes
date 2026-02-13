@@ -23,13 +23,13 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 |--------|-------|
 | array | 8 |
 | binary-search | 1 |
-| binary-tree | 22 |
+| binary-tree | 26 |
 | hash-table | 5 |
 | linked-list | 7 |
 | stack-queue | 5 |
 | string | 9 |
 | two-pointers | 3 |
-| **Total** | **60** |
+| **Total** | **64** |
 
 - Language: Python
 - Daily Notes: 14 days

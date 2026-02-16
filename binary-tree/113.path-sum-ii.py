@@ -71,12 +71,23 @@ from common.node import *
 #         self.left = left
 #         self.right = right
 class Solution:
+    # 把 self.path 和 self.result 放在 __init__ 里，是在告诉阅读代码的人：
+    #“这两个变量是这个类的‘公共看板’。”
+    #它们不是某个函数的临时局部变量，而是属于整个 Solution 对象的。这样你在写 traversal 函数时，使用 self.path 就会显得理所当然。
+    #用self.变量也同样可以表示全局变量, 放在 __init__：是为了代码结构清晰，符合面向对象编程的习惯, 即属性应该在构造函数里定义, 只在创建对象时执行一次
+    # 但要注意, 在一定不要只在 `__init__` 里写 `self.result = []` 而主函数不管. 因为如果主函数不清空.clear()一下, 会累加之前测试用例的结果
     def __init__(self):
         # global variable全局变量
         self.result = [] # 最终要返回的大列表：[[5,4,11,2], [5,8,4,5]]
         self.path = [] # 记录当前走过的路径：[5, 4, 11, 2]
 
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
+        self.result.clear() # 或者是 self.result = []
+        self.path.clear() # 或者是 self.path = []
+        # 主函数里写.clear()的原因: 
+        #1. 防御性编程：防止上面提到的“跨用例污染”。
+        #2. 原地操作：.clear() 会清空原列表的内容但保留列表对象本身, 原地清空。对象还是原来那个，但内容被抹除。
+        # 虽然在刷题时 self.result = []（重新赋值,指向一个新对象。）和 self.result.clear() 效果一样，但在大型工程中，如果别的地方也引用了这个列表，用 .clear() 能保证引用的同步性。
         if not root:
             return []
         # 核心：根节点必须手动处理（因为它没有“爸爸”在递归前处理它）

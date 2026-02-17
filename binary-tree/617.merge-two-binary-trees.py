@@ -82,7 +82,7 @@ class Solution:
         # return root1 #  注意: 本题我们重复使用了题目给出的节点而不是创建新节点. 节省时间, 空间. 
     
         # 方法二: 前序+新建root
-        root = TreeNode() # 创建新节点. 当你写 TreeNode() 时：你没有传参数，Python 自动使用了默认值 val=0。
+        root = TreeNode() # 创建新节点. 当你写 TreeNode() 时：你没有传参数，Python 自动使用了默认值 val=0。所以此处括号里可以不写0
         # 永远不要提前创建一个“空壳”节点，而是等拿到了正确的数值后，再通过 TreeNode(correct_val) 把它生出来。
         root.val += root1.val+root2.val # 中
         root.left = self.mergeTrees(root1.left, root2.left) # 左

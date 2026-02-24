@@ -7,6 +7,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | Folder | Description |
 |--------|-------------|
 | `array/` | Array manipulation problems |
+| `2D_array_Matrix/` | 2D array & matrix problems |
 | `binary-search/` | Binary search algorithms |
 | `binary-tree/` | Binary tree traversal & operations |
 | `hash-table/` | Hash map/set problems |
@@ -21,7 +22,8 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 | Folder | Count |
 |--------|-------|
-| array | 8 |
+| array | 11 |
+| 2D_array_Matrix | 3 |
 | binary-search | 1 |
 | binary-tree | 35 |
 | hash-table | 5 |
@@ -29,14 +31,15 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | stack-queue | 5 |
 | string | 9 |
 | two-pointers | 3 |
-| **Total** | **73** |
+| **Total** | **79** |
 
 - Language: Python
-- Daily Notes: 18 days
+- Daily Notes: 20 days
 
 ## Topics Covered
 
 - Arrays & Hashing
+- 2D Array & Matrix
 - Two Pointers
 - Binary Search
 - Linked Lists

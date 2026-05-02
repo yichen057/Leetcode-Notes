@@ -15,6 +15,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | `stack-queue/` | Stack and queue implementations |
 | `string/` | String manipulation |
 | `two-pointers/` | Two pointers technique |
+| `graph/` | Graph traversal (BFS/DFS) problems |
 | `daily/` | Daily learning notes by topic |
 | `notes/` | General study notes |
 
@@ -24,14 +25,15 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 |--------|-------|
 | array | 11 |
 | 2D_array_Matrix | 3 |
-| binary-search | 1 |
+| binary-search | 2 |
 | binary-tree | 38 |
-| hash-table | 5 |
+| hash-table | 6 |
 | linked-list | 7 |
 | stack-queue | 5 |
 | string | 9 |
 | two-pointers | 3 |
-| **Total** | **82** |
+| graph | 2 |
+| **Total** | **86** |
 
 - Language: Python
 - Daily Notes: 21 days
@@ -46,3 +48,4 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 - Stacks & Queues
 - Binary Trees
 - String Manipulation
+- Graphs (BFS / DFS)

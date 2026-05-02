@@ -99,7 +99,9 @@ class Solution:
     # 递归的终止条件
         if root is None: # 空的根节点, 什么二叉树都可以(包括二叉搜索树, 平衡二叉树, 完全二叉树, 满二叉树), 如果返回类型是Boolean, 应返回true
             return 
-        # 单层递归逻辑
+        # 单层递归逻辑: 必须用 inorder，其他两种不行。
+        # 因为中序的顺序是左 → 根 → 右，刚好和 BST 的规则左 < 根 < 右一致：数组可以是递增的, 而postorder和preorder的数组不是递增的, 虽然树是合法的
+        # 中序遍历天然就是"从小到大"的访问顺序，前序和后序都打乱了这个顺序。
         self.traversal(root.left)  # left
         self.vec.append(root.val)   # middle, 将二叉搜索树转换为有序数组
         self.traversal(root.right) # right   

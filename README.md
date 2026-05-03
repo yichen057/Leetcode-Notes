@@ -32,8 +32,8 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | stack-queue | 5 |
 | string | 9 |
 | two-pointers | 3 |
-| graph | 2 |
-| **Total** | **86** |
+| graph | 4 |
+| **Total** | **88** |
 
 - Language: Python
 - Daily Notes: 21 days

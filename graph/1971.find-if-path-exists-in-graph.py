@@ -73,7 +73,7 @@ from common.node import *
 UMPIRE template
 
 # Understand
-inputs: n: # of vertices, from 0 to n-1; edges: adjacent list: List[List[int]]; source: start int; destination: target int
+inputs: n: # of vertices, from 0 to n-1; edges: List[List[int]]; source: start int; destination: target int
 outputs:boolean, find the path from start to the destination
 constraints:
 # 1 <= n <= 2 * 10^5
@@ -137,6 +137,11 @@ class Solution:
             return True
         
         # Build adjacency list: 时间复杂度O(m), 循环跑了len(edges)次, 也就是m次
+        # defaultdict(list)是dict的子类, 本质就是个hash map, not list of lists. 没指定大小, 按需创建, 通过key查value. 比如访问graph[5]时它才创建键5
+        # 内部长这样:
+        #{
+        # 0: [1,2], 1: [0, 3], 2: [0], 3:[1]
+        #}
         graph = defaultdict(list) # A regular dict raises KeyError if you access a missing key. defaultdict(list) auto-creates an empty list for missing keys, so you can .append() without checking.
         # 和边数 m 相关的是 graph。graph 保存了所有的边m, 又因为是无向图,每条边 [u, v] 我们都要存两次(u→v 和 v→u)。所以 m 条边在邻接表里占 2m 个位置 = O(m)
         for u, v in edges:

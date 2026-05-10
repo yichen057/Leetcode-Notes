@@ -55,7 +55,7 @@
 # Binary search tree二叉搜索树是一个有序树: 若左子树不空+根节点要比左子树的所有节点的数值都要大, 若右子树不空+根节点要比右子树的所有节点的数值都要小; 同样,左子树和右子树分别为二叉搜索树
 class Solution:
     def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]: # 递归函数的参数传入的就是根节点和要搜索的数值，返回的就是以这个搜索数值所在的节点。
-        # 方法一: 层序法: 本题利用了二叉搜索树的特性, 确定了遍历顺序, 无需遍历整棵树
+        # 方法一: 层序法: 本题利用了二叉搜索树的特性, 确定了遍历顺序, 无需遍历整棵树, 推荐!
         # while root:
         #     if val < root.val: # 向左搜索
         #         root = root.left
@@ -76,6 +76,16 @@ class Solution:
         if val > root.val:
             result = self.searchBST(root.right, val)
         return result
+# 方法三, 简易递归, 推荐!:
+class Solution3:
+    def searchBST(self, root, val):
+        if not root or root.val == val:
+            return root
+
+        if val < root.val:
+            return self.searchBST(root.left, val)
+        else:
+            return self.searchBST(root.right, val)
 
 # @lc code=end
 

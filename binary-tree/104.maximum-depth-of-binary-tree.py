@@ -98,6 +98,30 @@ class Solution2:
         height = 1+ max(leftDepth, rightDepth) # 中, 中在左和右的上面一层, 所以加1, 代表从下往上的处理逻辑
         return height
 
+# 方法三:后序遍历post-order的简易版, 推荐!:
+# 当前树的最大深度 =左子树最大深度 和 右子树最大深度 的较大值 + 1
+class Solution3:
+    def maxDepth(root):
+        if not root:
+            return 0
+# 在 class Solution 下面、和题目函数同一级缩进的函数，需要 self。写在函数里面的 helper，不需要 self。
+        left = self.maxDepth(root.left)
+        right = self.maxDepth(root.right)
+
+        return max(left, right) + 1
+# 方法二的升级版, helper版本, 推荐!:
+class Solution4:
+    def maxDepth(self, root):
+        def dfs(node):
+            if not node:
+                return 0
+
+            left = dfs(node.left)
+            right = dfs(node.right)
+
+            return max(left, right) + 1
+
+        return dfs(root)
 # @lc code=end
 
 if __name__ == '__main__':

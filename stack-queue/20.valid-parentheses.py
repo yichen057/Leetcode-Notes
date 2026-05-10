@@ -88,9 +88,10 @@ from common.node import *
 # 2. 括号没多余, 但是括号的类型不匹配. 遍历字符串匹配的过程中, 发现栈里没有匹配的字符, return false
 # 3. 字符串有右方向的括号多余了, 所以不匹配. 遍历字符串匹配的过程中, 栈已为空, 没有匹配的字符了, 说明右括号没有找对应的左括号, return false
 # @lc code=start
+# 方法一:
 class Solution:
     def isValid(self, s: str) -> bool:
-        # 创建list作为栈
+        # 创建list作为栈, 括号匹配 → stack 存“还没被匹配的左括号”
         stack = []
 
         for item in s:
@@ -110,6 +111,28 @@ class Solution:
         # 最后栈空才算完全匹配
         return not stack # 如果栈都遍历完后, 栈仍有值非空, 则为第一种情况, return false; 如果栈已为空(if not stack), 则return True
         # return True if not stack else False
+# 方法二: 
+class Solution:
+    def isValid(s):
+        stack = []
+
+        pair = {
+            ')': '(', # Parentheses
+            ']': '[', # square brackets
+            '}': '{' # curly brackets
+        }
+
+        for ch in s:
+            if ch in pair:
+                # ch 是右括号
+                if not stack or stack[-1] != pair[ch]: # stack[-1]查看栈顶元素，但不删除。
+                    return False
+                stack.pop() # 删除并返回栈顶元素。
+            else:
+                # ch 是左括号
+                stack.append(ch) # 把元素放到栈顶。
+
+        return len(stack) == 0
 # @lc code=end
 
 if __name__ == '__main__':

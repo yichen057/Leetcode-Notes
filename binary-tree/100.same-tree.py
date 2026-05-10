@@ -64,6 +64,10 @@ from common.node import *
 #         self.val = val
 #         self.left = left
 #         self.right = right
+# 两棵树相同 =
+# 当前节点值相同
+# 并且左子树相同
+# 并且右子树相同
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         if p is None and q: return False
@@ -75,6 +79,18 @@ class Solution:
         right = self.isSameTree(p.right, q.right)
         result = left and right
         return result
+# 方法二: 简化版本
+def isSameTree(p, q):
+    if not p and not q:
+        return True
+
+    if not p or not q:
+        return False
+
+    if p.val != q.val:
+        return False
+
+    return isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
 # @lc code=end
 
 if __name__ == '__main__':

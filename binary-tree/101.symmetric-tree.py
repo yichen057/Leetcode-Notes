@@ -68,6 +68,7 @@ class Solution:
 # - **左：** 先递归比较“外侧”是否对称（`left->left` 和 `right->right`）。
 # - **右：** 再递归比较“内侧”是否对称（`left->right` 和 `right->left`）。
 # - **中：** 最后根据外侧和内侧的比较结果，**得出当前这两个节点的整体对称结论**并向上层返回。
+
     # 递归条件1: 确定递归函数的参数和返回值
     def compare(self, left, right):
     # 递归条件2: 确定递归终止条件: 节点为空, 分左右子节点
@@ -99,7 +100,26 @@ class Solution:
 # - 如果节点存在，它是一个对象，布尔值为 `True`。
 # - 如果节点不存在，它是 `None`，布尔值为 `False`。
 # **结论：** 因为二叉树节点不会变成数字 `0` 或空字符串，所以 `if not left` 等价于检查它是不是 `None`。**这种写法更简洁，符合 Python 之禅（Pythonic）。**
-        
+# 方法二, 仅供参考, 参考其简易性
+# outside: 左树的左边 要和 右树的右边 比
+# inside: 左树的右边 要和 右树的左边 比
+def isSymmetric(root):
+    if not root:
+        return True
+
+    def mirror(left, right):
+        if not left and not right:
+            return True
+
+        if not left or not right:
+            return False
+
+        if left.val != right.val:
+            return False
+
+        return mirror(left.left, right.right) and mirror(left.right, right.left)
+
+    return mirror(root.left, root.right) 
 # @lc code=end
 
 if __name__ == '__main__':

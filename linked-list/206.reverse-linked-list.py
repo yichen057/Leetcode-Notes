@@ -64,12 +64,13 @@ class Solution:
         # 初始化
         cur = head
         pre = None
+        # pre, cur = None, head
         while cur:
-            temp = cur.next # 暂存后继. 变量赋值，不改变链表，把 cur.next 这个节点赋值给 temp 变量, 只是让 temp 变量指向了和cur.next一样的节点
-            cur.next = pre # 修改链表指针方向，改变结构: 把当前节点 cur 的 next 指针指向 pre, 让链表走向发生变化. 常见场景：反转链表。
+            nxt = cur.next # 暂存下一个next. 变量赋值，不改变链表，把 cur.next 这个节点赋值给 temp 变量, 只是让 temp 变量指向了和cur.next一样的节点
+            cur.next = pre # 反转当前指针修改链表指针方向，改变结构: 把当前节点 cur 的 next 指针指向 pre, 让链表走向发生变化. 常见场景：反转链表。
             # 右移一位, 更新pre和cur
-            pre = cur
-            cur = temp
+            pre = cur # pre前进
+            cur = nxt # cur前进
         return pre # 因为遍历终止时, pre指向的是链表反转后的head(原先是tail)  
        
         # 方法二: 递归法(其实就是把 while 循环展开，每次递归调用负责处理一步)

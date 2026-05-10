@@ -97,6 +97,33 @@ class Solution:
     # fast走的总步数= x+y+n(y+z),其中y+z是环形总长, n表示相遇时fast在环形里转了几圈.n>=1即fast至少走一圈才可能和slow相遇
     # 由于快指针是慢指针的两倍速度, 因为代入即为2(x+y)=x+y+n(y+z) -> x=n(y+z)-y = (n-1)(y+z)+z -> 当n=1时, x=z, 在环形入口处相遇 ->即“head 到 entry 的距离” = “相遇点到 entry 的距离”。
 
+    # 快慢指针的方法二
+    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        slow = fast = head
+        
+        # Step 1: find meeting point
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                break
+        # Python 的 while...else 语法: 如果 while 正常结束，没有被 break 打断，就执行 else
+        else:
+            return None
+        # Step 2: find cycle entrance
+        # 当 slow 和 fast 在环里第一次相遇后：从 head 和相遇点同时出发
+        # 让一个指针从 head 出发, 让另一个指针从相遇点出发. 两个都每次走 1 步. 它们再次相遇的位置，就是环入口
+        # fast 比 slow 多走的距离，刚好是环长度的整数倍。因此 slow 在相遇点到入口的距离，和 head 到入口的距离，可以同步抵消。
+        p1 = head
+        p2 = slow
+        while p1 != p2:
+            p1 = p1.next
+            p2 = p2.next
+
+        return p1
+
+
     # 方法二: 哈希表解法: 时间复杂度为O(n),每个节点最多访问一次;空间复杂度为O(n)需要额外集合存储节点
     # 遍历链表时，把访问过的节点存到集合里；如果某个节点已经出现过，那它就是环的入口。
     # 哈希表解法：好理解，但额外空间 O(n)

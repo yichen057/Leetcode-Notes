@@ -85,8 +85,9 @@ class Solution:
         result = []
         while queue:
             level = [] # level 数组：它的生命周期非常短，只负责收集当前这一层（第n层）所有节点的值。一旦这一层循环结束，level 就会被装进结果大列表 res 中，然后被清空重置。
-            for _ in range(len(queue)): # 在 Python 中，不能写 while(size--). Python 不支持 -- 或 ++ 运算符, 在 Python 中，必须明确写成 size -= 1。
-                # range 在进入循环前，对 len(queue) 做了一次“快照”（Snapshot), 先计算参数len(range), 然后生成迭代器, 然后循环的次数就在这一刻被锁定了
+            for _ in range(len(queue)): # len(queue)是为了固定当前层有多少个节点
+                # 在 Python 中，不能写 while(size--). Python 不支持 -- 或 ++ 运算符, 在 Python 中，必须明确写成 size -= 1。
+                # range 在进入循环前，对 len(queue) 做了一次“快照”（Snapshot), 先计算参数len(queue), 然后生成迭代器, 然后循环的次数就在这一刻被锁定了
                 # range() 是由 C 语言实现的优化迭代器，通常比手动维护一个 while 计数器稍微快一点. 用python写while的话: while size>0: ..... size -= 1
                 cur = queue.popleft() # 取值+出队一行搞定; Python 的 deque 没有 front() 方法; TreeNode 对象没有 pop 方法
                 level.append(cur.val) # level.append(...)存储的是数字
@@ -98,7 +99,35 @@ class Solution:
                     queue.append(cur.right)
             result.append(level)
         return result
+# 另一种简易写法: 层序遍历法, 推荐!
+# queue 用来保存“还没有处理、但接下来要处理的 TreeNode 节点”, 不是存 node.val，而是存整个节点对象。层序遍历要按照从上到下、从左到右的顺序处理节点，先进去的节点，先被处理, 所以用先进先出的 queue。另外从 deque 头部弹出元素是 O(1)，更快, 而从 list 头部删除元素是 O(n)，比较慢。
+# queue 存 TreeNode 节点, level 存当前层的 node.val, result 存所有层的结果
+from collections import deque
+class Solution:
+    def levelOrder(root):
+        if not root:
+            return []
 
+        result = []
+        queue = deque([root])
+
+        while queue:
+            level = []
+            size = len(queue) # 先固定当前层有多少个节点
+
+            for _ in range(size):
+                node = queue.popleft()
+                level.append(node.val)
+                # 处理过程中，我们会把下一层节点加入 queue。但是它们属于下一层，不能混进当前层。所以必须先固定当前层大小
+                if node.left:
+                    queue.append(node.left)
+
+                if node.right:
+                    queue.append(node.right)
+
+            result.append(level)
+
+        return result
 # 递归法
 #在递归过程中，虽然程序是“一路深钻”到底的（比如先处理完最左边的一条线），但由于我们随身携带了 level 这个深度信息，每到一个新节点，我们都能通过 levels[level] 准确地把它归类到它所属的那一层去。
 # Definition for a binary tree node.

@@ -16,6 +16,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | `string/` | String manipulation |
 | `two-pointers/` | Two pointers technique |
 | `graph/` | Graph traversal (BFS/DFS) problems |
+| `quick-sort/` | Quick sort & related problems |
 | `daily/` | Daily learning notes by topic |
 | `notes/` | General study notes |
 
@@ -26,14 +27,15 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | array | 11 |
 | 2D_array_Matrix | 3 |
 | binary-search | 3 |
-| binary-tree | 38 |
-| hash-table | 6 |
-| linked-list | 7 |
-| stack-queue | 5 |
+| binary-tree | 39 |
+| hash-table | 8 |
+| linked-list | 9 |
+| stack-queue | 6 |
 | string | 9 |
 | two-pointers | 3 |
 | graph | 4 |
-| **Total** | **89** |
+| quick-sort | 1 |
+| **Total** | **96** |
 
 - Language: Python
 - Daily Notes: 21 days
@@ -49,3 +51,4 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 - Binary Trees
 - String Manipulation
 - Graphs (BFS / DFS)
+- Quick Sort

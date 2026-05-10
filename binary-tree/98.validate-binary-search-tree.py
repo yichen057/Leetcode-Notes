@@ -145,7 +145,25 @@ class Solution:
         right = self.isValidBST(root.right) # right
 
         return left and right
+# 方法四:推荐! 容易理解!
+def isValidBST(root):
+    def dfs(node, low, high): # dfs(node, low, high): 表示：检查以 node 为根的这棵树，所有节点值是否都在 (low, high) 之间。
+        # 空树是合法 BST
+        if not node:
+            return True
 
+        # 当前节点必须在允许范围内
+   
+        if not (low < node.val < high):
+            return False
+
+        # 左子树必须都小于 node.val
+        # 右子树必须都大于 node.val
+        # 两边都合法，当前树才合法
+        return dfs(node.left, low, node.val) and dfs(node.right, node.val, high)
+
+    # 根节点一开始没有上下限制
+    return dfs(root, float("-inf"), float("inf"))
 
 
 # @lc code=end

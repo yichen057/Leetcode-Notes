@@ -62,7 +62,7 @@ from common.node import *
 #         self.right = right
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:# 1)确定递归函数的参数和返回值: 参数就是要传入节点的指针，不需要其他参数了，通常此时定下来主要参数，如果在写递归的逻辑中发现还需要其他参数的时候，随时补充。返回值的话其实也不需要，但是题目中给出的要返回root节点的指针，可以直接使用题目定义好的函数，所以就函数的返回类型为TreeNode。
-        # 方法一: 层序法
+        # 方法一: 层序法, 用BFS, 引入了deque. 用 queue 的层序遍历是 BFS
         # if not root:
         #     return root
         # queue = collections.deque([root])
@@ -74,12 +74,13 @@ class Solution:
         #     if cur.right:
         #         queue.append(cur.right)
         # return root
-        # 方法二: 递归法(本题适合用前序或后序遍历, 不适合用中序, 因为中序在处理时会写成左中左, 而不是左中右, 比较麻烦)
+        # 方法二: 递归版DFS法(本题适合用前序或后序遍历, 不适合用中序, 因为中序在处理时会写成左中左, 而不是左中右, 比较麻烦)
+        # 用递归recursion往左右子树深入的是 DFS。
         # 此处用前序法(中左右)
         # 2) 递归终止条件: 碰到空节点停止遍历
         if not root:
             return root
-        # 3) 确定单层递归的逻辑
+        # 3) 确定单层递归的逻辑, pre-order
         root.left, root.right = root.right, root.left # 中
         self.invertTree(root.left) # 左
         self.invertTree(root.right) # 右

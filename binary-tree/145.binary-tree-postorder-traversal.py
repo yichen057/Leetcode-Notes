@@ -96,7 +96,7 @@ class Solution:
                 return
             dfs(node.left)
             dfs(node.right)
-            result.append(node.val)
+            result.append(node.val) # result.append(...) 是修改 list，不是重新赋值. 这里 result 还是原来的那个 list，只是 list 里面多了一个元素。所以内部函数里可以不用self.result
         
         dfs(root)
         return result

@@ -27,7 +27,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | array | 11 |
 | 2D_array_Matrix | 3 |
 | binary-search | 3 |
-| binary-tree | 39 |
+| binary-tree | 42 |
 | hash-table | 8 |
 | linked-list | 9 |
 | stack-queue | 6 |
@@ -35,7 +35,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | two-pointers | 3 |
 | graph | 4 |
 | quick-sort | 1 |
-| **Total** | **96** |
+| **Total** | **99** |
 
 - Language: Python
 - Daily Notes: 21 days

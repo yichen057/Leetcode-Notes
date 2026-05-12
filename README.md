@@ -24,7 +24,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 | Folder | Count |
 |--------|-------|
-| array | 11 |
+| array | 13 |
 | 2D_array_Matrix | 3 |
 | binary-search | 3 |
 | binary-tree | 42 |
@@ -35,7 +35,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | two-pointers | 3 |
 | graph | 4 |
 | quick-sort | 1 |
-| **Total** | **99** |
+| **Total** | **101** |
 
 - Language: Python
 - Daily Notes: 21 days

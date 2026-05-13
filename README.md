@@ -28,14 +28,14 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | 2D_array_Matrix | 3 |
 | binary-search | 3 |
 | binary-tree | 42 |
-| hash-table | 8 |
+| hash-table | 9 |
 | linked-list | 9 |
 | stack-queue | 6 |
 | string | 9 |
 | two-pointers | 3 |
 | graph | 4 |
 | quick-sort | 1 |
-| **Total** | **101** |
+| **Total** | **102** |
 
 - Language: Python
 - Daily Notes: 21 days

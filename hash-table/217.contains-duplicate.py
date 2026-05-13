@@ -98,10 +98,11 @@ Space: O(n): In the worst case (all elements distinct), the set stores all n ele
 '''
 # @lc code=start
 class Solution:
-    # Method 1: loop approach
+    # Method 1: one-loop + set approach
     # def containsDuplicate(self, nums: List[int]) -> bool:
     #     # Initialize a set to store visited values
     #     seen = set()
+    #     # One-Loop Efficiency: If the very first two numbers are duplicates (e.g., [1, 1, 2, 3, 4...]), the one-loop version stops at the second element. It is much faster in the "Average Case."
     #     for val in nums:
     #         # If item is already in the set, we found a duplicate
     #         if val in seen:
@@ -111,11 +112,28 @@ class Solution:
         
     #     # If the loop finishes without finding a duplicate
     #     return False
-    # Method 2: length comparison approach
+
+    # Method 2: two-loop + dictinoary approach
+    # def containsDuplicate(self, nums: List[int]) -> bool:
+    #     map = {} # space complexity: O(n). 需要一个 map 来存储数组中的数字。在最坏情况下（所有数字都不同），map 会存储 n 个键值对。
+    #     # Two Loops time complexity: n (first loop) + n (second loop) = 2n -> O(n) ignore constant term.
+    #     # Two-Loop Efficiency: It must wait to finish the entire first loop (counting everything) before it even starts the second loop to check for duplicates.
+    #     for num in nums:
+    #         map[num] = map.get(num, 0) + 1
+    #     for freq in map.values():
+    #         if freq >= 2:
+    #             return True
+    #     return False
+    # Method 3: length comparison approach
     # While elegant, this approach always takes O(n) space and time, 
     # whereas the fist loop approach can return True early as soon as it hits the first duplicate.
     def containsDuplicate(self, nums):
       return len(nums) != len(set(nums))
+    # 当你调用 set(nums) 时，时间和空间复杂度是O(n). 计算机在底层做了以下工作：
+    # 1) 遍历数组：它必须从头到尾扫描一遍 nums 数组（长度为 n）。
+    # 2) 哈希计算与插入：对于数组中的每一个数字，计算机都要计算它的哈希值，并尝试将其存入集合（Set）中。
+    # 3) 去重：在存入过程中，集合会自动处理重复项。因为这个过程涉及到了对 n 个元素的处理，所以时间复杂度是 O(n)。
+    
 # @lc code=end
 
 if __name__ == '__main__':

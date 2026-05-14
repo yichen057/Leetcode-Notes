@@ -104,12 +104,13 @@ class Solution:
     # ])
     # ]
 
-    # method 2: frquency list + defaultdict, 适用于本题的strs[i] consists of lowercase English letters.
+    # method 2: counting sort + defaultdict, 适用于本题的strs[i] consists of lowercase English letters.
     # Complexity Analysis
 # Time Complexity: O(NK), where N is the length of strs, and K is the maximum length of a string in strs. Counting each string is linear in the size of the string, and we count every string.
 # Space Complexity: O(NK), the total information content stored in ans.
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]: 
-        groups = defaultdict(list)
+        groups = defaultdict(list) # key 不存在时,默认 value 是 [] → 适合分组
+        # groups这个dictionary的key是26个字母为index, freq为value的tuple(list), value是共有同一个key的list(str)
         for s in strs:
             # Record letter frequencies for lowercase letters.
             count = [0] * 26 
@@ -117,7 +118,7 @@ class Solution:
                 count[ord(c) - ord("a")] += 1
             key = tuple(count) # 因为 dictionary 的 key 必须是可哈希 hashable 不能变的对象，而 list 不是 hashable它是可变的，tuple 是 hashable。这里的tuple(count) 是字符串的“字母频率签名”, 长度是26 total entries, 每个元素代表26个字母的出现次数
             groups[key].append(s)
-        return list(groups.values())       
+        return list(groups.values()) 
 # @lc code=end
 
 if __name__ == '__main__':

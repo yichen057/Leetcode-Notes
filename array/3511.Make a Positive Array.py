@@ -1,3 +1,7 @@
+# [3511] Make a Positive Array
+# https://leetcode.com/problems/make-a-positive-array/
+# Medium (xx%)
+
 class Solution:
     """
         题目要求：所有长度 ≥ 3 的子数组的和都必须是正数

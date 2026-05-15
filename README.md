@@ -24,18 +24,18 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 | Folder | Count |
 |--------|-------|
-| array | 13 |
+| array | 14 |
 | 2D_array_Matrix | 3 |
 | binary-search | 3 |
 | binary-tree | 42 |
-| hash-table | 10 |
+| hash-table | 11 |
 | linked-list | 9 |
 | stack-queue | 6 |
 | string | 9 |
-| two-pointers | 3 |
+| two-pointers | 4 |
 | graph | 4 |
 | quick-sort | 1 |
-| **Total** | **103** |
+| **Total** | **106** |
 
 - Language: Python
 - Daily Notes: 21 days

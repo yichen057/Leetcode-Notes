@@ -110,6 +110,7 @@ class Solution:
 # Space Complexity: O(NK), the total information content stored in ans.
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]: 
         groups = defaultdict(list) # key 不存在时,默认 value 是 [] → 适合分组
+        # 创建 defaultdict 是 O(1)；填充 defaultdict 才是 O(n) 或 O(nk)。 
         # groups这个dictionary的key是26个字母为index, freq为value的tuple(list), value是共有同一个key的list(str)
         for s in strs:
             # Record letter frequencies for lowercase letters.

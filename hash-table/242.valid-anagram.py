@@ -71,10 +71,25 @@ class Solution:
             # s里同一个字母如果出现2次以上, 则count里元素对应是>=2的, 那t在减1时, 第一次-1得到的值未必等于0 ,有可能大于0, 那么对于>0的情况, 如果这里判断为不等于0, 就会提前误判
                 return False
             
-        #方法二: 循环后遍历这个新数组统一检查, 看有没有元素不为0, 则return false
+        #方法一里的第二种解法: 循环后遍历这个新数组统一检查, 看有没有元素不为0, 则return false
         # for i in range(26):
         #     if record[i] != 0:
         #         return False
+        # 或者
+        # for i in range(26):
+    #     #     if record[i] != 0:
+    #     #         return False
+        return True
+         # 方法一里的第三种解法: 精简for loop, 由于t和s的长度一样, 因此可以在一个for loop里利用for i in range(len(s))来做
+        if len(s) != len(t):
+            return False
+        count = [0] * 26
+        for i in range(len(s)):
+            count[ord(s[i])-ord("a")] += 1
+            count[ord(t[i])-ord("a")] -= 1
+        for val in count:
+            if val!= 0:
+                return False
         return True
     
 #     对比结论

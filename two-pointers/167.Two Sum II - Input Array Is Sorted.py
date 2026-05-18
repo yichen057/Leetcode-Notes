@@ -68,48 +68,72 @@
 # @lc code=start
 
 class Solution:
-    # 双指针法: 时间复杂度O(n); 空间复杂度O(n):因为新建了一个 num 列表
-#     构造 num：for 循环一次 → O(n)。
-# 双指针扫描：left 和 right 各最多走 n 步 → O(n)。
-# 👉 总时间复杂度：
-# 输入有序：O(n)
-# 输入无序 + 排序：O(n log n)
+    # 本题要注意两点: 1. 要求返回 1-indexed, 每个index+1; 2. 已知array是sorted的
+    # 本题最好的方法是方法一: two pointers. 本题核心在于sorted array + target sum → two pointers
+    # method 1: two pointers method
+    # TC: O(n), 每次循环不是 left += 1，就是 right -= 1。两个指针最多总共移动 n 次
+    # SC: O(1), 因为只用了几个变量: left, right, total
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         if not numbers: 
             return [-1, -1]
-        
-        num = [
-            (number, index)
-            for index, number in enumerate(numbers) # 注意: 此处没有冒号
-        ]
-        # 上述语句等同于下面的: 注意冒号加的位置
+        left, right = 0, len(numbers) - 1
+        while left < right:
+            total = numbers[left] + numbers[right]
+            if total == target:
+                return [left+1, right+1] # Return the indices of the two numbers index1 and index2, each incremented by one
+            elif total < target:
+                left += 1
+            else:
+                right -= 1
+        return [-1, -1]
+
+        # 双指针法(同时记录了原数组每个元素的index)
+        #  if not numbers: 
+        #     return [-1, -1]
+        # num = [(number, index) for index, number in enumerate(numbers)] # 该num是为了记录num元素和其对应index, 本方法可以不记录index, 因为无需sort, 所以index不会被打乱
+        # # 上面这句等价于下面这句
         # num = []
         # for index, number in enumerate(numbers):
         #     num.append((number, index))
 
-        left, right = 0, len(numbers) - 1
-        while(left < right):
-            if num[left][0] + num[right][0] > target:
-                right -= 1
-            elif num[left][0] + num[right][0] < target:
-                left += 1
-            else:
-                return [num[left][1]+1, num[right][1]+1 ]
+        # left, right = 0, len(numbers) - 1
+        # while(left < right):
+        #     if num[left][0] + num[right][0] > target:
+        #         right -= 1
+        #     elif num[left][0] + num[right][0] < target:
+        #         left += 1
+        #     else:
+        #         return [num[left][1]+1, num[right][1]+1 ]
             
-        return [-1, -1]
-    
-    # 哈希表法: 时间复杂度和空间复杂度都为O(n)
-    def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        if not numbers: 
-            return [-1, -1]
-        
-        hash = {}
-        for index, number in enumerate(numbers):
-            if target - number in hash:
-                return [hash[target - number] + 1, index + 1]
-            hash[number] = index
+        # return [-1, -1]
 
-        return [-1, -1]
+        # method 2: Hashmap method
+        # TC: O(n); SC: O(n) 
+        #  if not numbers: 
+        #     return [-1, -1]
+        def twoSum(self, numbers: List[int], target: int) -> List[int]:
+            dictNum = {} # record each visited element(key) and its index (value)
+            for i, num in enumerate(numbers):
+                need = target - num
+                if need in dictNum:
+                    return [i+1, dictNum[need]+1]
+                dictNum[num] = i # 注意此处方括号里是[num], 而不是平常写的[i], key是element不是index
+            return [-1, -1]
+
+        # method 3: brute force method
+        # TC: O(n^2); SC: O(1) 
+        def twoSum(self, numbers: List[int], target: int) -> List[int]:
+            if not numbers: 
+                return [-1, -1]
+            for i in range(len(numbers)):
+                for j in range(i+1, len(numbers)):
+                    if numbers[i] + numbers[j] == target:
+                        return [i+1, j+1]
+            return [-1, -1]
+
+    
+    
+
 # @lc code=end
 
 

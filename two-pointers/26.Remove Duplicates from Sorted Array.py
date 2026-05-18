@@ -87,15 +87,15 @@ class Solution:
             return 0
         
         # j 指针表示“下一个不重复元素要放的位置”。初始化为 1，因为第一个元素 nums[0] 一定是保留的。
-        j = 1
-        for i in range(1, len(nums)):
-            if nums[i] != nums[i-1]:
-                nums[j]=nums[i]
-                j+=1
+        slow = 1
+        for fast in range(1, len(nums)):
+            if nums[fast] != nums[fast-1]:
+                nums[slow]=nums[fast]
+                slow+=1
         # 如果 nums[i] 和前一个 nums[i-1] 不相等，说明这是一个新元素, 把它放到 nums[j] 位置。
         # 然后 j++，指向下一个可以写入的位置。
         # 如果相等（说明是重复元素），就跳过，不写入。
-        return j # 遍历完成后，前 j 个元素就是去重后的结果。j 就是新数组的长度。
+        return slow # 遍历完成后，前 j 个元素就是去重后的结果。j 就是新数组的长度。
         
 # @lc code=end
 

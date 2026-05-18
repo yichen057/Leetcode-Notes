@@ -85,6 +85,7 @@
 
 # @lc code=start
 class Solution:
+    # method 1: traverse element
     def removeElement(self, nums: List[int], val: int) -> int:
         # number = 0
         # for i in nums:
@@ -92,10 +93,12 @@ class Solution:
         #         number += 1
         #         i += 1
         # return len(nums) - number  
-
+    # method 2: fast-slow pointers: traverse index
+    def removeElement(self, nums: List[int], val: int) -> int:
         # 同向双指针: 快指针用来获取新数组中的元素, 慢指针用来获取新数组中需要更新的位置, 二者都在同一个数组中操作
         # fast = 快指针，遍历整个数组；slow = 慢指针，指向「下一个可写位置」。
         # 当遇到 != val 的元素时，就把它覆盖到 nums[slow]，并把 slow 往右移。
+        # 所以本题其实不是删除元素，而是覆盖元素。
         slow = 0
         # python的for 里你不需要写 fast = 0 和 fast += 1，否则就重复了。
         for fast in range(len(nums)):

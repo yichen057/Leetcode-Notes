@@ -160,6 +160,103 @@ class Solution:
                 return sorted(nums[left][1], nums[right][1]) # 把找到的两个数的原始索引按升序返回
         
         return [-1, -1]
+    
+# sorting + two pointers method
+# nums.sort()：改原数组，时间 O(n log n)，额外空间更省。
+# sorted(nums)：不改原数组，时间 O(n log n)，空间 O(n)。
+# Two pointers 本身：时间 O(n)，空间 O(1)。
+# 排序 + two pointers：总时间 O(n log n) + O(n) = O(n log n), 总空间O(n), 因为arr = [(num, i) ...]
+# nums = sorted(nums) # nums.sort()会直接修改原数组, 如果不想修改原数组, 可以写成nums = sorted(nums), 创建一个新的排序后的 list，不修改原来的 nums。时间复杂度:O(n log n), 空间复杂度: O(n)
+
+# 错误版本:
+# class Solution:
+#     def twoSum(self, nums: List[int], target: int) -> List[int]:
+#         if not nums:
+#             return []
+              
+#         sorted(nums)  # TC: O(nlog(n)), SC: O(1)
+
+#        # O(n)
+#         left, right = 0, len(nums) - 1
+#         while left < right:
+#             total = nums[left] + nums[right]
+#             if total > target:
+#                 right -= 1
+#             elif total < target:
+#                 left += 1
+#             else:
+#                 print([left, right])
+#                 return [left, right]
+#         return []
+# 双指针正确版本:
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # 1. Edge case: Handle empty input
+        if not nums:
+            return []
+
+        # 2. Pre-processing:
+        # We need to sort the numbers to use the two-pointer technique.
+        # However, sorting loses the original indices, so we store them as (value, original_index) tuples.
+        # TC: O(n log n) due to sorting.
+        # SC: O(n) because we create a new list of n tuples.
+        sorted_nums = sorted((num, i) for i, num in enumerate(nums))
+
+        # 3. Initialize Two Pointers:
+        # 'left' starts at the smallest value, 'right' starts at the largest.
+        left, right = 0, len(sorted_nums) - 1
+        
+        # 4. Search Loop:
+        # Move pointers inward based on whether the current sum is too high or too low.
+        while left < right:
+            # sorted_nums[index][0] is the value, sorted_nums[index][1] is the original index
+            current_sum = sorted_nums[left][0] + sorted_nums[right][0]
+            
+            if current_sum == target:
+                # Found the target: return the original indices stored in our tuples
+                return [sorted_nums[left][1], sorted_nums[right][1]]
+            
+            elif current_sum > target:
+                # Sum is too large: move the right pointer left to decrease the total
+                right -= 1
+                
+            else:
+                # Sum is too small: move the left pointer right to increase the total
+                left += 1
+        
+        # 5. Return empty list if no solution is found
+        return []
+    
+# hashmap method I: range(len(nums))
+# class Solution:
+#     def twoSum(self, nums: List[int], target: int) -> List[int]:
+#         # if not nums or target is not int:
+#         #     raise ValueError("invalid input")
+#         if not nums:
+#             return []
+#         seen: Dict[int, int] = {} # key: nums[i] of array, visited val; value: index of nums[i]
+#         for i in range(len(nums)):
+#             need = target - nums[i]
+#             if need in seen: # check: 查我需要的数以前有没有出现过
+#                 return [seen[need], i]
+#             seen[nums[i]] = i # store: 存我现在真实看到的数
+
+#         return []
+
+# hashmap method II: enumerate method
+# Time Complexity (TC): O(n)— We only traverse the list once. This is much faster than the O(n log n)sorting method!
+# Space Complexity (SC): O(n) — In the worst case, we store almost every number in the dictionary.
+# class Solution:
+#     def twoSum(self, nums: List[int], target: int) -> List[int]:
+#         if not nums:
+#             return[-1, -1]
+        
+#         hash = {} # hash 里存的是“过去见过的真实数字”，不是“当前数字需要的 complement”。
+#         for i, num in enumerate(nums):
+#             if target - num in hash: # check: 查我需要的数以前有没有出现过
+#                 return [hash[target-num], i]
+#             hash[num] = i # store: 存我现在真实看到的数
+#         return [-1, -1]
 
 # 求索引, 穷举法
     def twoSum(self, nums: List[int], target: int) -> List[int]:

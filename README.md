@@ -24,7 +24,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 | Folder | Count |
 |--------|-------|
-| array | 14 |
+| array | 12 |
 | 2D_array_Matrix | 3 |
 | binary-search | 3 |
 | binary-tree | 42 |
@@ -32,10 +32,10 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | linked-list | 8 |
 | stack-queue | 6 |
 | string | 9 |
-| two-pointers | 4 |
+| two-pointers | 12 |
 | graph | 4 |
 | quick-sort | 1 |
-| **Total** | **105** |
+| **Total** | **111** |
 
 - Language: Python
 
@@ -54,15 +54,13 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 ## Problem List by Topic
 
-_Total: **105** problems_
+_Total: **111** problems_
 
-### array (14)
+### array (12)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 1 | [Two Sum](array/1.Two%20Sum.py) | 🟢 Easy | 2025-10-27 |
-| 26 | [Remove Duplicates from Sorted Array](array/26.Remove%20Duplicates%20from%20Sorted%20Array.py) | 🟢 Easy | 2025-08-28 |
-| 27 | [Remove Element](array/27.remove-element.py) | 🟢 Easy | 2026-02-01 |
+| 1 | [Two Sum](array/1.Two%20Sum.py) | 🟢 Easy | 2026-05-16 |
 | 59 | [Spiral Matrix II](array/59.spiral-matrix-ii.py) | 🟡 Medium | 2025-09-20 |
 | 163 | [Missing Ranges](array/163.missing-ranges.py) | 🟢 Easy | 2026-02-24 |
 | 209 | [Minimum Size Subarray Sum](array/209.minimum-size-subarray-sum.py) | 🟡 Medium | 2025-09-19 |
@@ -73,7 +71,7 @@ _Total: **105** problems_
 | 977 | [Squares of a Sorted Array](array/977.squares-of-a-sorted-array.py) | 🟢 Easy | 2025-09-19 |
 | 3162 | [Find the Number of Good Pairs I](array/3162.find-the-number-of-good-pairs-i.py) | 🟢 Easy | 2026-02-24 |
 | 3507 | [Minimum Pair Removal to Sort Array I](array/3507.minimum-pair-removal-to-sort-array-i.py) | 🟢 Easy | 2026-01-22 |
-| 3511 | [Make A Positive Array](array/3511.Make%20a%20Positive%20Array.py) | 🟡 Medium | 2026-01-23 |
+| 3511 | [Make a Positive Array](array/3511.Make%20a%20Positive%20Array.py) | 🟡 Medium | 2026-05-15 |
 
 ### 2D_array_Matrix (3)
 
@@ -150,7 +148,7 @@ _Total: **105** problems_
 | 347 | [Top K Frequent Elements](hash-table/347.top-k-frequent-elements.py) | 🟡 Medium | 2026-05-14 |
 | 349 | [Intersection of Two Arrays](hash-table/349.intersection-of-two-arrays.py) | 🟢 Easy | 2026-05-09 |
 | 383 | [Ransom Note](hash-table/383.ransom-note.py) | 🟢 Easy | 2026-04-09 |
-| 389 | [Find the Difference](hash-table/find-the-difference.py) | 🟢 Easy | 2026-04-09 |
+| 389 | [Find the Difference](hash-table/389.find-the-difference.py) | 🟢 Easy | 2026-04-09 |
 | 454 | [4Sum II](hash-table/454.Four%20sum-ii.py) | 🟡 Medium | 2026-01-07 |
 | 560 | [Subarray Sum Equals K](hash-table/560.subarray-sum-equals-k.py) | 🟡 Medium | 2026-05-09 |
 
@@ -192,14 +190,22 @@ _Total: **105** problems_
 | 541 | [Reverse String II](string/541.reverse-string-ii.py) | 🟢 Easy | 2026-01-13 |
 | 680 | [Valid Palindrome II](string/680.Valid%20Palindrome%20II.py) | 🟢 Easy | 2025-08-26 |
 
-### two-pointers (4)
+### two-pointers (12)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 15 | [3Sum](two-pointers/15.3-sum.py) | 🟡 Medium | 2026-01-12 |
+| 11 | [Container With Most Water](two-pointers/11.container-with-most-water.py) | 🟡 Medium | 2026-05-18 |
+| 15 | [3Sum](two-pointers/15.3-sum.py) | 🟡 Medium | 2026-05-17 |
 | 18 | [4Sum](two-pointers/18.4-sum.py) | 🟡 Medium | 2026-01-12 |
+| 26 | [Remove Duplicates from Sorted Array](two-pointers/26.Remove%20Duplicates%20from%20Sorted%20Array.py) | 🟢 Easy | 2026-05-16 |
+| 27 | [Remove Element](two-pointers/27.remove-element.py) | 🟢 Easy | 2026-05-16 |
+| 42 | [Trapping Rain Water](two-pointers/42.trapping-rain-water.py) | 🔴 Hard | 2026-05-18 |
 | 121 | [Best Time to Buy and Sell Stock](two-pointers/121.best-time-to-buy-and-sell-stock.py) | 🟢 Easy | 2026-05-15 |
-| 167 | [Two Sum II - Input Array Is Sorted](two-pointers/167.Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted.py) | 🟡 Medium | 2025-08-28 |
+| 125 | [Valid Palindrome](two-pointers/125.valid-palindrome.py) | 🟢 Easy | 2026-05-16 |
+| 167 | [Two Sum II - Input Array Is Sorted](two-pointers/167.Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted.py) | 🟡 Medium | 2026-05-17 |
+| 283 | [Move Zeroes](two-pointers/283.move-zeroes.py) | 🟢 Easy | 2026-05-16 |
+| 344 | [Reverse String](two-pointers/344.reverse-string.py) | 🟢 Easy | 2026-05-16 |
+| 392 | [Is Subsequence](two-pointers/392.is-subsequence.py) | 🟢 Easy | 2026-05-18 |
 
 ### graph (4)
 
@@ -216,4 +222,4 @@ _Total: **105** problems_
 |---|---------|------------|--------------|
 | 912 | [Sort an Array](quick-sort/912.sort-an-array.py) | 🟡 Medium | 2026-05-09 |
 
-_Last updated: 2026-05-15_
+_Last updated: 2026-05-18_

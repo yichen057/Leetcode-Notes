@@ -64,6 +64,22 @@ class Solution:
                 return middle
         return -1
 
-        
+      # # binary search template:
+        # start, end = 0, len(nums) - 1
+        # while start + 1 < end:
+        #     mid = (start + end) // 2
+            
+        #     if nums[mid] < target:
+        #         start = mid
+        #     elif nums[mid] == target:
+        #         return mid
+        #     else:
+        #         end = mid
+        # 一般先检查start再检查end, 因为一般要求的是first index, 所以先检查更靠左的start, 如果start!=target, 再检查靠右的end
+        # if nums[start] == target:
+        #     return start
+        # if nums[end] == target:
+        #     return end
+        # return -1    
 # @lc code=end
 

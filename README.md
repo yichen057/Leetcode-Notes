@@ -26,7 +26,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 |--------|-------|
 | array | 12 |
 | 2D_array_Matrix | 3 |
-| binary-search | 5 |
+| binary-search | 9 |
 | binary-tree | 42 |
 | hash-table | 11 |
 | linked-list | 8 |
@@ -35,7 +35,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | two-pointers | 12 |
 | graph | 4 |
 | quick-sort | 1 |
-| **Total** | **113** |
+| **Total** | **117** |
 
 - Language: Python
 
@@ -54,7 +54,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 ## Problem List by Topic
 
-_Total: **113** problems_
+_Total: **117** problems_
 
 ### array (12)
 
@@ -81,15 +81,19 @@ _Total: **113** problems_
 | 1672 | [Richest Customer Wealth](2D_array_Matrix/1672.richest-customer-wealth.py) | 🟢 Easy | 2026-02-24 |
 | 2373 | [Largest Local Values in a Matrix](2D_array_Matrix/2373.largest-local-values-in-a-matrix.py) | 🟢 Easy | 2026-02-23 |
 
-### binary-search (5)
+### binary-search (9)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 33 | [Search in Rotated Sorted Array](binary-search/33.search-in-rotated-sorted-array.py) | 🟡 Medium | 2026-05-05 |
+| 33 | [Search in Rotated Sorted Array](binary-search/33.search-in-rotated-sorted-array.py) | 🟡 Medium | 2026-05-19 |
 | 34 | [Find First and Last Position of Element in Sorted Array](binary-search/34.find-first-and-last-position-of-element-in-sorted-array.py) | 🟡 Medium | 2026-05-06 |
+| 153 | [Find Minimum in Rotated Sorted Array](binary-search/153.find-minimum-in-rotated-sorted-array.py) | 🟡 Medium | 2026-05-19 |
+| 162 | [Find Peak Element](binary-search/162.find-peak-element.py) | 🟡 Medium | 2026-05-20 |
 | 658 | [Find K Closest Elements](binary-search/658.find-k-closest-elements.py) | 🟡 Medium | 2026-05-19 |
 | 702 | [Search in a Sorted Array of Unknown Size](binary-search/702.search-in-a-sorted-array-of-unknown-size.py) | 🟡 Medium | 2026-05-18 |
 | 704 | [Binary Search](binary-search/704.binary-search.py) | 🟢 Easy | 2026-05-18 |
+| 852 | [Peak Index in a Mountain Array](binary-search/852.peak-index-in-a-mountain-array.py) | 🟡 Medium | 2026-05-19 |
+| 2226 | [Maximum Candies Allocated to K Children](binary-search/2226.maximum-candies-allocated-to-k-children.py) | 🟡 Medium | 2026-05-20 |
 
 ### binary-tree (42)
 
@@ -224,4 +228,4 @@ _Total: **113** problems_
 |---|---------|------------|--------------|
 | 912 | [Sort an Array](quick-sort/912.sort-an-array.py) | 🟡 Medium | 2026-05-09 |
 
-_Last updated: 2026-05-19_
+_Last updated: 2026-05-20_

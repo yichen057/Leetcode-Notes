@@ -64,6 +64,46 @@ from common.node import *
 # search in a rotated sorted array
 # 本题找target index, 但数组被旋转过
 # 数组不是整体有序, 而是每次二分, 左半边or右半边至少有一边有序
+
+# 方法一: 推荐!
+# 先按照LC153题利用二分法找最小值, 其次再根据target确定它在左上还是右下区间后, 再次利用二分法找目标值
+# followup: 也可以用一次二分去做
+# 把数组按值的大小可以分为几种区间情况: 中>尾>头; 尾>头>中(已包含头>中>尾的情况).
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        if not nums:
+            return -1
+
+        start, end = 0, len(nums)-1
+        while start + 1 < end:
+            mid = (start + end) // 2
+          
+           # 1. 中>尾>头: 如果mid在[中>尾]区间(即左上方)
+            if nums[mid] > nums[end]:
+                # 1) target在中区
+                if nums[start] <= target <= nums[mid]:
+                    end = mid
+                # 2) target在尾部or头部
+                else:
+                    start = mid
+
+            # 2. 尾>头>中: 如果mid在[头>中]区间(即右下方), 这部分同时包含了 头> 中> 尾
+            else:
+                # target在中区 
+                if nums[mid] <= target <= nums[end]:
+                    start = mid
+                # target在尾部or头部
+                else:
+                    end = mid
+        print("start:",start, "end:", end)
+        # 在无重复数据中寻找target, 先判断start或end都可以
+        if nums[start] == target:
+            return start
+        if nums[end] == target:
+            return end
+        return -1
+
+# 方法二:
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         lo, hi = 0, len(nums) -1

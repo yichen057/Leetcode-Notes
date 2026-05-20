@@ -65,8 +65,8 @@ from common.node import *
 # @lc code=start
 
 class Solution:
-    # TC: O(log n) for binary search target + O(k) for merge sorted array
-    # SC: O(k) for results space
+    # TC: O(log n) for binary search target + (O(k) for for loop expansion + O (k log k)) for sorting results, 由于 O(k log k) 比 O(k) 大，所以可以简化成：O(log n + k log k)
+    # SC: O(k) for results space and sorted output, 最多存k个元素
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
         right = self.findUpperCloset(arr, x)
         left = right - 1
@@ -74,7 +74,7 @@ class Solution:
         # 找到中届线后, 从中界线两边找最近的k个数字, 合并两个排好序的array
         # 两根指针从中间往两边扩展背向而行, 依次找到最接近的k个数
         results = []
-        for _ in range(k): # merge sorted array, merge过程的时间复杂度: O(k)
+        for _ in range(k): # merge sorted array, merge过程的时间复杂度: O(k), results长度是k, 不是n
             # 如果左边更接近, 选左边
             if self.isLeftCloser(arr, x, left, right): # x: target
                 results.append(arr[left]) 
@@ -83,8 +83,31 @@ class Solution:
                 results.append(arr[right])
                 right += 1
 
-        return sorted(results) # return the result list sorted in ascending order.
-        #sorted(nums)返回的是new array, 未修改原array, 可操作任何可迭代对象;nums.sort()仅限列表, 返回值None, 会修改原表, space complexity depends
+        return sorted(results) # return the result list sorted in ascending order. TC= O(n log n)
+        #sorted(nums)返回的是new array, 未修改原array, 可操作任何可迭代对象;nums.sort()仅限列表, 返回值None, 会修改原表, space complexity depends. 会返回一个新的 list，也需要 O(k) 额外空间。
+        # 推荐你用 left_results + right_results 这种写法，避免最后 sorted(results)。
+# 方法二:
+# findUpperClosest: O(log n)
+# 扩展 k 个元素: O(k)
+# 拼接结果: O(k)
+# Total Time Complexity: O(log n + k)
+# Space Complexity: O(k)    
+# class Solution:
+#     # TC: O(log n + k)
+#     # SC: O(k)
+#     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+#         right = self.findUpperClosest(arr, x)
+#         left = right - 1
+#         left_results = []
+#         right_results = []
+#         for _ in range(k):
+#             if self.isLeftCloser(arr, x, left, right):
+#                 left_results.append(arr[left])
+#                 left -= 1
+#             else:
+#                 right_results.append(arr[right])
+#                 right += 1
+#         return left_results[::-1] + right_results # left_results是按从大到小收集的，所以 reverse 后变成升序, 而right_results本身就是升序
 
     def isLeftCloser(self, nums, target, left, right): # 现在应该选左边吗？
     # 注意本函数的边界检查容易遗漏
@@ -119,6 +142,7 @@ class Solution:
 
         # 找不到>=target的数, 说明数组里所有数都<target, 这时target应该插入到数组最后面, 也就是len(nums) 
         return len(nums)
+
 
 
     

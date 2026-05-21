@@ -125,6 +125,8 @@ class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         # 方法二: set+tuple to remove duplicate triplets, then convert set of tuples to list of lists
         # TC: O(nlogn) + O(n^2) + O(k)), 因为最坏 k = O(n^2)，所以：O(n log n + n^2 + n^2) = O(n^2), where k is the number of unique triplets
+        # 解释为何最坏k = O(n^2): 3Sum 固定一个数 a，然后在右边找两个数 b + c = -a。外层有大约 n 个可能的 a。对于每个 a，右边 two pointers 理论上可能找到多个不同的 pair。
+        # 所以整体组合数量可能达到：O(n) 个 a  *  O(n) 个 pair = O(n^2)
         # SC: O(k) for set()+ O(k) for list of list=O(k), k是去重后的triplet数量, 最坏情况k = n^2, 所以worst case O(n^2), because setRes stores unique triplets
         setRes = set() # To remove duplicate triplets.它保存所有去重后的 triplets。假设结果数量是 k，那么：setRes space = O(k)
         nums.sort() # To use two pointers

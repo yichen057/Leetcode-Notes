@@ -17,6 +17,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | `two-pointers/` | Two pointers technique |
 | `graph/` | Graph traversal (BFS/DFS) problems |
 | `quick-sort/` | Quick sort & related problems |
+| `sliding window/` | Sliding window problems |
 | `daily/` | Daily learning notes by topic |
 | `notes/` | General study notes |
 
@@ -28,14 +29,15 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | 2D_array_Matrix | 3 |
 | binary-search | 9 |
 | binary-tree | 42 |
-| hash-table | 11 |
+| hash-table | 13 |
 | linked-list | 8 |
 | stack-queue | 6 |
 | string | 9 |
 | two-pointers | 12 |
 | graph | 4 |
 | quick-sort | 1 |
-| **Total** | **117** |
+| sliding window | 1 |
+| **Total** | **120** |
 
 - Language: Python
 
@@ -51,10 +53,11 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 - String Manipulation
 - Graphs (BFS / DFS)
 - Quick Sort
+- Sliding Window
 
 ## Problem List by Topic
 
-_Total: **117** problems_
+_Total: **120** problems_
 
 ### array (12)
 
@@ -142,21 +145,23 @@ _Total: **117** problems_
 | 700 | [Search in a Binary Search Tree](binary-tree/700.search-in-a-binary-search-tree.py) | 🟢 Easy | 2026-05-07 |
 | 701 | [Insert into a Binary Search Tree](binary-tree/701.insert-into-a-binary-search-tree.py) | 🟡 Medium | 2026-03-02 |
 
-### hash-table (11)
+### hash-table (13)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
 | 49 | [Group Anagrams](hash-table/49.group-anagrams.py) | 🟡 Medium | 2026-05-14 |
 | 128 | [Longest Consecutive Sequence](hash-table/128.longest-consecutive-sequence.py) | 🟡 Medium | 2026-05-15 |
 | 202 | [Happy Number](hash-table/202.happy-number.py) | 🟢 Easy | 2026-02-01 |
-| 217 | [Contains Duplicate](hash-table/217.contains-duplicate.py) | 🟢 Easy | 2026-05-12 |
-| 242 | [Valid Anagram](hash-table/242.valid-anagram.py) | 🟢 Easy | 2026-05-14 |
+| 217 | [Contains Duplicate](hash-table/217.contains-duplicate.py) | 🟢 Easy | 2026-05-20 |
+| 242 | [Valid Anagram](hash-table/242.valid-anagram.py) | 🟢 Easy | 2026-05-21 |
 | 347 | [Top K Frequent Elements](hash-table/347.top-k-frequent-elements.py) | 🟡 Medium | 2026-05-14 |
 | 349 | [Intersection of Two Arrays](hash-table/349.intersection-of-two-arrays.py) | 🟢 Easy | 2026-05-09 |
 | 383 | [Ransom Note](hash-table/383.ransom-note.py) | 🟢 Easy | 2026-04-09 |
 | 389 | [Find the Difference](hash-table/389.find-the-difference.py) | 🟢 Easy | 2026-04-09 |
 | 454 | [4Sum II](hash-table/454.Four%20sum-ii.py) | 🟡 Medium | 2026-01-07 |
 | 560 | [Subarray Sum Equals K](hash-table/560.subarray-sum-equals-k.py) | 🟡 Medium | 2026-05-09 |
+| 705 | [Design HashSet](hash-table/705.design-hash-set.py) | 🟢 Easy | 2026-05-20 |
+| 706 | [Design HashMap](hash-table/706.design-hash-map.py) | 🟢 Easy | 2026-05-20 |
 
 ### linked-list (8)
 
@@ -201,7 +206,7 @@ _Total: **117** problems_
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
 | 11 | [Container With Most Water](two-pointers/11.container-with-most-water.py) | 🟡 Medium | 2026-05-18 |
-| 15 | [3Sum](two-pointers/15.3-sum.py) | 🟡 Medium | 2026-05-17 |
+| 15 | [3Sum](two-pointers/15.3-sum.py) | 🟡 Medium | 2026-05-21 |
 | 18 | [4Sum](two-pointers/18.4-sum.py) | 🟡 Medium | 2026-01-12 |
 | 26 | [Remove Duplicates from Sorted Array](two-pointers/26.Remove%20Duplicates%20from%20Sorted%20Array.py) | 🟢 Easy | 2026-05-16 |
 | 27 | [Remove Element](two-pointers/27.remove-element.py) | 🟢 Easy | 2026-05-16 |
@@ -228,4 +233,10 @@ _Total: **117** problems_
 |---|---------|------------|--------------|
 | 912 | [Sort an Array](quick-sort/912.sort-an-array.py) | 🟡 Medium | 2026-05-09 |
 
-_Last updated: 2026-05-20_
+### sliding window (1)
+
+| # | Problem | Difficulty | Last Updated |
+|---|---------|------------|--------------|
+| 219 | [Contains Duplicate II](sliding%20window/219.contains-duplicate-ii.py) | 🟢 Easy | 2026-05-21 |
+
+_Last updated: 2026-05-21_

@@ -75,10 +75,7 @@ class Solution:
         # for i in range(26):
         #     if record[i] != 0:
         #         return False
-        # 或者
-        # for i in range(26):
-    #     #     if record[i] != 0:
-    #     #         return False
+   
         return True
          # 方法一里的第三种解法: 精简for loop, 由于t和s的长度一样, 因此可以在一个for loop里利用for i in range(len(s))来做
         if len(s) != len(t):
@@ -97,12 +94,12 @@ class Solution:
 # 最好情况：方法一更快（可以提前返回），方法二还是要扫完
 # 常数开销：方法一不需要额外检查数组，方法二多一个 O(26) 的循环，但这可以认为是常数级无关紧要
 
-# 方法二: sorting. TC: O(n log n); SC: O(1)
+# 方法二: sorting. TC: O(n log n); SC: O(n)
 # Time complexity: O(nlogn).
 # Assume that n is the length of s, sorting costs O(nlogn) and comparing two strings costs O(n). Sorting time dominates and the overall time complexity is O(nlogn).
 
-# Space complexity: O(1).
-# Space depends on the sorting implementation which, usually, costs O(1) auxiliary space if heapsort is used. Note that in Java, toCharArray() makes a copy of the string so it costs O(n) extra space, but we ignore this for complexity analysis
+# Space complexity: 因为 sorted(s) 创建了一个长度为 n 的新 list，sorted(t) 也创建了一个长度为 n 的新 list。所以空间复杂度是O(2n) = O(n)
+# 对于如果用到了sort(), Space depends on the sorting implementation which, usually, costs O(1) auxiliary space if heapsort is used. Note that in Java, toCharArray() makes a copy of the string so it costs O(n) extra space, but we ignore this for complexity analysis
     # def isAnagram(self, s: str, t: str) -> bool:
     #     s = sorted(s) # nums.sort()仅限列表, 会修改原件, 返回值None; sorted(nums):可操作任何可迭代对象, 未修改原件, 返回值是新的列表. 总之: sort() 是“就地正法”，sorted() 是“另起炉灶”。
     #     t = sorted(t)

@@ -71,7 +71,7 @@ class Solution:
         if not candies:
             return 0
         
-        # Initialize切割长度: start and end, end = min(max in L, sumL/k), 即min(所有木头中的最大值, 所有木头长度和/木头目标段数)
+        # Initialize切割长度: start and end. start for 1, 最小每段长度为1; end = min(max in L, sumL/k), 即最大长度为min(所有木头中的最大值, 所有木头长度和/木头目标段数)
         start, end = 1, min(max(candies), sum(candies) // k)
 
         # if end < 1, it cannot complete the task, return 0
@@ -80,10 +80,12 @@ class Solution:
         
         while start + 1 < end:
             mid = (start+end)//2
-            # 长度为mid的木头总数 >=目标总数, 继续增长木头长度, 选右边
+            # 本题不是纯二分, 是有映射关系的二分
+            # 切割长度和切割总段数有负相关映射关系, 通过长度求段数,在段数上进行二分, 对应的在结果集(切割长度)上也进行了二分. 即在映射的结果上(切割长度)进行二分, 从而在原结果上进行二分
+            # 长度为mid的木头总数 >=目标总数, 继续增长木头长度从而减少木头总数, 选右边
             if self.get_count(candies, mid) >= k:
                 start = mid
-            # 长度为mid的木头总数 < 目标总数, 继续缩短木头长度, 选左边
+            # 长度为mid的木头总数 < 目标总数, 继续缩短木头长度从而增加木头总数, 选左边
             else:
                 end = mid
         
@@ -93,13 +95,13 @@ class Solution:
             return end
         return start
 
-    def get_count(self, candies, length):
+    def get_count(self, candies, length): # 切割长度为length的木头总数; 用end < 1: return 0来确保length不等于0
         count = 0
         for wood in candies:
             pieces = wood // length
             count += pieces
         return count
-        
+  
 # @lc code=end
 
 if __name__ == '__main__':

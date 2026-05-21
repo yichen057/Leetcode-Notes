@@ -124,7 +124,16 @@ class Solution:
     #         if freq >= 2:
     #             return True
     #     return False
-    # Method 3: length comparison approach
+    # Method 3: one loop + dictionary approach
+  class Solution:
+    def hasDuplicate(self, nums: List[int]) -> bool:
+        numMap = {}
+        for n in nums:
+            numMap[n] = numMap.get(n, 0) + 1
+            if numMap[n] >= 2:
+                return True
+        return False 
+    # Method 4: length comparison approach
     # While elegant, this approach always takes O(n) space and time, 
     # whereas the fist loop approach can return True early as soon as it hits the first duplicate.
     def containsDuplicate(self, nums):

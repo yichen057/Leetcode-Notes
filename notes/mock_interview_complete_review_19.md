@@ -185,7 +185,9 @@ sorted(arr, key=lambda x: -x)
 
 Python 的 `sorted()` 底层是 **Timsort**(merge sort + insertion sort 混合优化),平均/最坏都是 O(n log n)。在接近有序的数据上可能接近 O(n)。
 
-`arr.sort()` 原地排序,空间是 O(1)(忽略排序栈)。
+Sorted(nums) 可操作任何可迭代对象, 未修改原Array, 返回值是new array
+
+`arr.sort()` 原地排序会修改原array, , 仅限列表, 返回值是None, 空间复杂度depends on the impletation, 是 O(1)如果忽略排序栈。
 
 ---
 
@@ -286,20 +288,156 @@ s.count("o")                  # 2
 ### 2.7 分割 / 拼接
 
 ```python
-"a,b,c".split(",")            # ['a', 'b', 'c']
+"a,b,c".split(",")            # ['a', 'b', 'c'] split按空格(或指定的分隔符)分割
 "hello world".split()         # ['hello', 'world'](默认按空白)
 
 ",".join(["a", "b", "c"])     # 'a,b,c'
 "".join(["a", "b", "c"])      # 'abc'
 ```
 
+`splitlines()` 会按照换行符把一个字符串分割成多个字符串，并放入 list 中。
+
+## **基本例子**
+
+```python
+s = "apple\nbanana\norange"
+
+result = s.splitlines()
+
+print(result)
+# ['apple', 'banana', 'orange']
+```
+
+原来的字符串可以理解为：
+
+```text
+apple
+banana
+orange
+```
+
+其中 `\n` 表示换行。执行：
+
+```python
+s.splitlines()
+```
+
+后，每一行变成 list 中的一个元素。
+
+------
+
+## **带空行的例子**
+
+```python
+s = "apple\n\norange"
+
+result = s.splitlines()
+
+print(result)
+# ['apple', '', 'orange']
+```
+
+原字符串是：
+
+```text
+apple
+
+orange
+```
+
+中间有一个空行，所以结果中有一个空字符串 `""`。
+
+------
+
+## **常见使用场景：处理多行输入**
+
+比如题目给你一段文本：
+
+```python
+text = """Alice 90
+Bob 85
+Cindy 95"""
+
+lines = text.splitlines()
+
+print(lines)
+# ['Alice 90', 'Bob 85', 'Cindy 95']
+```
+
+然后可以逐行处理：
+
+```python
+for line in lines:
+    name, score = line.split()
+    print(name, score)
+```
+
+输出：
+
+```text
+Alice 90
+Bob 85
+Cindy 95
+```
+
+这里：
+
+```python
+text.splitlines()
+```
+
+先把整段文字按行分开：
+
+```python
+['Alice 90', 'Bob 85', 'Cindy 95']
+```
+
+然后：
+
+```python
+line.split()
+```
+
+再把每一行按空格分开：
+
+```python
+'Alice 90'.split()
+# ['Alice', '90']
+```
+
+------
+
+## **`splitlines()`** **和** **`split("\n")`** **的一个区别**
+
+普通情况下，它们看起来很像：
+
+```python
+s = "a\nb\nc"
+
+print(s.splitlines())  # ['a', 'b', 'c']
+print(s.split("\n"))   # ['a', 'b', 'c']
+```
+
+但是字符串最后有换行符时，结果不同：
+
+```python
+s = "a\nb\n"
+
+print(s.splitlines())  # ['a', 'b']
+print(s.split("\n"))   # ['a', 'b', '']
+```
+
+`splitlines()` 更适合表示“按行读取内容”，通常不会把最后一个单纯的换行解释成额外空行。
+
 ### 2.8 去除空白
 
 ```python
-"  hello  ".strip()           # 'hello'(两端)
+"  hello  ".strip()           # 'hello'(两端, 只删首尾的空格" ", 换行"\n", tab"\t")
 "  hello  ".lstrip()          # 'hello  '(左端)
 "  hello  ".rstrip()          # '  hello'(右端)
 "xxhelloxx".strip("x")        # 'hello'(去掉指定字符)
+s = s.replace(" ", "")				# 删除全部位的普通空格(ignore spaces)
+s = "".join(s.split())				# 删全部位的所有空白字符(空格, 换行, tab)(ignore whitespaces)
 ```
 
 ### 2.9 字符 ↔ ASCII

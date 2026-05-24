@@ -51,35 +51,35 @@
 # @lc code=start
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        left = 0
-        right = len(nums) - 1
+        # left = 0
+        # right = len(nums) - 1
         
-        while left <= right:
-            middle = left + (right - left) // 2
-            if nums[middle] > target:
-                right = middle - 1
-            elif nums[middle] < target:
-                left = middle + 1
-            elif nums[middle] == target:
-                return middle
-        return -1
+        # while left <= right:
+        #     middle = left + (right - left) // 2
+        #     if nums[middle] > target:
+        #         right = middle - 1
+        #     elif nums[middle] < target:
+        #         left = middle + 1
+        #     elif nums[middle] == target:
+        #         return middle
+        # return -1
 
-      # # binary search template:
-        # start, end = 0, len(nums) - 1
-        # while start + 1 < end:
-        #     mid = (start + end) // 2
+      # binary search template:
+        start, end = 0, len(nums) - 1
+        while start + 1 < end:
+            mid = (start + end) // 2
             
-        #     if nums[mid] < target:
-        #         start = mid
-        #     elif nums[mid] == target:
-        #         return mid
-        #     else:
-        #         end = mid
+            if nums[mid] < target:
+                start = mid
+            elif nums[mid] == target:
+                end = mid
+            else:
+                end = mid
         # 一般先检查start再检查end, 因为一般要求的是first index, 所以先检查更靠左的start, 如果start!=target, 再检查靠右的end
-        # if nums[start] == target:
-        #     return start
-        # if nums[end] == target:
-        #     return end
-        # return -1    
+        if nums[start] == target:
+            return start
+        if nums[end] == target:
+            return end
+        return -1    
 # @lc code=end
 

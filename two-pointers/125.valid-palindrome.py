@@ -73,14 +73,23 @@ class Solution:
 # 使用相向双指针, 因为每个字符最多被左右指针扫描一次，没有创建新的字符串。所以时间和空间复杂度如下:
 # Time Complexity: O(n)
 # Space Complexity: O(1)
+
+# string删空格方式:
+# s = s.strip(), 只删首尾的空格, 换行"\n", tab"\t"
+# s = s.replace(" ", ""). 删除全部位置的普通空格
+# s = "".join(s.split()). 删除全部位置的所有空白字符(空格, 换行, tab) ignore all whitespace
+# 但上述只去掉了空格、换行、tab 这类 whitespace，没有去掉逗号、冒号、句号。本题还是得用isalnum()跳过他们
     def isPalindrome(self, s: str) -> bool:
         l, r = 0, len(s)-1
-        while l < r:
-            while l < r and not s[l].isalnum(): # ignore non-alphanumeric /ˌælfənuːˈmerɪk/ characters on the left跳过左边非字母数字
+        
+        while l < r: # 只要左右指针还没相遇，就继续比较
+            while l < r and not s[l].isalnum(): # 左指针跳过无效字符，但不能越过右指针, avoid string index out of range
+                # ignore non-alphanumeric /ˌælfənuːˈmerɪk/ characters on the left跳过左边非字母数字
                 l += 1
-            while l < r and not s[r].isalnum(): # ignore non-alphanumeric characters on the right跳过右边非字母数字
+            while l < r and not s[r].isalnum(): # 右指针跳过无效字符，但不能越过左指针
+                # ignore non-alphanumeric characters on the right跳过右边非字母数字
                 r -= 1
-            if s[l].lower() != s[r].lower(): # 比较时统一小写
+            if s[l].lower() != s[r].lower(): # 比较时统一小写, 比较的是ASCII顺序, 如果字符是数字的话比较的并不是整数大小
                 return False
             l += 1
             r -= 1

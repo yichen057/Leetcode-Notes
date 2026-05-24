@@ -17,7 +17,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | `two-pointers/` | Two pointers technique |
 | `graph/` | Graph traversal (BFS/DFS) problems |
 | `quick-sort/` | Quick sort & related problems |
-| `sliding window/` | Sliding window problems |
+| `sliding-window/` | Sliding window problems |
 | `daily/` | Daily learning notes by topic |
 | `notes/` | General study notes |
 
@@ -27,7 +27,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 |--------|-------|
 | array | 12 |
 | 2D_array_Matrix | 3 |
-| binary-search | 9 |
+| binary-search | 11 |
 | binary-tree | 42 |
 | hash-table | 13 |
 | linked-list | 8 |
@@ -36,8 +36,8 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | two-pointers | 12 |
 | graph | 4 |
 | quick-sort | 1 |
-| sliding window | 1 |
-| **Total** | **120** |
+| sliding-window | 2 |
+| **Total** | **123** |
 
 - Language: Python
 
@@ -57,7 +57,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 ## Problem List by Topic
 
-_Total: **120** problems_
+_Total: **123** problems_
 
 ### array (12)
 
@@ -67,7 +67,7 @@ _Total: **120** problems_
 | 59 | [Spiral Matrix II](array/59.spiral-matrix-ii.py) | 🟡 Medium | 2025-09-20 |
 | 163 | [Missing Ranges](array/163.missing-ranges.py) | 🟢 Easy | 2026-02-24 |
 | 209 | [Minimum Size Subarray Sum](array/209.minimum-size-subarray-sum.py) | 🟡 Medium | 2025-09-19 |
-| 238 | [Product of Array Except Self](array/238.product-of-array-except-self.py) | 🟡 Medium | 2026-05-14 |
+| 238 | [Product of Array Except Self](array/238.product-of-array-except-self.py) | 🟡 Medium | 2026-05-22 |
 | 252 | [Meeting Rooms](array/252.meeting-rooms.py) | 🟢 Easy | 2026-05-12 |
 | 268 | [Missing Number](array/268.missing-number.py) | 🟢 Easy | 2026-05-12 |
 | 665 | [Non-decreasing Array](array/665.non-decreasing-array.py) | 🟡 Medium | 2026-02-23 |
@@ -84,18 +84,20 @@ _Total: **120** problems_
 | 1672 | [Richest Customer Wealth](2D_array_Matrix/1672.richest-customer-wealth.py) | 🟢 Easy | 2026-02-24 |
 | 2373 | [Largest Local Values in a Matrix](2D_array_Matrix/2373.largest-local-values-in-a-matrix.py) | 🟢 Easy | 2026-02-23 |
 
-### binary-search (9)
+### binary-search (11)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
 | 33 | [Search in Rotated Sorted Array](binary-search/33.search-in-rotated-sorted-array.py) | 🟡 Medium | 2026-05-19 |
-| 34 | [Find First and Last Position of Element in Sorted Array](binary-search/34.find-first-and-last-position-of-element-in-sorted-array.py) | 🟡 Medium | 2026-05-06 |
+| 34 | [Find First and Last Position of Element in Sorted Array](binary-search/34.find-first-and-last-position-of-element-in-sorted-array.py) | 🟡 Medium | 2026-05-24 |
 | 153 | [Find Minimum in Rotated Sorted Array](binary-search/153.find-minimum-in-rotated-sorted-array.py) | 🟡 Medium | 2026-05-19 |
 | 162 | [Find Peak Element](binary-search/162.find-peak-element.py) | 🟡 Medium | 2026-05-20 |
 | 658 | [Find K Closest Elements](binary-search/658.find-k-closest-elements.py) | 🟡 Medium | 2026-05-19 |
 | 702 | [Search in a Sorted Array of Unknown Size](binary-search/702.search-in-a-sorted-array-of-unknown-size.py) | 🟡 Medium | 2026-05-18 |
-| 704 | [Binary Search](binary-search/704.binary-search.py) | 🟢 Easy | 2026-05-18 |
+| 704 | [Binary Search](binary-search/704.binary-search.py) | 🟢 Easy | 2026-05-23 |
 | 852 | [Peak Index in a Mountain Array](binary-search/852.peak-index-in-a-mountain-array.py) | 🟡 Medium | 2026-05-19 |
+| 875 | [Koko Eating Bananas](binary-search/875.koko-eating-bananas.py) | 🟡 Medium | 2026-05-24 |
+| 981 | [Time Based Key-Value Store](binary-search/981.time-based-key-value-store.py) | 🟡 Medium | 2026-05-24 |
 | 2226 | [Maximum Candies Allocated to K Children](binary-search/2226.maximum-candies-allocated-to-k-children.py) | 🟡 Medium | 2026-05-20 |
 
 ### binary-tree (42)
@@ -149,12 +151,12 @@ _Total: **120** problems_
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 49 | [Group Anagrams](hash-table/49.group-anagrams.py) | 🟡 Medium | 2026-05-14 |
-| 128 | [Longest Consecutive Sequence](hash-table/128.longest-consecutive-sequence.py) | 🟡 Medium | 2026-05-15 |
+| 49 | [Group Anagrams](hash-table/49.group-anagrams.py) | 🟡 Medium | 2026-05-21 |
+| 128 | [Longest Consecutive Sequence](hash-table/128.longest-consecutive-sequence.py) | 🟡 Medium | 2026-05-23 |
 | 202 | [Happy Number](hash-table/202.happy-number.py) | 🟢 Easy | 2026-02-01 |
 | 217 | [Contains Duplicate](hash-table/217.contains-duplicate.py) | 🟢 Easy | 2026-05-20 |
 | 242 | [Valid Anagram](hash-table/242.valid-anagram.py) | 🟢 Easy | 2026-05-21 |
-| 347 | [Top K Frequent Elements](hash-table/347.top-k-frequent-elements.py) | 🟡 Medium | 2026-05-14 |
+| 347 | [Top K Frequent Elements](hash-table/347.top-k-frequent-elements.py) | 🟡 Medium | 2026-05-21 |
 | 349 | [Intersection of Two Arrays](hash-table/349.intersection-of-two-arrays.py) | 🟢 Easy | 2026-05-09 |
 | 383 | [Ransom Note](hash-table/383.ransom-note.py) | 🟢 Easy | 2026-04-09 |
 | 389 | [Find the Difference](hash-table/389.find-the-difference.py) | 🟢 Easy | 2026-04-09 |
@@ -212,7 +214,7 @@ _Total: **120** problems_
 | 27 | [Remove Element](two-pointers/27.remove-element.py) | 🟢 Easy | 2026-05-16 |
 | 42 | [Trapping Rain Water](two-pointers/42.trapping-rain-water.py) | 🔴 Hard | 2026-05-18 |
 | 121 | [Best Time to Buy and Sell Stock](two-pointers/121.best-time-to-buy-and-sell-stock.py) | 🟢 Easy | 2026-05-15 |
-| 125 | [Valid Palindrome](two-pointers/125.valid-palindrome.py) | 🟢 Easy | 2026-05-16 |
+| 125 | [Valid Palindrome](two-pointers/125.valid-palindrome.py) | 🟢 Easy | 2026-05-21 |
 | 167 | [Two Sum II - Input Array Is Sorted](two-pointers/167.Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted.py) | 🟡 Medium | 2026-05-17 |
 | 283 | [Move Zeroes](two-pointers/283.move-zeroes.py) | 🟢 Easy | 2026-05-16 |
 | 344 | [Reverse String](two-pointers/344.reverse-string.py) | 🟢 Easy | 2026-05-16 |
@@ -233,10 +235,11 @@ _Total: **120** problems_
 |---|---------|------------|--------------|
 | 912 | [Sort an Array](quick-sort/912.sort-an-array.py) | 🟡 Medium | 2026-05-09 |
 
-### sliding window (1)
+### sliding-window (2)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 219 | [Contains Duplicate II](sliding%20window/219.contains-duplicate-ii.py) | 🟢 Easy | 2026-05-21 |
+| 3 | [Longest Substring Without Repeating Characters](sliding-window/3.longest-substring-without-repeating-characters.py) | 🟡 Medium | 2026-05-22 |
+| 219 | [Contains Duplicate II](sliding-window/219.contains-duplicate-ii.py) | 🟢 Easy | 2026-05-21 |
 
-_Last updated: 2026-05-21_
+_Last updated: 2026-05-23_

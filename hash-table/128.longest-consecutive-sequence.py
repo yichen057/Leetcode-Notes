@@ -95,8 +95,8 @@ class Solution:
     #     numSet = set(nums)
     #     longest = 0
     #     for n in numSet:
-    #         if (n-1) not in numSet:
-    #             m = n + 1
+    #         if (n-1) not in numSet: # 证明n是consecutive sequence的start, 如果n不是start则直接skip到下一个循环
+    #             m = n + 1 # 如果n是start of consecutive sequence, 可以接着它后面的元素是否是+1递增在set里存在
     #             while m in numSet:
     #                 m += 1
     #             longest = max(m-n, longest)
@@ -184,11 +184,20 @@ class Solution:
             elif nums[i] - nums[i-1] == 1:
                 curLen += 1
             else:
-                curLen = 1
+                curLen = 1 # 这块逻辑必须重置curLen为1, 因为sort后理论上数字连续的才要继续统计长度, 如果一旦发现不是+1递增的话, curLen则需要重置为1, 重新计算
             # print("curLen: ", curLen)
             longest = max(longest, curLen)
             # print("longest: ", longest)
         return longest
+    
+# initial i: 1
+# curLen:  2
+# longest:  2
+# initial i: 2
+# curLen:  3
+# longest:  3
+# initial i: 3
+# curLen:  4
 
 
 

@@ -98,7 +98,9 @@ class Solution:
         # LC 75 Sort Colors
         # LC 1122 Relative Sort Array
         # # bucket sort: 我不直接比较排序，而是把元素放进对应的“桶”里，frequency 当 index 分桶, 然后按桶的顺序取出来。
-        # 时间和空间复杂度: O(n)
+        # 时间和空间复杂度: O(n): 
+        # TC: Counter(nums): O(n), create count buckets: O(n), fill buckets: O(n), scan buckets: O(n), 所以总时间复杂度是O(n)
+        # SC: freq_map: O(n), count: O(n), result: O(k), 因为k<=n, 所以总空间复杂度是O(n)
         freq_dict = {}
         for num in nums:
             freq_dict[num] = freq_dict.get(num, 0) + 1
@@ -115,7 +117,7 @@ class Solution:
             # v is the frequency(也就是count的index), count[v]: array of numbers relevent to v frequency 
         result = [] # length of result = k
         for i in range(len(count)-1, -1, -1): # 从高频往低频扫, 取够k个. 记忆这个倒序遍历的写法!
-            for num in count[i]: # count[i] 若为空, 自动跳过
+            for num in count[i]: # count[i] 是value数组, 若为空, 自动跳过
                 result.append(num)
 
                 if len(result) == k:
@@ -149,7 +151,7 @@ class Solution:
         #         heapq.heappop(heap)
         # # 此时heap = [(2, 2), (3, 1)]
         # return [num for freq, num in heap] # 最后 heap 里剩下的就是 top k frequent, 只需取出num. eg:取出 [2, 1]
-        # 最后返回的这行是list comprehension，列表推导式。意思遍历 heap 里的每一个 (freq, num)，只取 num，组成一个新的 list。
+        # 最后返回的这行是list comprehension，列表推导式。意思遍历 heap 里的每一个 (freq, num)，只取 num，组成一个新的 list。但要求 nums 里面每个元素都是类似 (freq, num) 的二元组。
         # [...]手动构造list eg: return [i, j]
         # [expr for x in iterable] 边遍历边加工生成list eg: [num for freq, num in heap]
         # list(iterable) 把现成iterable可迭代对象转成list eg: list(groups.values())

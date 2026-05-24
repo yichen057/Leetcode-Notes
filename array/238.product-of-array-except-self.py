@@ -107,14 +107,16 @@ class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         res = [1] * len(nums)
 
-        prefix = 1
+        prefix = 1 # prefix 记录当前位置左边所有元素的乘积; 最左边元素的左边没有元素，乘积算 1
         for i in range(len(nums)):
+            # 每次都是先用当前 prefix/suffix 更新 res[i]，再乘 nums[i]。这点很关键
             res[i] = prefix
             prefix *= nums[i] # don't forget to multiply nums[i] in the nums
-        postfix = 1
+
+        suffix = 1 # suffix 记录当前位置右边所有元素的乘积; 最右边元素的右边：没有元素，乘积算 1
         for i in range(len(nums)-1, -1, -1):
-            res[i] *= postfix
-            postfix *= nums[i] # don't forget to multiply nums[i] in the nums
+            res[i] *= suffix
+            suffix *= nums[i] # don't forget to multiply nums[i] in the nums
         return res
   
 # @lc code=end

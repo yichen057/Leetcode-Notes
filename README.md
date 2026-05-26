@@ -27,7 +27,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 |--------|-------|
 | array | 12 |
 | 2D_array_Matrix | 3 |
-| binary-search | 11 |
+| binary-search | 13 |
 | binary-tree | 42 |
 | hash-table | 13 |
 | linked-list | 8 |
@@ -37,7 +37,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | graph | 4 |
 | quick-sort | 1 |
 | sliding-window | 2 |
-| **Total** | **123** |
+| **Total** | **125** |
 
 - Language: Python
 
@@ -57,7 +57,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 ## Problem List by Topic
 
-_Total: **123** problems_
+_Total: **125** problems_
 
 ### array (12)
 
@@ -84,12 +84,13 @@ _Total: **123** problems_
 | 1672 | [Richest Customer Wealth](2D_array_Matrix/1672.richest-customer-wealth.py) | 🟢 Easy | 2026-02-24 |
 | 2373 | [Largest Local Values in a Matrix](2D_array_Matrix/2373.largest-local-values-in-a-matrix.py) | 🟢 Easy | 2026-02-23 |
 
-### binary-search (11)
+### binary-search (13)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
 | 33 | [Search in Rotated Sorted Array](binary-search/33.search-in-rotated-sorted-array.py) | 🟡 Medium | 2026-05-19 |
 | 34 | [Find First and Last Position of Element in Sorted Array](binary-search/34.find-first-and-last-position-of-element-in-sorted-array.py) | 🟡 Medium | 2026-05-24 |
+| 35 | [Search Insert Position](binary-search/35.search-insert-position.py) | 🟢 Easy | 2026-05-25 |
 | 153 | [Find Minimum in Rotated Sorted Array](binary-search/153.find-minimum-in-rotated-sorted-array.py) | 🟡 Medium | 2026-05-19 |
 | 162 | [Find Peak Element](binary-search/162.find-peak-element.py) | 🟡 Medium | 2026-05-20 |
 | 658 | [Find K Closest Elements](binary-search/658.find-k-closest-elements.py) | 🟡 Medium | 2026-05-19 |
@@ -98,7 +99,8 @@ _Total: **123** problems_
 | 852 | [Peak Index in a Mountain Array](binary-search/852.peak-index-in-a-mountain-array.py) | 🟡 Medium | 2026-05-19 |
 | 875 | [Koko Eating Bananas](binary-search/875.koko-eating-bananas.py) | 🟡 Medium | 2026-05-24 |
 | 981 | [Time Based Key-Value Store](binary-search/981.time-based-key-value-store.py) | 🟡 Medium | 2026-05-24 |
-| 2226 | [Maximum Candies Allocated to K Children](binary-search/2226.maximum-candies-allocated-to-k-children.py) | 🟡 Medium | 2026-05-20 |
+| 1011 | [Capacity To Ship Packages Within D Days](binary-search/1011.%20capacity-to-ship-packages-within-d-days.py) | 🟡 Medium | 2026-05-26 |
+| 2226 | [Maximum Candies Allocated to K Children](binary-search/2226.maximum-candies-allocated-to-k-children.py) | 🟡 Medium | 2026-05-26 |
 
 ### binary-tree (42)
 
@@ -242,4 +244,4 @@ _Total: **123** problems_
 | 3 | [Longest Substring Without Repeating Characters](sliding-window/3.longest-substring-without-repeating-characters.py) | 🟡 Medium | 2026-05-22 |
 | 219 | [Contains Duplicate II](sliding-window/219.contains-duplicate-ii.py) | 🟢 Easy | 2026-05-21 |
 
-_Last updated: 2026-05-23_
+_Last updated: 2026-05-25_

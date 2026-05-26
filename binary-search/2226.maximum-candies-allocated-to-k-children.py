@@ -65,43 +65,73 @@ from typing import *
 from common.node import *
 
 # @lc code=start
+from typing import List
+
 class Solution:
-    # TC: log(max(candies))
+    # n = len(candies)
+    # U = min(max(candies), sum(candies) // k)，表示每个孩子最多可能分到的糖果数
+    # TC: O(n * log U)
+    # SC: O(1)
     def maximumCandies(self, candies: List[int], k: int) -> int:
         if not candies:
             return 0
-        
-        # Initialize切割长度: start and end. start for 1, 最小每段长度为1; end = min(max in L, sumL/k), 即最大长度为min(所有木头中的最大值, 所有木头长度和/木头目标段数)
-        start, end = 1, min(max(candies), sum(candies) // k)
 
-        # if end < 1, it cannot complete the task, return 0
+        # 二分的对象不是数组下标，而是：
+        # 每个孩子可以得到的糖果数量 amount
+
+        # 每个孩子最少尝试分 1 颗糖
+        start = 1
+
+        # 每个孩子最多能分到的糖果数有两个限制：
+        # 1. 不能超过某一堆糖的最大数量，因为不能把不同糖果堆合并给一个孩子
+        # 2. 不能超过所有糖果总数平均分给 k 个孩子的数量
+        end = min(max(candies), sum(candies) // k)
+
+        # 如果总糖果数连每个孩子 1 颗都无法满足，那么答案就是 0
+        # 这个判断很重要不能忽略, 否则通不过
         if end < 1:
             return 0
-        
+
         while start + 1 < end:
-            mid = (start+end)//2
-            # 本题不是纯二分, 是有映射关系的二分
-            # 切割长度和切割总段数有负相关映射关系, 通过长度求段数,在段数上进行二分, 对应的在结果集(切割长度)上也进行了二分. 即在映射的结果上(切割长度)进行二分, 从而在原结果上进行二分
-            # 长度为mid的木头总数 >=目标总数, 继续增长木头长度从而减少木头总数, 选右边
-            if self.get_count(candies, mid) >= k:
+            mid = (start + end) // 2
+
+            # 判断：如果每个孩子分 mid 颗糖，
+            # 最多能够满足多少个孩子
+            child_count = self.get_child_count(candies, mid)
+
+            if child_count >= k:
+                # mid 可行：
+                # 至少可以满足 k 个孩子
+                # 但题目要求每个孩子尽可能多拿糖，
+                # 所以继续往右找更大的可行 amount
+                # 普通情况如果是找第一个xxx这里应该是end = mid, 但是本题是找最大
                 start = mid
-            # 长度为mid的木头总数 < 目标总数, 继续缩短木头长度从而增加木头总数, 选左边
             else:
+                # mid 不可行：
+                # 每个孩子分 mid 颗时，无法满足 k 个孩子
+                # 说明 amount 太大，需要往左找更小的 amount
                 end = mid
-        
-        # 因为之前排除了无解的情况, 所以这里一定有解, 非start即end
-        # 如果end符合要求, 首选end因为end更长, 否则选start
-        if self.get_count(candies, end) >= k:
+
+        # 循环结束后，只剩下 start 和 end 两个候选答案。
+        # 本题要找最大的可行 amount，所以先检查更大的 end。
+        if self.get_child_count(candies, end) >= k:
             return end
+
         return start
 
-    def get_count(self, candies, length): # 切割长度为length的木头总数; 用end < 1: return 0来确保length不等于0
+    def get_child_count(self, candies: List[int], amount: int) -> int:
+        # count 表示：
+        # 如果每个孩子得到 amount 颗糖，
+        # 所有糖果堆最多可以满足多少个孩子
         count = 0
-        for wood in candies:
-            pieces = wood // length
-            count += pieces
+
+        for pile in candies:
+            # 当前这一堆糖，最多可以分给多少个孩子
+            children = pile // amount
+            count += children
+
         return count
-  
+
 # @lc code=end
 
 if __name__ == '__main__':

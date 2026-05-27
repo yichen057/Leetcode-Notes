@@ -89,7 +89,7 @@ class Solution:
             while l < r and not s[r].isalnum(): # 右指针跳过无效字符，但不能越过左指针
                 # ignore non-alphanumeric characters on the right跳过右边非字母数字
                 r -= 1
-            if s[l].lower() != s[r].lower(): # 比较时统一小写, 比较的是ASCII顺序, 如果字符是数字的话比较的并不是整数大小
+            if l < r and s[l].lower() != s[r].lower(): # 比较时统一小写, 比较的是ASCII顺序, 如果字符是数字的话比较的并不是整数大小
                 return False
             l += 1
             r -= 1

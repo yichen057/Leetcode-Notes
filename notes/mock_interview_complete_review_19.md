@@ -5546,6 +5546,84 @@ def is_anagram(s1, s2):
 
 *Linked List 在已知节点位置时是 O(1),搜索还是 O(n)
 
+注意1: 因为 **大 O 会忽略常数系数**。
+
+换底公式：log4(n) = log2(n) / log2(4) = log2(n) / 2
+
+所以：
+
+```text
+O(log₄ n)
+= O((1/2) log₂ n)
+= O(log₂ n)
+= O(log n)
+```
+
+关键点：
+ `log₄ n` 和 `log₂ n` 只差一个常数倍 `1/2`。
+
+举例：
+
+```text
+n = 16
+
+log₂16 = 4
+log₄16 = 2
+```
+
+虽然数值不一样，但增长趋势一样。
+ 所以在时间复杂度里：
+
+```text
+O(log₂ n) = O(log₄ n) = O(log₁₀ n) = O(ln n) = O(log n)
+```
+
+只要底数是大于 1 的常数，统一写成 **`O(log n)`**。
+
+在算法复杂度里，**`O(log n)`** **不关心底数**。
+
+因为只要底数是固定常数且大于 1：
+
+```text
+log₂ n, log₄ n, log₁₀ n, ln n
+```
+
+它们之间都只差一个**常数倍**，大 O 会忽略常数。
+
+所以：
+
+```text
+O(log n)
+```
+
+通常可以理解为：
+
+```text
+任意固定底数的 log
+```
+
+在刷题里最常见的直觉是 **以 2 为底**，因为很多算法每次把问题规模减半，例如二分查找：
+
+```text
+n -> n/2 -> n/4 -> n/8 ...
+```
+
+所以面试/LeetCode 里你可以默认理解成：
+
+```text
+O(log₂ n)
+```
+
+但正式写复杂度时，直接写：
+
+```text
+O(log n)
+```
+
+注意2: O(n+m) = O(max(n + m))
+
+因为n + m > max(n, m) > (n+m)/2, 而O(n+m) > O(max(n+m)) > O(1/2(n+m)), 因为O(n+m) = O(1/2(n+m)), 所以O(n+m) = O(max(n, m))
+
 ### 14.2 算法复杂度
 
 | 算法 | 时间复杂度 | 空间复杂度 |
@@ -5555,6 +5633,7 @@ def is_anagram(s1, s2):
 | Quick Sort | O(n log n) 平均 | O(log n) |
 | BFS/DFS(邻接表) | O(V+E) | O(V) |
 | BFS/DFS(邻接矩阵) | O(V²) | O(V) |
+| 双指针 | O(n) | O(1) |
 
 ### 14.3 `in` 操作专题(必记)
 
@@ -5932,9 +6011,9 @@ def getPairs(nums):
 
 | | `nums.sort()` | `nums = sorted(nums)` |
 |---|---|---|
-| 是否修改原数组 | **修改** | 不修改,返回新数组 |
+| 是否修改原数组 | **原地排序, 修改原数组** | 不修改原数组,返回新数组 |
 | 时间 | O(n log n) | O(n log n) |
-| 空间 | 原地排序(实际 Timsort 最坏 O(n)) | **O(n)** |
+| 空间 | 原地排序(实际 Timsort 最坏 O(n)). <br />O(1) or O(n) depending on how strictly counting sort() internal space | **O(n)** |
 | 返回值 | `None` | 新的有序 list |
 
 **面试推荐**:**不要修改输入参数**(可能被面试官扣分),用 `sorted()` 更安全。

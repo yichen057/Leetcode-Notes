@@ -267,6 +267,31 @@ class Solution:
                     return [i, j]
             return []
 
+# 求索引用二分法: binary serach method . TC: O(nlogn)
+# given sorted array, and difference between two integers. return index1 and index2, index1 < index2
+class Solution:
+    def twoSum7(self, nums: List[int], target: int) -> List[int]:
+        if not nums:
+            return [-1, -1]
+        target = abs(target)
+        for i in range(len(nums)):
+            j = self.binary_search(nums, i+1, len(nums)-1, target+nums[i])
+            if j != -1:
+                return [i, j]
+    
+    def binary_search(self, nums: List[int], start : int, end: int, target: int) -> int:
+        while start + 1 < end:
+            mid = (start + end) // 2
+            if nums[mid] >= target:
+                end = mid
+            else:
+                start = mid
+        if nums[start] == target:
+            return start
+        if nums[end] == target:
+            return end
+        return -1
+
 
 
 # @lc code=end

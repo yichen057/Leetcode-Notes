@@ -33,11 +33,11 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | linked-list | 8 |
 | stack-queue | 6 |
 | string | 9 |
-| two-pointers | 12 |
+| two-pointers | 13 |
 | graph | 4 |
 | quick-sort | 1 |
 | sliding-window | 2 |
-| **Total** | **125** |
+| **Total** | **126** |
 
 - Language: Python
 
@@ -57,13 +57,13 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 ## Problem List by Topic
 
-_Total: **125** problems_
+_Total: **126** problems_
 
 ### array (12)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 1 | [Two Sum](array/1.Two%20Sum.py) | 🟢 Easy | 2026-05-16 |
+| 1 | [Two Sum](array/1.Two%20Sum.py) | 🟢 Easy | 2026-05-27 |
 | 59 | [Spiral Matrix II](array/59.spiral-matrix-ii.py) | 🟡 Medium | 2025-09-20 |
 | 163 | [Missing Ranges](array/163.missing-ranges.py) | 🟢 Easy | 2026-02-24 |
 | 209 | [Minimum Size Subarray Sum](array/209.minimum-size-subarray-sum.py) | 🟡 Medium | 2025-09-19 |
@@ -196,16 +196,16 @@ _Total: **125** problems_
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
 | 5 | [Longest Palindromic Substring](string/5.longest-palindromic-substring.py) | 🟡 Medium | 2025-08-22 |
-| 13 | [Implement strStr()](string/Lintcode13.%20Implement%20str().py) | 🟢 Easy | 2025-08-25 |
+| 13 | [Implement strStr()](string/Lintcode13.%20Implement%20str%28%29.py) | 🟢 Easy | 2025-08-25 |
 | 28 | [Find the Index of the First Occurrence in a String](string/28.find-the-index-of-the-first-occurrence-in-a-string.py) | 🟢 Easy | 2026-01-15 |
 | 125 | [Valid Palindrome](string/125.Valid%20Palindrome.py) | 🟢 Easy | 2025-08-26 |
 | 151 | [Reverse Words in a String](string/151.reverse-words-in-a-string.py) | 🟡 Medium | 2026-01-14 |
 | 344 | [Reverse String](string/344.reverse-string.py) | 🟢 Easy | 2026-01-12 |
 | 459 | [Repeated Substring Pattern](string/459.repeated-substring-pattern.py) | 🟢 Easy | 2026-01-15 |
 | 541 | [Reverse String II](string/541.reverse-string-ii.py) | 🟢 Easy | 2026-01-13 |
-| 680 | [Valid Palindrome II](string/680.Valid%20Palindrome%20II.py) | 🟢 Easy | 2025-08-26 |
+| 680 | [Valid Palindrome II](string/680.Valid%20Palindrome%20II.py) | 🟢 Easy | 2026-05-26 |
 
-### two-pointers (12)
+### two-pointers (13)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
@@ -216,11 +216,12 @@ _Total: **125** problems_
 | 27 | [Remove Element](two-pointers/27.remove-element.py) | 🟢 Easy | 2026-05-16 |
 | 42 | [Trapping Rain Water](two-pointers/42.trapping-rain-water.py) | 🔴 Hard | 2026-05-18 |
 | 121 | [Best Time to Buy and Sell Stock](two-pointers/121.best-time-to-buy-and-sell-stock.py) | 🟢 Easy | 2026-05-15 |
-| 125 | [Valid Palindrome](two-pointers/125.valid-palindrome.py) | 🟢 Easy | 2026-05-21 |
+| 125 | [Valid Palindrome](two-pointers/125.valid-palindrome.py) | 🟢 Easy | 2026-05-26 |
 | 167 | [Two Sum II - Input Array Is Sorted](two-pointers/167.Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted.py) | 🟡 Medium | 2026-05-17 |
 | 283 | [Move Zeroes](two-pointers/283.move-zeroes.py) | 🟢 Easy | 2026-05-16 |
 | 344 | [Reverse String](two-pointers/344.reverse-string.py) | 🟢 Easy | 2026-05-16 |
 | 392 | [Is Subsequence](two-pointers/392.is-subsequence.py) | 🟢 Easy | 2026-05-18 |
+| 1513 | [Number of Substrings With Only 1's](two-pointers/1513.number-of-substrings-with-only-1-s.py) | 🟡 Medium | 2026-05-27 |
 
 ### graph (4)
 
@@ -244,4 +245,5 @@ _Total: **125** problems_
 | 3 | [Longest Substring Without Repeating Characters](sliding-window/3.longest-substring-without-repeating-characters.py) | 🟡 Medium | 2026-05-22 |
 | 219 | [Contains Duplicate II](sliding-window/219.contains-duplicate-ii.py) | 🟢 Easy | 2026-05-21 |
 
-_Last updated: 2026-05-25_
+_Last updated: 2026-05-27_
+

@@ -72,6 +72,10 @@ from typing import *
 from common.node import *
 
 # @lc code=start
+# 链表快慢指针判断环
+  # Fast and slow pointers / Floyd's Cycle Detection
+    # TC: O(n)
+    # SC: O(1)
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, x):

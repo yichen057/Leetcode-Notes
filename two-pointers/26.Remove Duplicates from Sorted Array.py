@@ -79,23 +79,41 @@
 #
 
 # @lc code=start
-# 这段代码的核心思想是 双指针： i：扫描数组, j：写入新位置
+# 这段代码的核心思想是 双指针： slow：扫描数组, fast：写入新位置
 # 时间复杂度：O(n) （只遍历一次); 空间复杂度：O(1) （原地修改）
+# 本题的数组已经排序过了, 意味着相同的数是挨着的, 容易判断, 如果已知数组未排序, 那第一时间要做in-place排序: nums.sort()
+# 本题推荐用快慢指针算法, fast 找新的不重复元素，slow 放结果
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if not nums:
             return 0
         
-        # j 指针表示“下一个不重复元素要放的位置”。初始化为 1，因为第一个元素 nums[0] 一定是保留的。
-        slow = 1
+        # slow 指针表示“下一个不重复元素要放的位置”。初始化为 1，因为第一个元素 nums[0] 一定是保留的。
+        slow = 1 
         for fast in range(1, len(nums)):
-            if nums[fast] != nums[fast-1]:
+            if nums[fast] != nums[fast-1]: # 把不同的元素往前挪, 跳过相同的元素
                 nums[slow]=nums[fast]
                 slow+=1
-        # 如果 nums[i] 和前一个 nums[i-1] 不相等，说明这是一个新元素, 把它放到 nums[j] 位置。
-        # 然后 j++，指向下一个可以写入的位置。
+        # 如果 nums[fast] 和前一个 nums[fast-1] 不相等，说明这是一个新元素, 把它放到 nums[slow] 位置。
+        # 然后 slow++，指向下一个可以写入的位置。
         # 如果相等（说明是重复元素），就跳过，不写入。
-        return slow # 遍历完成后，前 j 个元素就是去重后的结果。j 就是新数组的长度。
+        return slow # 遍历完成后，前 slow 个元素就是去重后的结果。slow 就是新数组的长度。
+# 套模板:
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        
+        j = 1 # j表示从右边继续寻找下一个和 nums[i] 不同的元素。
+        #这里无需j = max(j, i+1) 就能保证j比i大, 因为初始时i=0, j=1, 所以j>i
+        # j 最多等于 i，但不会小于 i。如果 j == i，while 会马上把它向右移。
+        for i in range(len(nums)): # i表示当前已经放好的、不重复元素区域的最后一个位置。
+            while j < len(nums) and nums[j] == nums[i]: # 跳过所有和当前 unique element nums[i] 相同的元素，找到下一个新的值。
+                j += 1
+            if j >= len(nums):
+                break
+            nums[i+1] = nums[j] # 把这个新的值放到已整理区域的下一个位置。
+        return i+1
         
 # @lc code=end
 

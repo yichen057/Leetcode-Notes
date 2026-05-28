@@ -33,11 +33,11 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | linked-list | 8 |
 | stack-queue | 6 |
 | string | 9 |
-| two-pointers | 13 |
+| two-pointers | 14 |
 | graph | 4 |
 | quick-sort | 1 |
-| sliding-window | 2 |
-| **Total** | **126** |
+| sliding-window | 3 |
+| **Total** | **128** |
 
 - Language: Python
 
@@ -57,7 +57,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 ## Problem List by Topic
 
-_Total: **126** problems_
+_Total: **128** problems_
 
 ### array (12)
 
@@ -174,8 +174,8 @@ _Total: **126** problems_
 | 19 | [Remove Nth Node From End of List](linked-list/19.remove-nth-node-from-end-of-list.py) | 🟡 Medium | 2026-05-07 |
 | 21 | [Merge Two Sorted Lists](linked-list/21.merge-two-sorted-lists.py) | 🟢 Easy | 2026-05-06 |
 | 24 | [Swap Nodes in Pairs](linked-list/24.swap-nodes-in-pairs.py) | 🟡 Medium | 2025-09-25 |
-| 141 | [Linked List Cycle](linked-list/141.linked-list-cycle.py) | 🟢 Easy | 2026-05-06 |
-| 142 | [Linked List Cycle II](linked-list/142.linked-list-cycle-ii.py) | 🟡 Medium | 2026-05-06 |
+| 141 | [Linked List Cycle](linked-list/141.linked-list-cycle.py) | 🟢 Easy | 2026-05-27 |
+| 142 | [Linked List Cycle II](linked-list/142.linked-list-cycle-ii.py) | 🟡 Medium | 2026-05-27 |
 | 203 | [Remove Linked List Elements](linked-list/203.remove-linked-list-elements.py) | 🟢 Easy | 2025-09-23 |
 | 206 | [Reverse Linked List](linked-list/206.reverse-linked-list.py) | 🟢 Easy | 2026-05-06 |
 | 707 | [Design Linked List](linked-list/707.design-linked-list.py) | 🟡 Medium | 2025-09-23 |
@@ -205,18 +205,19 @@ _Total: **126** problems_
 | 541 | [Reverse String II](string/541.reverse-string-ii.py) | 🟢 Easy | 2026-01-13 |
 | 680 | [Valid Palindrome II](string/680.Valid%20Palindrome%20II.py) | 🟢 Easy | 2026-05-26 |
 
-### two-pointers (13)
+### two-pointers (14)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
 | 11 | [Container With Most Water](two-pointers/11.container-with-most-water.py) | 🟡 Medium | 2026-05-18 |
 | 15 | [3Sum](two-pointers/15.3-sum.py) | 🟡 Medium | 2026-05-21 |
 | 18 | [4Sum](two-pointers/18.4-sum.py) | 🟡 Medium | 2026-01-12 |
-| 26 | [Remove Duplicates from Sorted Array](two-pointers/26.Remove%20Duplicates%20from%20Sorted%20Array.py) | 🟢 Easy | 2026-05-16 |
+| 26 | [Remove Duplicates from Sorted Array](two-pointers/26.Remove%20Duplicates%20from%20Sorted%20Array.py) | 🟢 Easy | 2026-05-27 |
 | 27 | [Remove Element](two-pointers/27.remove-element.py) | 🟢 Easy | 2026-05-16 |
 | 42 | [Trapping Rain Water](two-pointers/42.trapping-rain-water.py) | 🔴 Hard | 2026-05-18 |
 | 121 | [Best Time to Buy and Sell Stock](two-pointers/121.best-time-to-buy-and-sell-stock.py) | 🟢 Easy | 2026-05-15 |
 | 125 | [Valid Palindrome](two-pointers/125.valid-palindrome.py) | 🟢 Easy | 2026-05-26 |
+| 160 | [Intersection of Two Linked Lists](two-pointers/160.intersection-of-two-linked-lists.py) | 🟢 Easy | 2026-05-27 |
 | 167 | [Two Sum II - Input Array Is Sorted](two-pointers/167.Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted.py) | 🟡 Medium | 2026-05-17 |
 | 283 | [Move Zeroes](two-pointers/283.move-zeroes.py) | 🟢 Easy | 2026-05-16 |
 | 344 | [Reverse String](two-pointers/344.reverse-string.py) | 🟢 Easy | 2026-05-16 |
@@ -238,12 +239,13 @@ _Total: **126** problems_
 |---|---------|------------|--------------|
 | 912 | [Sort an Array](quick-sort/912.sort-an-array.py) | 🟡 Medium | 2026-05-09 |
 
-### sliding-window (2)
+### sliding-window (3)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
 | 3 | [Longest Substring Without Repeating Characters](sliding-window/3.longest-substring-without-repeating-characters.py) | 🟡 Medium | 2026-05-22 |
 | 219 | [Contains Duplicate II](sliding-window/219.contains-duplicate-ii.py) | 🟢 Easy | 2026-05-21 |
+| 424 | [Longest Repeating Character Replacement](sliding-window/424.longest-repeating-character-replacement.py) | 🟡 Medium | 2026-05-28 |
 
-_Last updated: 2026-05-27_
+_Last updated: 2026-05-28_
 

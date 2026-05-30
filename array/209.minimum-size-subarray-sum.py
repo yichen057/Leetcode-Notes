@@ -56,27 +56,56 @@
 #
 
 # @lc code=start
+# 这题最关键的点就是：当窗口已经满足 window_sum >= target 时，要用 while 不断移动左指针，尝试把窗口缩到最短。什么时候用 while 移动左指针？你可以用这个规则判断：如果移动一次左指针后，窗口可能仍然满足条件，并且你还想继续优化答案，就用 while。
+# sliding window的优化点是: 
+# 右指针不回头, 不需要让右指针回到左指针；
+# 左指针也不回头；
+# 通过维护 window_sum 来复用之前计算过的信息。
+
+# 本题核心口诀: 可变窗口求最短：通常用 while valid
+# sum 不够，right 继续扩。
+# sum 够了，left 一直缩，直到不够为止。
+# 每次缩之前都更新最短长度。
+# 模板:
+# while window_sum >= target:
+#     update answer
+#     remove left
+#     l += 1
+
+# 如果固定长度窗口：通常 if 就够:因为每轮右边只加入一个元素，窗口最多只会超长 1。所以移出一个左边元素就一定恢复到长度 k。
+# 模板:
+# if r - l + 1 > k:
+#     remove left
+#     l += 1
 class Solution:
+    # Variable-size Sliding Window: minimum valid window
+    # TC: O(n), because both left and right pointers only move forward.
+    # SC: O(1)
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        left, right = 0, 0
+        l = 0
         window_sum = 0
-        result = float('inf')
-        for right in range(len(nums)):#此时换成左闭右闭区间, 用for循环right就是窗口里最后一个元素, 不用手动right+=1
-            window_sum += nums[right]
-        # while right < len(nums):
-        #     # 增大窗口,扩张右边界, 使和达到或者超过target
-        #     window_sum += nums[right] # 此时是right未知的元素被加入
-        #     right += 1
-            # 此时由于right+=1, 窗口区间变成[left, right)右开, right-1位置的元素刚被加入
+        minLen =float('inf')
+
+        for r in range(len(nums)):
+            #print("r:",r)
+            # Expand the window by adding nums[right].
+            window_sum += nums[r]
+            #print("current window_sum:", window_sum)
+
+            # 此处使用while是因为要考虑能不能去掉左边一个元素, 移动一次左指针后，sum 仍然 >= target, 即窗口可能仍然invalid？如果仍然 >= target，说明窗口还能更短, 那就继续去掉左边。
+            # If the current window satisfies the condition,
+            # keep shrinking it from the left to find the shortest valid window.
             while window_sum >= target:
-                # 缩小窗口, 收缩左边界, 尝试得到最短长度
-                # 先计算长度，再收缩左边界。窗口满足条件时，应该立即记录下此时的长度（因为它可能是最优的）。然后再尝试收缩，看能不能缩得更短，同时仍满足条件。如果收缩之后不满足条件，就会退出内层 while，等右边再扩张。
-                subLength = right - left +1 # 左闭右闭区间的长度是right-left+1
-                # subLength = right - left #滑动窗口的长度, [left, right)的长度是right-left, [left, right]的长度是right-left+1
-                result = min(subLength, result)
-                window_sum = window_sum - nums[left]
-                left += 1
-        return 0 if result == float('inf') else result #如果不存在满足条件的子数组，题目要求返回 0, 而不是返回 inf。
+                minLen = min(minLen, r-l+1)
+                #print("current minLen", minLen)
+                #print("before move l",l)
+                # Remove nums[left] from the window.
+                window_sum -= nums[l]
+                #print("after remove left window_sum:", window_sum)
+                l += 1
+                #print("after move l:",l)
+                
+        return 0 if minLen == float('inf') else minLen
 
 # @lc code=end
 

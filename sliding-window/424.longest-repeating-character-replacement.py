@@ -57,7 +57,7 @@ from typing import *
 from common.node import *
 
 # @lc code=start
-# 方法一: 
+# 方法一模板: 
 # 固定左指针 i，
 # 右指针 j 尽量往右走，while 窗口还合法: j += 1
 # 直到多走到一个不合法窗口。
@@ -120,7 +120,7 @@ class Solution:
             # r 已经把新字符加入窗口了。如果窗口因此不合法，就需要不断移动 l 修复窗口；而移动一次 l 不一定够，所以必须用 while，不能只用 if。
                 # The window is invalid, so shrink it from the left. Shrink the window from the left until it becomes valid.
                 # 向右移动l左指针
-                count[s[l]] -= 1 # 更新frequency map, 这一步不要忘记!
+                count[s[l]] -= 1 # 更新frequency map, 这一步不要忘记! 另外这里要注意!是对key为s[l]的value减一, 因为左指针右移, 同字母的元素少一个
                 l += 1 
             # The current window is valid.
             res = max(res, r-l+1)   
@@ -130,7 +130,15 @@ class Solution:
 # right 扩大窗口；
 # invalid 时 left 缩小窗口；
 # valid 后更新答案。
+# 代码如下
+# for right in range(len(s)):
+#     把 s[right] 加入窗口
 
+#     while 窗口不合法:
+#         从左边移除字符
+#         left += 1
+
+#     valid后更新答案
 # 适配以下题: 
 # LC 3  Longest Substring Without Repeating Characters
 # LC 424 Longest Repeating Character Replacement
@@ -153,8 +161,9 @@ class Solution:
 # 只在加入时更新 maxf
 # 窗口非法时 l 右移
 # 不重新计算真实 max frequency
-# TC: O(n)
-# SC: O(1). 虽然 Big-O 和 Method 2 一样，但 Method 3 的实际常数更小。这里每次不再调用：max(count.values()), 而是常数时间更新: maxf = max(maxf, count[s[r]])
+# TC: O(n): r 最多移动 n 次(右指针遍历：O(n)), l 最多移动 n 次(左指针总移动次数：O(n)), 每次字典操作和 maxf 更新：O(1)
+# 所以总时间复杂度：O(n)
+# SC: O(1). because s contains only 26 uppercase English letters. 虽然 Big-O 和 Method 2 一样，但 Method 3 的实际常数更小。这里每次不再调用：max(count.values()), 而是常数时间更新: maxf = max(maxf, count[s[r]])
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         count = {}
@@ -170,7 +179,7 @@ class Solution:
             # 当上述差值 > k时, current window is unvalid, 移动左指针, 同时更新frequency map: count
             while (r-l+1) - maxf > k:
                 # 向右移动l左指针
-                count[s[l]] -= 1
+                count[s[l]] -= 1 # 这里要注意!是对key为s[l]的value减一, 因为左指针右移, 同字母的元素少一个
                 l += 1 
 
             res = max(res, r-l+1)   

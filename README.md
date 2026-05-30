@@ -36,8 +36,8 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | two-pointers | 14 |
 | graph | 4 |
 | quick-sort | 1 |
-| sliding-window | 3 |
-| **Total** | **128** |
+| sliding-window | 6 |
+| **Total** | **131** |
 
 - Language: Python
 
@@ -57,7 +57,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 ## Problem List by Topic
 
-_Total: **128** problems_
+_Total: **131** problems_
 
 ### array (12)
 
@@ -66,7 +66,7 @@ _Total: **128** problems_
 | 1 | [Two Sum](array/1.Two%20Sum.py) | 🟢 Easy | 2026-05-27 |
 | 59 | [Spiral Matrix II](array/59.spiral-matrix-ii.py) | 🟡 Medium | 2025-09-20 |
 | 163 | [Missing Ranges](array/163.missing-ranges.py) | 🟢 Easy | 2026-02-24 |
-| 209 | [Minimum Size Subarray Sum](array/209.minimum-size-subarray-sum.py) | 🟡 Medium | 2025-09-19 |
+| 209 | [Minimum Size Subarray Sum](array/209.minimum-size-subarray-sum.py) | 🟡 Medium | 2026-05-30 |
 | 238 | [Product of Array Except Self](array/238.product-of-array-except-self.py) | 🟡 Medium | 2026-05-22 |
 | 252 | [Meeting Rooms](array/252.meeting-rooms.py) | 🟢 Easy | 2026-05-12 |
 | 268 | [Missing Number](array/268.missing-number.py) | 🟢 Easy | 2026-05-12 |
@@ -239,13 +239,16 @@ _Total: **128** problems_
 |---|---------|------------|--------------|
 | 912 | [Sort an Array](quick-sort/912.sort-an-array.py) | 🟡 Medium | 2026-05-09 |
 
-### sliding-window (3)
+### sliding-window (6)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 3 | [Longest Substring Without Repeating Characters](sliding-window/3.longest-substring-without-repeating-characters.py) | 🟡 Medium | 2026-05-22 |
+| 3 | [Longest Substring Without Repeating Characters](sliding-window/3.longest-substring-without-repeating-characters.py) | 🟡 Medium | 2026-05-28 |
 | 219 | [Contains Duplicate II](sliding-window/219.contains-duplicate-ii.py) | 🟢 Easy | 2026-05-21 |
 | 424 | [Longest Repeating Character Replacement](sliding-window/424.longest-repeating-character-replacement.py) | 🟡 Medium | 2026-05-28 |
+| 438 | [Find All Anagrams in a String](sliding-window/438.find-all-anagrams-in-a-string.py) | 🟡 Medium | 2026-05-29 |
+| 567 | [Permutation in String](sliding-window/567.permutation-in-string.py) | 🟡 Medium | 2026-05-29 |
+| 643 | [Maximum Average Subarray I](sliding-window/643.maximum-average-subarray-i.py) | 🟢 Easy | 2026-05-29 |
 
-_Last updated: 2026-05-28_
+_Last updated: 2026-05-29_
 

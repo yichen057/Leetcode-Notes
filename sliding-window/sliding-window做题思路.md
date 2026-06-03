@@ -2879,3 +2879,860 @@ if window_sum >= target:
 ```
 
 因为你要求的是**最短**，满足条件后要尽可能多地缩小左边界。
+
+
+
+可以把三者关系这样理解：
+
+
+
+**同向双指针是大类。Sliding Window 是同向双指针的一种常见应用。固定长度窗口和变长窗口，是 Sliding Window 的两种常见子类型。**
+
+
+
+关系图：
+
+```text
+Two Pointers
+├── 相向双指针：left 从左，right 从右，往中间走
+│   └── 例：LC 125, LC 167, LC 15
+│
+└── 同向双指针：left/right 都从左往右走
+    ├── Sliding Window 滑动窗口
+    │   ├── 固定长度窗口
+    │   │   └── 例：LC 567, LC 438, LC 643
+    │   └── 变长窗口
+    │       ├── 求最长：LC 3, LC 424, LC 1004
+    │       └── 求最短：LC 209, LC 76
+    │
+    └── 非典型窗口型同向双指针
+        └── 例：去重、链表交点、快慢指针等
+```
+
+------
+
+# **1. 同向双指针是什么？**
+
+同向双指针就是两个指针都往同一个方向移动，通常都是从左到右。
+
+常见形式：
+
+```python
+left = 0
+
+for right in range(len(nums)):
+    ...
+```
+
+或者：
+
+```python
+i = 0
+j = 0
+
+while i < n:
+    while j < n and condition:
+        j += 1
+    i += 1
+```
+
+它的核心特点是：
+
+```text
+left 不回头
+right 不回头
+每个指针最多走 n 步
+所以通常是 O(n)
+```
+
+------
+
+# **2. Sliding Window 是什么？**
+
+Sliding Window 是同向双指针里最常见的一类。
+
+它强调的是：
+
+用 `left` 和 `right` 维护一个连续区间。
+
+窗口通常是：
+
+```python
+nums[left : right + 1]
+s[left : right + 1]
+```
+
+比如：
+
+```text
+s = "abcba"
+     l   r
+窗口 = s[l:r+1]
+```
+
+只要题目研究的是：
+
+```text
+substring / subarray / 连续子串 / 连续子数组
+```
+
+你就应该优先考虑 sliding window。
+
+------
+
+# **3. 固定长度 Sliding Window**
+
+## **特点**
+
+窗口长度固定，比如：
+
+```text
+长度必须是 k
+长度必须是 len(s1)
+```
+
+这种题不需要思考“窗口什么时候非法”，因为窗口非法通常只是：
+
+```text
+窗口太长了
+```
+
+所以只要窗口超过固定长度，就移出左边元素。
+
+------
+
+## **适用题型**
+
+看到这些关键词：
+
+```text
+length k
+size k
+permutation of s1
+anagram of p
+每个长度为 k 的子数组 / 子串
+```
+
+就考虑固定长度窗口。
+
+------
+
+## **模板**
+
+```python
+left = 0
+window_state = ...
+answer = ...
+
+for right in range(len(data)):
+    # 1. 加入右边元素
+    add(data[right])
+
+    # 2. 如果窗口超过固定长度，移出左边元素
+    if right - left + 1 > k:
+        remove(data[left])
+        left += 1
+
+    # 3. 当窗口长度正好为 k 时，判断/更新答案
+    if right - left + 1 == k:
+        update_answer_or_check()
+```
+
+------
+
+## **代表题**
+
+### **LC 567. Permutation in String**
+
+固定窗口长度：
+
+```python
+k = len(s1)
+```
+
+窗口状态：
+
+```python
+need = s1 的频率
+window = 当前窗口频率
+```
+
+判断：
+
+```python
+window == need
+```
+
+------
+
+### **LC 438. Find All Anagrams in a String**
+
+和 LC 567 几乎一样。
+
+区别：
+
+```text
+LC 567：找到一个就 return True
+LC 438：找到一个就 res.append(left)，继续找
+```
+
+------
+
+### **LC 643. Maximum Average Subarray I**
+
+固定窗口长度：
+
+```python
+k
+```
+
+窗口状态：
+
+```python
+window_sum
+```
+
+答案：
+
+```python
+max_sum
+```
+
+------
+
+## **固定窗口口诀**
+
+```text
+右边加一个；
+超长就左边删一个；
+长度刚好时检查答案。
+```
+
+------
+
+# **4. 变长 Sliding Window**
+
+变长窗口的长度不是固定的，而是根据条件动态变化。
+
+通常有两类：
+
+```text
+求最长合法窗口
+求最短满足窗口
+```
+
+这两类最容易混淆。
+
+------
+
+# **5. 变长窗口：求最长合法窗口**
+
+## **特点**
+
+题目问：
+
+```text
+longest substring/subarray ...
+最长满足某条件的连续区间
+```
+
+这类题的策略是：
+
+```text
+right 不断扩大窗口
+如果窗口坏了，就移动 left 修复
+修好后更新最长答案
+```
+
+------
+
+## **模板**
+
+```python
+left = 0
+answer = 0
+window_state = ...
+
+for right in range(len(data)):
+    # 1. 加入右边元素
+    add(data[right])
+
+    # 2. 如果窗口不合法，左边一直缩，直到合法
+    while window_is_invalid:
+        remove(data[left])
+        left += 1
+
+    # 3. 此时窗口合法，更新最长长度
+    answer = max(answer, right - left + 1)
+
+return answer
+```
+
+------
+
+## **代表题 1：LC 3**
+
+题目：
+
+```text
+最长无重复字符子串
+```
+
+窗口状态：
+
+```python
+chars = set()
+```
+
+非法条件：
+
+```python
+s[right] in chars
+```
+
+代码骨架：
+
+```python
+while s[right] in chars:
+    chars.remove(s[left])
+    left += 1
+
+chars.add(s[right])
+answer = max(answer, right - left + 1)
+```
+
+------
+
+## **代表题 2：LC 424**
+
+题目：
+
+```text
+最多替换 k 次，得到最长重复字符子串
+```
+
+窗口状态：
+
+```python
+count = {}
+maxf = 当前/历史最高频字符次数
+```
+
+非法条件：
+
+```python
+窗口长度 - 最高频字符次数 > k
+```
+
+代码骨架：
+
+```python
+while (right - left + 1) - maxf > k:
+    count[s[left]] -= 1
+    left += 1
+
+answer = max(answer, right - left + 1)
+```
+
+------
+
+## **求最长口诀**
+
+```text
+求最长：坏了才缩。
+修好以后，更新最大长度。
+```
+
+------
+
+# **6. 变长窗口：求最短满足窗口**
+
+## **特点**
+
+题目问：
+
+```text
+minimum length
+shortest subarray/substring
+最短满足某条件的连续区间
+```
+
+这类题和“求最长”刚好反过来。
+
+
+
+策略是：
+
+```text
+right 不断扩大窗口
+一旦窗口满足条件，就立刻更新答案
+然后继续移动 left，看能不能更短
+```
+
+------
+
+## **模板**
+
+```python
+left = 0
+answer = float("inf")
+window_state = ...
+
+for right in range(len(data)):
+    # 1. 加入右边元素
+    add(data[right])
+
+    # 2. 只要窗口满足条件，就更新答案，并继续缩小
+    while window_is_valid:
+        answer = min(answer, right - left + 1)
+
+        remove(data[left])
+        left += 1
+
+return answer
+```
+
+------
+
+## **代表题：LC 209**
+
+题目：
+
+```text
+和至少为 target 的最短连续子数组
+```
+
+窗口状态：
+
+```python
+window_sum
+```
+
+满足条件：
+
+```python
+window_sum >= target
+```
+
+代码骨架：
+
+```python
+for right in range(len(nums)):
+    window_sum += nums[right]
+
+    while window_sum >= target:
+        answer = min(answer, right - left + 1)
+        window_sum -= nums[left]
+        left += 1
+```
+
+------
+
+## **求最短口诀**
+
+```text
+求最短：好了还缩。
+每次缩之前，先更新最短答案。
+```
+
+------
+
+# **7. 三者关系总结表**
+
+| **概念**                    | **是什么**                     | **窗口长度** | **left 何时移动** | **代表题**             |
+| --------------------------- | ------------------------------ | ------------ | ----------------- | ---------------------- |
+| 同向双指针                  | 两个指针都往右走的大类         | 不一定有窗口 | 视题而定          | 去重、快慢指针、窗口题 |
+| 固定长度 sliding window     | 同向双指针维护固定大小连续区间 | 固定         | 超过固定长度时    | LC 567, 438, 643       |
+| 变长 sliding window：求最长 | 同向双指针维护可变连续区间     | 可变         | 窗口非法时        | LC 3, 424, 1004        |
+| 变长 sliding window：求最短 | 同向双指针维护可变连续区间     | 可变         | 窗口满足条件时    | LC 209, 76             |
+
+------
+
+# **8. 你做题时该怎么判断是哪一种？**
+
+拿到题后按这个顺序问。
+
+------
+
+## **Step 1：是不是连续区间？**
+
+如果题目是：
+
+```text
+substring
+subarray
+contiguous
+连续子串
+连续子数组
+```
+
+优先考虑 sliding window。
+
+
+
+如果题目是：
+
+```text
+subsequence
+子序列
+```
+
+通常不是 sliding window，更多是 DP / 双指针匹配。
+
+------
+
+## **Step 2：窗口长度是否固定？**
+
+如果题目说：
+
+```text
+长度为 k
+permutation of s1
+anagram of p
+```
+
+就是固定窗口。
+
+
+
+因为：
+
+```text
+permutation/anagram 的长度固定等于原字符串长度
+```
+
+用模板：
+
+```python
+if right - left + 1 > k:
+    remove left
+    left += 1
+
+if right - left + 1 == k:
+    check/update
+```
+
+------
+
+## **Step 3：如果长度不固定，是求最长还是最短？**
+
+### **求最长**
+
+关键词：
+
+```text
+longest
+maximum length
+最长
+```
+
+通常：
+
+```python
+while window_is_invalid:
+    shrink left
+
+answer = max(answer, window_length)
+```
+
+### **求最短**
+
+关键词：
+
+```text
+minimum length
+smallest
+shortest
+最短
+```
+
+通常：
+
+```python
+while window_is_valid:
+    answer = min(answer, window_length)
+    shrink left
+```
+
+------
+
+# **9. 一个非常实用的判断口诀**
+
+```text
+固定长：超长就缩。
+求最长：坏了才缩。
+求最短：好了还缩。
+```
+
+对应代码：
+
+## **固定长**
+
+```python
+if window_len > k:
+    shrink_left()
+
+if window_len == k:
+    check()
+```
+
+## **求最长**
+
+```python
+while invalid:
+    shrink_left()
+
+answer = max(answer, window_len)
+```
+
+## **求最短**
+
+```python
+while valid:
+    answer = min(answer, window_len)
+    shrink_left()
+```
+
+------
+
+# **10. 为什么有时用** **`if`****，有时用** **`while`****？**
+
+这是你之前最容易踩坑的地方。
+
+## **固定长度窗口通常用** **`if`**
+
+因为每轮 `right` 只加一个元素，所以窗口最多只会超长 1。
+
+```python
+if right - left + 1 > k:
+    remove left
+    left += 1
+```
+
+移动一次就够。
+
+例如 LC 438 / 567 / 643。
+
+------
+
+## **变长窗口通常用** **`while`**
+
+因为移动一次 `left` 后，窗口可能仍然不满足你想要的状态。
+
+### **LC 3**
+
+重复字符可能还没被移掉，所以要：
+
+```python
+while s[right] in chars:
+```
+
+### **LC 424**
+
+替换次数可能还是大于 `k`，所以要：
+
+```python
+while window_len - maxf > k:
+```
+
+### **LC 209**
+
+窗口可能仍然满足 `sum >= target`，还能继续缩短，所以要：
+
+```python
+while window_sum >= target:
+```
+
+------
+
+# **11. 三套最终模板**
+
+## **模板 A：固定长度窗口**
+
+```python
+def fixed_window(data, k):
+    left = 0
+    window_state = ...
+    answer = ...
+
+    for right in range(len(data)):
+        # Add right element.
+        ...
+
+        # Keep window size at most k.
+        if right - left + 1 > k:
+            # Remove left element.
+            ...
+            left += 1
+
+        # Check/update only when window size is exactly k.
+        if right - left + 1 == k:
+            ...
+
+    return answer
+```
+
+适合：
+
+```text
+LC 567
+LC 438
+LC 643
+LintCode Window Sum
+```
+
+------
+
+## **模板 B：变长窗口，求最长**
+
+```python
+def longest_window(data):
+    left = 0
+    answer = 0
+    window_state = ...
+
+    for right in range(len(data)):
+        # Add right element.
+        ...
+
+        # Fix the window if it becomes invalid.
+        while window_is_invalid:
+            # Remove left element.
+            ...
+            left += 1
+
+        # Now the window is valid.
+        answer = max(answer, right - left + 1)
+
+    return answer
+```
+
+适合：
+
+```text
+LC 3
+LC 424
+LC 1004
+LC 904
+```
+
+------
+
+## **模板 C：变长窗口，求最短**
+
+```python
+def shortest_window(data):
+    left = 0
+    answer = float("inf")
+    window_state = ...
+
+    for right in range(len(data)):
+        # Add right element.
+        ...
+
+        # Once the window satisfies the condition,
+        # keep shrinking to find the shortest one.
+        while window_is_valid:
+            answer = min(answer, right - left + 1)
+
+            # Remove left element.
+            ...
+            left += 1
+
+    return 0 if answer == float("inf") else answer
+```
+
+适合：
+
+```text
+LC 209
+LC 76
+```
+
+------
+
+# **12. 你目前学过的题应该这样归类**
+
+| **题目** | **分类**       | **你应该记住的核心**                   |
+| -------- | -------------- | -------------------------------------- |
+| LC 3     | 变长窗口求最长 | 重复时缩                               |
+| LC 424   | 变长窗口求最长 | 替换数超过 k 时缩                      |
+| LC 567   | 固定长度窗口   | 长度为 `len(s1)`，频率匹配             |
+| LC 438   | 固定长度窗口   | 长度为 `len(p)`，频率匹配，记录 `left` |
+| LC 643   | 固定长度窗口   | 维护 `window_sum`                      |
+| LC 209   | 变长窗口求最短 | `sum >= target` 时一直缩               |
+
+------
+
+# **13. 面试中怎么解释“为什么 right 不回头”**
+
+你可以这样说：
+
+I use two pointers moving in the same direction. The right pointer expands the window, and the left pointer shrinks it when needed. Since both pointers only move forward and never move backward, each element is added and removed at most once, so the time complexity is O(n).
+
+中文就是：
+
+```text
+right 只负责扩张窗口；
+left 只负责缩小窗口；
+两个指针都不回头；
+每个元素最多进窗口一次、出窗口一次；
+所以是 O(n)。
+```
+
+------
+
+# **14. 最后给你一个做题检查表**
+
+以后遇到新题，先填这个：
+
+```text
+1. 题目是不是在找连续区间？
+   substring / subarray / contiguous?
+
+2. 窗口长度固定吗？
+   - 是：固定窗口
+   - 否：继续看是求最长还是最短
+
+3. 目标是最长还是最短？
+   - 最长：坏了才缩
+   - 最短：好了还缩
+
+4. 窗口里维护什么？
+   - set?
+   - dict/frequency map?
+   - [0] * 26?
+   - sum?
+   - count + maxFreq?
+
+5. 窗口什么时候 invalid / valid？
+   写成一个 Python 条件。
+
+6. left 什么时候移动？
+   - 超长
+   - invalid
+   - valid
+
+7. answer 在哪里更新？
+   - 固定长：长度正好时
+   - 最长：修复合法后
+   - 最短：满足条件时，缩小前
+```
+
+------
+
+你现在真正需要记住的不是每题代码，而是这三句话：
+
+```text
+固定长：超长就缩。
+求最长：坏了才缩。
+求最短：好了还缩。
+```
+
+再加上：
+
+```text
+right 只往右加元素；
+left 只往右删元素；
+right 不需要，也不应该回头。
+```

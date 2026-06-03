@@ -35,9 +35,9 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | string | 9 |
 | two-pointers | 14 |
 | graph | 4 |
-| quick-sort | 1 |
-| sliding-window | 6 |
-| **Total** | **131** |
+| quick-sort | 2 |
+| sliding-window | 7 |
+| **Total** | **133** |
 
 - Language: Python
 
@@ -57,7 +57,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 ## Problem List by Topic
 
-_Total: **131** problems_
+_Total: **133** problems_
 
 ### array (12)
 
@@ -233,13 +233,14 @@ _Total: **131** problems_
 | 841 | [Keys and Rooms](graph/841.keys-and-rooms.py) | 🟡 Medium | 2026-05-03 |
 | 1971 | [Find if Path Exists in Graph](graph/1971.find-if-path-exists-in-graph.py) | 🟢 Easy | 2026-05-03 |
 
-### quick-sort (1)
+### quick-sort (2)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 912 | [Sort an Array](quick-sort/912.sort-an-array.py) | 🟡 Medium | 2026-05-09 |
+| 56 | [Merge Intervals](quick-sort/56.merge-intervals.py) | 🟡 Medium | 2026-06-03 |
+| 912 | [Sort an Array](quick-sort/912.sort-an-array.py) | 🟡 Medium | 2026-06-03 |
 
-### sliding-window (6)
+### sliding-window (7)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
@@ -249,6 +250,7 @@ _Total: **131** problems_
 | 438 | [Find All Anagrams in a String](sliding-window/438.find-all-anagrams-in-a-string.py) | 🟡 Medium | 2026-05-29 |
 | 567 | [Permutation in String](sliding-window/567.permutation-in-string.py) | 🟡 Medium | 2026-05-29 |
 | 643 | [Maximum Average Subarray I](sliding-window/643.maximum-average-subarray-i.py) | 🟢 Easy | 2026-05-29 |
+| 1004 | [Max Consecutive Ones III](sliding-window/1004.max-consecutive-ones-iii.py) | 🟡 Medium | 2026-06-01 |
 
-_Last updated: 2026-05-29_
+_Last updated: 2026-06-02_
 

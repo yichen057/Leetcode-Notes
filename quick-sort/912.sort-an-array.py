@@ -56,64 +56,82 @@ from typing import *
 # from common.node import *
 
 # @lc code=start
-# 方法一: 容易超时Memory Limit Exceeded, 因为这个版本虽然容易懂，但是它会创建很多新数组, 空间开销比较大。
-# class Solution:
-#     def sortArray(self, nums: List[int]) -> List[int]:
-#         return self.quick_sort(nums)
-    
-#     def quick_sort(self, nums):
-#         if len(nums) <= 1:
-#             return nums
-        
-#         pivot = nums[len(nums)//2]
-
-#         left = []
-#         mid = []
-#         right = []
-
-#         for num in nums:
-#             if num < pivot:
-#                 left.append(num)
-#             elif num > pivot:
-#                 right.append(num)
-#             else:
-#                 mid.append(num)
-#         return self.sortArray(left) + mid + self.sortArray(right)
-# 方法二: 原地 in-place QuickSort
-# i 和 j 是 index。
-# nums[i] 和 nums[j] 才是 value。
-# i 负责找左边“不够小”的 value。
-# j 负责找右边“不够大”的 value。
-# 如果 i <= j，说明这两个错误位置还有效。所以交换 nums[i] 和 nums[j]。交换 index i 和 index j 上的两个值。
+# 本题得用merge sort, 时间复杂度一定是O(n log n), 不会像quick sort被卡成 O(n^2)。
 class Solution:
-    def sortArray(self, nums):
-        self.quick_sort(nums, 0, len(nums) - 1) # 对 nums 这个数组，从 index 0 到 index len(nums) - 1 这一整段进行排序。
+    def sortArray(self, nums: List[int]) -> List[int]:
+        if not nums:
+            return nums
+        
+        temp = [0] * len(nums)
+        self.merge_sort(nums, 0, len(nums) - 1, temp)
         return nums
+    
+    def merge_sort(self, nums:List[int], start: int, end: int, temp: List[int]) -> None:
+        if start >= end:
+            return 
+        
+        mid = (start + end) // 2
 
-    def quick_sort(self, nums, left, right):
-        if left >= right:
+        self.merge_sort(nums, start, mid, temp)
+        self.merge_sort(nums, mid+1, end, temp)
+
+        self.merge(nums, start, mid, end, temp)
+
+    def merge(self, nums:List[int], start: int, mid: int, end: int, temp: List[int]) -> None:
+        left = start
+        right = mid + 1
+        index = start
+
+        while left <= mid and right <= end:
+            if nums[left] <= nums[right]:
+                temp[index] = nums[left]
+                left += 1
+            else:
+                temp[index] = nums[right]
+                right += 1
+            index += 1 # 注意: 别忘了移动temp上的index指针
+
+        while left <= mid:
+            temp[index] = nums[left]
+            left += 1
+            index += 1
+
+        while right <=end:
+            temp[index] = nums[right]
+            right += 1
+            index += 1
+        
+        for i in range(start, end + 1):
+            nums[i] = temp[i]
+
+# quick sort 最坏的时间复杂度是O(n^2), 平均时间复杂度是O(log n), 平均空间复杂度O(log n), 省空间
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        self.quick_sort(nums, 0, len(nums)-1)
+        return nums
+    
+    def quick_sort(self, nums:List[int], start: int, end: int) -> None:
+        if start >= end:
             return
         
-        pivot = nums[(left + right)// 2]
+        left, right = start, end
 
-        # 在递归版 quick sort 里，我们不是每次都排序整个数组，而是排序数组中的某一段, 所以无需类似的初始化i = 0, j = len(nums) - 1
-        # 这一次 partition 只处理 nums[left:right+1] 这一段。递归时，left 和 right 会变小，不能再用整个数组的范围。
-        i = left
-        j = right
+        pivot = nums[(start + end) // 2] # quick sort的pivot是固定的, 当pivot平均是: O(n log n), 最坏 O(n^2), 所以可能会报错: Time Limit Exceeded. 两个解决方案:
+        # 1. 随机pivot: import random, pivot = nums[random.randint(start, end)], 平均 O(nlogn),空间 O(logn)
+        # 2. merge sort: 稳定O(n log n) , 只是需要额外的O(n)空间, 由于temp: O(n)主导, 递归栈O(log n )不主导
 
-        while i <= j:
-            while nums[i] < pivot:
-                i += 1
-            while nums[j] > pivot:
-                j -= 1
-            # 此时nums[i] >= pivot and nums[j] <= pivot
-            if i <= j: # if i <= j 只是确认这两个指针是否还在有效范围内, 有无越界
-                nums[i], nums[j] = nums[j], nums[i] # 如果还没交错，就交换 nums[i] 和 nums[j]。
-                i += 1
-                j -= 1
+        while left <= right:
+            while left <= right and nums[left] < pivot:
+                left += 1
+            while left <= right and nums[right] > pivot:
+                right -= 1
+            if left <= right:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
+                right -= 1
         
-        self.quick_sort(nums, left, j)
-        self.quick_sort(nums, i, right)
+        self.quick_sort(nums, start, right)
+        self.quick_sort(nums, left, end)
 
 # @lc code=end
 

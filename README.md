@@ -25,7 +25,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 | Folder | Count |
 |--------|-------|
-| array | 12 |
+| array | 11 |
 | 2D_array_Matrix | 3 |
 | binary-search | 13 |
 | binary-tree | 42 |
@@ -35,9 +35,9 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | string | 9 |
 | two-pointers | 14 |
 | graph | 4 |
-| quick-sort | 2 |
+| quick-sort | 8 |
 | sliding-window | 7 |
-| **Total** | **133** |
+| **Total** | **138** |
 
 - Language: Python
 
@@ -57,9 +57,9 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 ## Problem List by Topic
 
-_Total: **133** problems_
+_Total: **138** problems_
 
-### array (12)
+### array (11)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
@@ -68,7 +68,6 @@ _Total: **133** problems_
 | 163 | [Missing Ranges](array/163.missing-ranges.py) | 🟢 Easy | 2026-02-24 |
 | 209 | [Minimum Size Subarray Sum](array/209.minimum-size-subarray-sum.py) | 🟡 Medium | 2026-05-30 |
 | 238 | [Product of Array Except Self](array/238.product-of-array-except-self.py) | 🟡 Medium | 2026-05-22 |
-| 252 | [Meeting Rooms](array/252.meeting-rooms.py) | 🟢 Easy | 2026-05-12 |
 | 268 | [Missing Number](array/268.missing-number.py) | 🟢 Easy | 2026-05-12 |
 | 665 | [Non-decreasing Array](array/665.non-decreasing-array.py) | 🟡 Medium | 2026-02-23 |
 | 977 | [Squares of a Sorted Array](array/977.squares-of-a-sorted-array.py) | 🟢 Easy | 2025-09-19 |
@@ -158,7 +157,7 @@ _Total: **133** problems_
 | 202 | [Happy Number](hash-table/202.happy-number.py) | 🟢 Easy | 2026-02-01 |
 | 217 | [Contains Duplicate](hash-table/217.contains-duplicate.py) | 🟢 Easy | 2026-05-20 |
 | 242 | [Valid Anagram](hash-table/242.valid-anagram.py) | 🟢 Easy | 2026-05-21 |
-| 347 | [Top K Frequent Elements](hash-table/347.top-k-frequent-elements.py) | 🟡 Medium | 2026-05-21 |
+| 347 | [Top K Frequent Elements](hash-table/347.top-k-frequent-elements.py) | 🟡 Medium | 2026-06-05 |
 | 349 | [Intersection of Two Arrays](hash-table/349.intersection-of-two-arrays.py) | 🟢 Easy | 2026-05-09 |
 | 383 | [Ransom Note](hash-table/383.ransom-note.py) | 🟢 Easy | 2026-04-09 |
 | 389 | [Find the Difference](hash-table/389.find-the-difference.py) | 🟢 Easy | 2026-04-09 |
@@ -233,12 +232,18 @@ _Total: **133** problems_
 | 841 | [Keys and Rooms](graph/841.keys-and-rooms.py) | 🟡 Medium | 2026-05-03 |
 | 1971 | [Find if Path Exists in Graph](graph/1971.find-if-path-exists-in-graph.py) | 🟢 Easy | 2026-05-03 |
 
-### quick-sort (2)
+### quick-sort (8)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 56 | [Merge Intervals](quick-sort/56.merge-intervals.py) | 🟡 Medium | 2026-06-03 |
-| 912 | [Sort an Array](quick-sort/912.sort-an-array.py) | 🟡 Medium | 2026-06-03 |
+| 56 | [Merge Intervals](quick-sort/interval%20problems/56.merge-intervals.py) | 🟡 Medium | 2026-06-06 |
+| 57 | [Insert Interval](quick-sort/interval%20problems/57.insert-interval.py) | 🟡 Medium | 2026-06-06 |
+| 215 | [Kth Largest Element in an Array](quick-sort/quick_select/215.%20kth-largest-element-in-an-array.py) | 🟡 Medium | 2026-06-04 |
+| 252 | [Meeting Rooms](quick-sort/interval%20problems/252.meeting-rooms.py) | 🟢 Easy | 2026-06-06 |
+| 435 | [Non-overlapping Intervals](quick-sort/interval%20problems/435.non-overlapping-intervals.py) | 🟡 Medium | 2026-06-06 |
+| 912 | [Sort an Array](quick-sort/merge-sort/912.sort-an-array.py) | 🟡 Medium | 2026-06-03 |
+| 973 | [K Closest Points to Origin](quick-sort/quick_select/973.k-closest-points-to-origin.py) | 🟡 Medium | 2026-06-04 |
+| 2848 | [Points That Intersect With Cars](quick-sort/interval%20problems/2848.points-that-intersect-with-cars.py) | 🟢 Easy | 2026-06-05 |
 
 ### sliding-window (7)
 
@@ -252,5 +257,5 @@ _Total: **133** problems_
 | 643 | [Maximum Average Subarray I](sliding-window/643.maximum-average-subarray-i.py) | 🟢 Easy | 2026-05-29 |
 | 1004 | [Max Consecutive Ones III](sliding-window/1004.max-consecutive-ones-iii.py) | 🟡 Medium | 2026-06-01 |
 
-_Last updated: 2026-06-02_
+_Last updated: 2026-06-06_
 

@@ -97,10 +97,12 @@ class Solution:
         output = [intervals[0]] # 这是一个装着区间的列表. 为什么要先把第一个区间塞进去?因为后面的逻辑是"拿新区间去和结果里最后一个比",总得先有一个东西可比吧,所以把第一个当"种子"先放进去。
         for start, end in intervals[1:]: # 时间复杂度: O(n)
             lastEnd = output[-1][1] # 结果列表里的最后一个区间, [1] = 这个区间的结束值/右端点(索引 0 是开始,1 是结束)
-
+            # 排序保证了"当前区间的 start 比已处理的所有区间都大(或相等), 所以排完序之后,只有"最后一个"才可能和当前区间重叠
             # 当判断出重叠时(start <= lastEnd),要把最后一个区间的右端点往右伸长。
+            # 判断重叠的完整条件: newStart <= lastEnd and lastStart <= newEnd, 本题因为排序后lastStart<=newStart<= newEnd, 所以只需判断newStart <= lastEnd
             if start <= lastEnd:
                 output[-1][1] = max(end, lastEnd) # 为什么用 max 而不是直接 = end? 因为新区间有可能整个被"包"在里面
+                # 注: 这里lastStart <= start已成立, 因为前面已经排序, 所以无需再对output[-1][0]判断min(lastStart, start) = lastStart永远成立
             else:
                 output.append([start, end])
         return output

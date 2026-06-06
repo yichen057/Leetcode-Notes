@@ -69,7 +69,7 @@ from typing import *
 # @lc code=start
 from collections import Counter
 import heapq
-from typing import List
+from typing import List, Dict
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         # method 1: frquencymap+sorted, 排序法：把所有频率都排好。
@@ -157,7 +157,57 @@ class Solution:
         # list(iterable) 把现成iterable可迭代对象转成list eg: list(groups.values())
         # [object] 把整个对象包成一个元素 eg: [groups.values()], 把整个 dict_values 当成一个元素放进 list, 通常这不是想要的结果
        
-              
+# Method 4: Quick select
+# LC215：对原数组 nums 做 Quick Select, 比较数字本身
+# LC973：对 points 做 Quick Select, 比较距离
+# LC347：对 unique_nums 做 Quick Select，用 freq_map 决定比较大小, 比较频率
+# 347 的候选对象是 distinct numbers，不是原数组里的每个元素。
+# 本题的k始终表示全局前 k 个位置, 不是“当前区间里的第 k 个”。
+# TC: 
+# Average: O(n)
+# Worst:   O(n²)
+# SC: 
+# Average: O(log n)
+# Worst:   O(n)
+# 因为有递归栈
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        freq_map = {}
+        for num in nums:
+            freq_map[num] = freq_map.get(num, 0) + 1
+        unique_nums = list(freq_map.keys()) # 注意这里不能写成[freq_map.keys()], 否则会变成[dict_keys([1,2,3])], 长度是1. freq_map.keys()的返回是dict_keys
+        # 另外Quick Select 的对象必须是：一个可以交换元素的位置数组, 因为要做nums[left], nums[right] = nums[right], nums[left], 而freq_map是Dict[int, int]无法交换元素
+        # Quick Select本质上就是在一个数组上 partition
+        self.quick_select(unique_nums, 0, len(unique_nums)-1, k, freq_map)
+        return unique_nums[:k] # 前 k 个数字是频率最高的 k 个, 但这 k 个内部不一定按频率排序。
+        
+# 本题partition 比较的实际上是数字对应的频率，不是数字本身。这个思想和 LC973 的：distance(points[left])很像
+    def quick_select(self, unique_nums: List[int], start: int, end: int, k: int, freq_map: Dict[int, int]) -> None:
+        if start >= end:
+            return
+        
+        left = start
+        right = end
+        pivot = freq_map[unique_nums[(start+end)//2]] # LC973: pivot = distance(points[mid])
+
+        while left <= right:
+            while left <= right and freq_map[unique_nums[left]] > pivot:
+                left += 1
+            while left <= right and freq_map[unique_nums[right]] < pivot:
+                right -= 1
+            if left <= right:
+                unique_nums[left], unique_nums[right] = unique_nums[right], unique_nums[left]
+                left += 1
+                right -= 1
+
+        target = k - 1 # 找前 k 个高频element，所以目标下标是k-1. 不用改 k，因为我们一直关心全局前 k 个点。
+        if target <= right:
+            self.quick_select(unique_nums, start, right, k, freq_map)
+        elif target >= left:
+            self.quick_select(unique_nums, left, end, k, freq_map)
+        else:
+            return
+            
 # @lc code=end
 
 if __name__ == '__main__':

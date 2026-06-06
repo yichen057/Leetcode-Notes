@@ -74,15 +74,31 @@ By sorting, you transform a complex 2D search into a linear one. You no longer n
 
 '''
 # @lc code=start
-
+# method 1:
 class Solution:
     def canAttendMeetings(self, intervals: List[List[int]]) -> bool:
         # Sorts specifically by the element at index 0
         intervals.sort(key=lambda x : x[0]) # modifying the input list directly rather than creating a new one. 
         # 这里也可以intervals.sort(), 默认 sort by the 1st element
         for i in range(len(intervals) - 1): # 注意这里的减一, 因为后面要用到[i+1]
-            if intervals[i][1] > intervals[i+1][0]:
+            if intervals[i][1] > intervals[i+1][0]: # compare the current meeting's end time with the next meeting's start time, 即start < lastEnd时发生重合. 
+            # 注意, 此处不是<=, 因为接触允许共存, 不算重合. eg: [1, 2][2, 3]可以安排两个会议, 这是和LC56题的区别, 本题类似LC435
                 return False
+        return True
+# method 2: 推荐该方法, 考虑了边界问题, 代码更模板化具备迁移性
+class Solution:
+    def canAttendMeetings(self, intervals: List[List[int]]) -> bool:
+        if not intervals:
+            return True
+        # Sorts specifically by the element at index 0
+        intervals.sort(key=lambda x : x[0])
+        lastEnd = intervals[0][1]
+        for start, end in intervals[1:]:
+            print("start:", start, "end:", end)
+            if start < lastEnd:
+                return False
+            else:
+                lastEnd = end
         return True     
 # @lc code=end
 

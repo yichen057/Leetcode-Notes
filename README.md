@@ -16,7 +16,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | `string/` | String manipulation |
 | `two-pointers/` | Two pointers technique |
 | `graph/` | Graph traversal (BFS/DFS) problems |
-| `quick-sort/` | Quick sort & related problems |
+| `sorting-and-selection/` | Sorting algorithms, quick select, heap, interval problems |
 | `sliding-window/` | Sliding window problems |
 | `daily/` | Daily learning notes by topic |
 | `notes/` | General study notes |
@@ -35,9 +35,9 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | string | 9 |
 | two-pointers | 14 |
 | graph | 4 |
-| quick-sort | 8 |
+| sorting-and-selection | 9 |
 | sliding-window | 7 |
-| **Total** | **138** |
+| **Total** | **139** |
 
 - Language: Python
 
@@ -52,12 +52,12 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 - Binary Trees
 - String Manipulation
 - Graphs (BFS / DFS)
-- Quick Sort
+- Sorting & Selection (merge sort, quick sort, quick select, heap, intervals)
 - Sliding Window
 
 ## Problem List by Topic
 
-_Total: **138** problems_
+_Total: **139** problems_
 
 ### array (11)
 
@@ -157,7 +157,7 @@ _Total: **138** problems_
 | 202 | [Happy Number](hash-table/202.happy-number.py) | 🟢 Easy | 2026-02-01 |
 | 217 | [Contains Duplicate](hash-table/217.contains-duplicate.py) | 🟢 Easy | 2026-05-20 |
 | 242 | [Valid Anagram](hash-table/242.valid-anagram.py) | 🟢 Easy | 2026-05-21 |
-| 347 | [Top K Frequent Elements](hash-table/347.top-k-frequent-elements.py) | 🟡 Medium | 2026-06-05 |
+| 347 | [Top K Frequent Elements](hash-table/347.top-k-frequent-elements.py) | 🟡 Medium | 2026-06-07 |
 | 349 | [Intersection of Two Arrays](hash-table/349.intersection-of-two-arrays.py) | 🟢 Easy | 2026-05-09 |
 | 383 | [Ransom Note](hash-table/383.ransom-note.py) | 🟢 Easy | 2026-04-09 |
 | 389 | [Find the Difference](hash-table/389.find-the-difference.py) | 🟢 Easy | 2026-04-09 |
@@ -232,18 +232,19 @@ _Total: **138** problems_
 | 841 | [Keys and Rooms](graph/841.keys-and-rooms.py) | 🟡 Medium | 2026-05-03 |
 | 1971 | [Find if Path Exists in Graph](graph/1971.find-if-path-exists-in-graph.py) | 🟢 Easy | 2026-05-03 |
 
-### quick-sort (8)
+### sorting-and-selection (9)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 56 | [Merge Intervals](quick-sort/interval%20problems/56.merge-intervals.py) | 🟡 Medium | 2026-06-06 |
-| 57 | [Insert Interval](quick-sort/interval%20problems/57.insert-interval.py) | 🟡 Medium | 2026-06-06 |
-| 215 | [Kth Largest Element in an Array](quick-sort/quick_select/215.%20kth-largest-element-in-an-array.py) | 🟡 Medium | 2026-06-04 |
-| 252 | [Meeting Rooms](quick-sort/interval%20problems/252.meeting-rooms.py) | 🟢 Easy | 2026-06-06 |
-| 435 | [Non-overlapping Intervals](quick-sort/interval%20problems/435.non-overlapping-intervals.py) | 🟡 Medium | 2026-06-06 |
-| 912 | [Sort an Array](quick-sort/merge-sort/912.sort-an-array.py) | 🟡 Medium | 2026-06-03 |
-| 973 | [K Closest Points to Origin](quick-sort/quick_select/973.k-closest-points-to-origin.py) | 🟡 Medium | 2026-06-04 |
-| 2848 | [Points That Intersect With Cars](quick-sort/interval%20problems/2848.points-that-intersect-with-cars.py) | 🟢 Easy | 2026-06-05 |
+| 56 | [Merge Intervals](sorting-and-selection/interval%20problems/56.merge-intervals.py) | 🟡 Medium | 2026-06-06 |
+| 57 | [Insert Interval](sorting-and-selection/interval%20problems/57.insert-interval.py) | 🟡 Medium | 2026-06-06 |
+| 215 | [Kth Largest Element in an Array](sorting-and-selection/quick_select/215.%20kth-largest-element-in-an-array.py) | 🟡 Medium | 2026-06-07 |
+| 252 | [Meeting Rooms](sorting-and-selection/interval%20problems/252.meeting-rooms.py) | 🟢 Easy | 2026-06-06 |
+| 435 | [Non-overlapping Intervals](sorting-and-selection/interval%20problems/435.non-overlapping-intervals.py) | 🟡 Medium | 2026-06-06 |
+| 703 | [Kth Largest Element in a Stream](sorting-and-selection/heap/703.kth-largest-element-in-a-stream.py) | 🟢 Easy | 2026-06-07 |
+| 912 | [Sort an Array](sorting-and-selection/merge-sort/912.sort-an-array.py) | 🟡 Medium | 2026-06-03 |
+| 973 | [K Closest Points to Origin](sorting-and-selection/quick_select/973.k-closest-points-to-origin.py) | 🟡 Medium | 2026-06-04 |
+| 2848 | [Points That Intersect With Cars](sorting-and-selection/interval%20problems/2848.points-that-intersect-with-cars.py) | 🟢 Easy | 2026-06-05 |
 
 ### sliding-window (7)
 
@@ -257,5 +258,5 @@ _Total: **138** problems_
 | 643 | [Maximum Average Subarray I](sliding-window/643.maximum-average-subarray-i.py) | 🟢 Easy | 2026-05-29 |
 | 1004 | [Max Consecutive Ones III](sliding-window/1004.max-consecutive-ones-iii.py) | 🟡 Medium | 2026-06-01 |
 
-_Last updated: 2026-06-06_
+_Last updated: 2026-06-07_
 

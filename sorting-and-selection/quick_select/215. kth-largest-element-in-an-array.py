@@ -82,6 +82,7 @@ class Solution:
         # [left...end]               < pivot    当target >= left, 答案在left右边
 
         # 降序数组中的第k大的index: target = start + k - 1
+        # 此处区别于LC347里的target = k - 1, LC347是找前 k 个高频element，所以目标下标是k-1. 不用改 k，因为我们一直关心全局前 k 个点, 这里的k是需要将全局排名转为局域排名
         target = start + k - 1
         # 1) > pivot区间, 左边
         if target <= right:# 注意: 这里是小于等于号, 并非小于号

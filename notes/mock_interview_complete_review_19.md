@@ -6462,6 +6462,13 @@ seen 是 set 还是 dict?看要不要 index
 **Heap(堆)** 是一种特殊的二叉树,满足**堆序性质**:
 - **Min-Heap(小顶堆)**:每个父节点 ≤ 它的孩子。**根节点是最小值**。
 - **Max-Heap(大顶堆)**:每个父节点 ≥ 它的孩子。**根节点是最大值**。
+- Min Heap:
+  每个父节点 <= 子节点
+  Root 是全局最小
+
+  Max Heap:
+  每个父节点 >= 子节点
+  Root 是全局最大
 
 ```
 Min-Heap:           Max-Heap:
@@ -6473,6 +6480,16 @@ Min-Heap:           Max-Heap:
 ```
 
 #### Python 中的 Heap
+
+Python 里的 heapq 默认是 min heap（最小堆）, heap[0]永远是当前 heap 里的最小值, TC: O(1)
+
+heapq.heapify(): 将list原地转为heap, TC: O(n)
+
+heappush(): heap 添加元素并保持heap结构, TC: O(log n)
+
+heappop(): heap弹出并返回最小值, smallest = heapq.heappop(heap), TC: O(log n)
+
+
 
 Python 的 `heapq` 模块**只提供 Min-Heap**(没有 Max-Heap)。
 

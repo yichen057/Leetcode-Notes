@@ -1073,3 +1073,337 @@ LC57
 
 
 ✅ 结果是 `[1,3]`。
+
+
+
+结合你的情况（准备美国 SDE 面试、已经学完 Quick Sort / Merge Sort / Quick Select、正在刷 Interval），我会**精简九章路线**，不要完全按课程顺序学。
+
+原因很简单：
+
+```text
+你的目标：
+找工作 / 面试
+
+不是：
+系统学习数据结构课程
+```
+
+很多章节：
+
+```text
+第18章 Hash
+第20章 DFS
+第49章 DFS
+```
+
+和你现在学 Heap 没有直接关系。
+
+------
+
+# **接下来 2~3 周最优路线**
+
+## **第一阶段：Heap 基础（2~3天）**
+
+目标：
+
+真正搞懂：
+
+```python
+heapq.heapify()
+heapq.heappush()
+heapq.heappop()
+heap[0]
+```
+
+以及：
+
+```text
+Min Heap
+Max Heap（存负数）
+```
+
+需要掌握：
+
+```python
+import heapq
+
+heap = []
+
+heapq.heappush(heap, 5)
+heapq.heappush(heap, 2)
+heapq.heappush(heap, 8)
+
+heapq.heappop(heap)
+```
+
+理解：
+
+```text
+heapify: O(n)
+
+push: O(log n)
+
+pop: O(log n)
+
+peek(heap[0]): O(1)
+```
+
+------
+
+# **第二阶段：Top K 专题（最重要）**
+
+你刚学过：
+
+```text
+215 Quick Select
+347 Quick Select
+973 Quick Select
+```
+
+现在对照 Heap。
+
+顺序：
+
+## **LC703**
+
+Kth Largest Element in a Stream
+
+Heap 入门神题。
+
+学会：
+
+```text
+size k min heap
+```
+
+思想。
+
+------
+
+## **LC215 Heap版**
+
+你已经会：
+
+```text
+Quick Select
+```
+
+了。
+
+现在比较：
+
+```text
+Quick Select
+vs
+Heap
+```
+
+------
+
+## **LC347 Heap版**
+
+Top K Frequent Elements
+
+面试高频。
+
+必须会。
+
+------
+
+## **LC973 Heap版**
+
+K Closest Points
+
+面试高频。
+
+必须会。
+
+------
+
+这四题刷完后：
+
+你会形成：
+
+```text
+Top K Pattern
+```
+
+------
+
+# **第三阶段：完成 Interval 专题**
+
+你已经完成：
+
+```text
+56
+57
+252
+2848
+435
+```
+
+（或者接近完成）
+
+继续：
+
+## **LC253**
+
+Meeting Rooms II
+
+这是：
+
+```text
+Interval + Heap
+```
+
+第一题。
+
+经典程度：
+
+⭐⭐⭐⭐⭐
+
+------
+
+然后：
+
+## **LC2402**
+
+Meeting Rooms III
+
+Heap 进阶。
+
+------
+
+729 先不急。
+
+------
+
+# **第四阶段：Greedy**
+
+顺序：
+
+## **LC55**
+
+Jump Game
+
+Greedy 入门神题。
+
+------
+
+## **LC45**
+
+Jump Game II
+
+------
+
+## **LC134**
+
+Gas Station
+
+------
+
+## **LC452**
+
+Minimum Number of Arrows
+
+（Interval + Greedy）
+
+------
+
+# **暂时不要学**
+
+目前先别碰：
+
+```text
+DFS
+Tree
+Graph
+Trie
+Backtracking
+```
+
+原因：
+
+你已经积累了：
+
+```text
+Array
+Hash
+Two Pointer
+Sliding Window
+Binary Search
+Sort
+Quick Select
+Interval
+Heap
+Greedy
+```
+
+这些已经覆盖很多 OA 和面试题。
+
+------
+
+# **我给你的精简版路线**
+
+### **本周**
+
+```text
+Heap Theory
+
+703
+215 (Heap)
+347 (Heap)
+973 (Heap)
+```
+
+------
+
+### **下周**
+
+```text
+253
+2402
+
+55
+45
+134
+452
+```
+
+------
+
+### **再下一阶段**
+
+```text
+Stack
+Monotonic Stack
+
+Linked List
+
+Tree
+```
+
+------
+
+如果我是你的面试教练，我会要求你在学 Heap 前先确保：
+
+```text
+56 ✅
+57 ✅
+252 ✅
+435 ✅
+```
+
+都能独立写出来。
+
+因为你刚刚关于：
+
+```text
+<= 和 <
+重叠定义
+min(end) 和 max(end)
+```
+
+已经开始真正理解 Interval 题，而不是背模板了。
+
+这是进入 Heap 阶段最好的时机。

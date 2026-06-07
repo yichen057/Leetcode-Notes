@@ -201,6 +201,7 @@ class Solution:
                 right -= 1
 
         target = k - 1 # 找前 k 个高频element，所以目标下标是k-1. 不用改 k，因为我们一直关心全局前 k 个点。
+        # 此处区别于LC215的target = start + k - 1, 215题里的k是需要将全局排名转为局域排名, 而本题关注的是全局k
         if target <= right:
             self.quick_select(unique_nums, start, right, k, freq_map)
         elif target >= left:

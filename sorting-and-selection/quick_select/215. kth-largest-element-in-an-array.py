@@ -49,7 +49,28 @@ from typing import *
 from common.node import *
 
 # @lc code=start
-# quick select: 平均时间复杂度O(n), 最差时间复杂度O(n^2), 空间复杂度O(logn), 只递归包含答案的range, 不断partition缩小范围: 三个范围: >pivot, <pivot, ==pivot
+# quick select vs. heap 比较
+# 理论：Quick Select 更优
+# 工程：Heap 经常更稳, 因为库函数优化, 无递归, Cache友好
+# 对于关键词: Top K, Kth Largest, K Closest, Top Frequency时, 先用Heap 5min写完代码, 如果面试官要求better than O(nlogn), 再想quick select, 如果题目给了很小的数值范围, 最后考虑count sort.
+
+# Method 1: Min-Heap method with k largest integers (size k)
+# 本题中的求最大并不是找max heap, 我们真正需要的是Top k largest 中最小的那个, 即第k大, 所以heap[0]就能拿到最小值
+# TC: O(n logk), Because k≤n, this is an improvement on the previous approach.
+# SC: O(k), because the heap uses O(k) space
+import heapq
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        if not nums:
+            return -1
+        heap = [] # SC: O(k) because the heap uses O(k) space
+        for num in nums: # iterate n times, performing up to (log k) work at each iteration -> TC: O(n logk )
+            heapq.heappush(heap, num)
+            if len(heap) > k:
+                heapq.heappop(heap)
+        return heap[0]
+
+# Method 2: quick select: 平均时间复杂度O(n), 最差时间复杂度O(n^2), 空间复杂度O(logn), 只递归包含答案的range, 不断partition缩小范围: 三个范围: >pivot, <pivot, ==pivot
 # 而quickl sort两边都找, >=pivot, <=pivot
 # Quick Select 比 Quick Sort 快. 因为它只递归一边, 而不是两边都递归
 class Solution:
@@ -81,8 +102,8 @@ class Solution:
         # [right + 1...left - 1]    == pivot    当right < target < left, 答案在==pivot中间
         # [left...end]               < pivot    当target >= left, 答案在left右边
 
-        # 降序数组中的第k大的index: target = start + k - 1
-        # 此处区别于LC347里的target = k - 1, LC347是找前 k 个高频element，所以目标下标是k-1. 不用改 k，因为我们一直关心全局前 k 个点, 这里的k是需要将全局排名转为局域排名
+        # 降序数组中的第k大的index: target = start + k - 1. 
+        # 此处区别于LC347里的target = k - 1, LC347是找前 k 个高频element，所以目标下标是k-1. 不用改 k，因为我们一直关心全局前 k 个点。这里的k是需要将全局排名转为局域排名
         target = start + k - 1
         # 1) > pivot区间, 左边
         if target <= right:# 注意: 这里是小于等于号, 并非小于号
@@ -93,7 +114,6 @@ class Solution:
             # 这里的k-(left-start)是将全局排名转为局域排名: k是在全局数组里的第k大, 转为右边局域区间数组的第[k-(left-start)]大
         # 3) == pivot区间, 中间
         return nums[right + 1] # right + 1是 == pivot区域内的第一个元素的index
-
 
        
 # @lc code=end

@@ -106,8 +106,8 @@ from common.node import *
 import heapq
 class KthLargest:
     # 初始化的总时间复杂度: O(n + (n-k)log n), 简化为O(n log n)
+    # minHeap with K largest integers: 应该在 __init__ 里只建一次minHeap of size k.
     # def __init__(self, k: int, nums: List[int]): 
-    #     # minHeap with K largest integers: 应该在 __init__ 里只建一次minHeap of size k.
     #     self.minHeap = nums
     #     self.k = k
     #     heapq.heapify(self.minHeap) # 注意: 此时括号里的数组不能用nums表示, 而是self.minHeap表示

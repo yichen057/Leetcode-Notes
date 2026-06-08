@@ -75,6 +75,7 @@ from common.node import *
 # heap 里装了全部 n 个元素。
 # 如果是维护大小为 k 的 heap ->那么时间复杂度是 O(n log k), 但是本题heap的大小是n, 所以反过来TC: O(k log n)
 # heap操作的时间复杂度: heapify: O(n), heappush/heappop: O(log n), heap[0]: O(1)
+import heapq
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
         minHeap = [] 
@@ -92,6 +93,33 @@ class Solution:
             k -= 1
 
         return res
+    
+# size k max-heap: 此处找最小对的list of list, 所以用max=heap
+# (模板写法, 时间复杂度不是最优的, 但是胜在标准模板)
+# TC: O((n+k) log k)
+# SC: O(k)
+# heap的两个方法比较:
+# LC973 Heapify方案:
+# TC = O(n + k log n)
+# SC = O(n)
+
+# LC973 Size-k Heap方案:
+# TC = O(n log k)
+# SC = O(k)
+
+# 面试更推荐后者，因为它是Top K通用模板。
+import heapq
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        heap = [] # SC: O(k)
+        for x, y in points:
+            dist = x * x + y * y
+            heapq.heappush(heap, (-dist, x, y)) # TC: O(n log n)
+
+            if len(heap) > k :
+                heapq.heappop(heap) # TC: O(k log n)
+        return[[x, y] for dist, x, y in heap]
+
 # Method 2: quick select
 # 找前 k 个最小距离，所以目标下标是target = k - 1
 # 本题的k始终表示全局前 k 个位置, 不是“当前区间里的第 k 个”。

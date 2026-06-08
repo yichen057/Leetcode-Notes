@@ -243,7 +243,7 @@ _Total: **139** problems_
 | 435 | [Non-overlapping Intervals](sorting-and-selection/interval%20problems/435.non-overlapping-intervals.py) | 🟡 Medium | 2026-06-06 |
 | 703 | [Kth Largest Element in a Stream](sorting-and-selection/heap/703.kth-largest-element-in-a-stream.py) | 🟢 Easy | 2026-06-07 |
 | 912 | [Sort an Array](sorting-and-selection/merge-sort/912.sort-an-array.py) | 🟡 Medium | 2026-06-03 |
-| 973 | [K Closest Points to Origin](sorting-and-selection/quick_select/973.k-closest-points-to-origin.py) | 🟡 Medium | 2026-06-04 |
+| 973 | [K Closest Points to Origin](sorting-and-selection/quick_select/973.k-closest-points-to-origin.py) | 🟡 Medium | 2026-06-07 |
 | 2848 | [Points That Intersect With Cars](sorting-and-selection/interval%20problems/2848.points-that-intersect-with-cars.py) | 🟢 Easy | 2026-06-05 |
 
 ### sliding-window (7)

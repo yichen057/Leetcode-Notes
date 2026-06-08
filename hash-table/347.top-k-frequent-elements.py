@@ -126,6 +126,7 @@ class Solution:
 
         # method 3: heap method to retrieve top k frequent elements list
         # 维护一个大小为 k 的 min heap，heap 里存目前频率最高的 k 个元素. 堆法：只维护 top k。。
+
 # LC347 heap 解法：
 # freq_dict 统计频率；
 # min heap 存 (freq, num)；
@@ -133,25 +134,27 @@ class Solution:
 # 最后 heap 里剩下的 num 就是 top k frequent。
         # 时间复杂度:Counter(nums): O(n); 遍历 m 个不同数字，每次 heap push/pop 是O(log k), 所以 heap 部分：O(m log k)
         # 所以总的时间复杂度O(n + mlog k), 最坏情况下 m = n的时间复杂度是: O(n log k), 如果 k 比 n 小很多，或者说k很小n很大, heap 比 sorting 更好, 即O(n log k) 会比 O(n log n) 好。
-        # 空间复杂度: Coounter(nums): O(m), heap 最多保留k个元素, O(k), return list O(k), 总空间O(m+k), 最坏O(n)
+        # 空间复杂度: Counter(nums): O(m), heap 最多保留k个元素, O(k), return list O(k), 总空间O(m+k), 最坏O(n)
         # edge case: 不建议写, 因为题目已说明: 1 <= k <= number of unique elements
         # 如果 k == len(nums)，说明每个元素都 unique 才可能合法；但返回 nums 虽然可能过，但没有必要，也容易让逻辑变复杂。
-        # if k == len(nums):
-        #     return nums
 
+from collections import Counter
+import heapq
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:        
         # build a hash map: integer:frequency, O(n) time
-        # count = Counter(nums) # 代替frequency_map, 统计各个num的频率
+        count = Counter(nums) # 代替frequency_map, 统计各个num的频率
+        heap = []
 
-        # heap = []
-
-        # for num, freq in count.items():
-        #     heapq.heappush(heap, (freq, num)) # heap 里不要只存 num需要按 frequency 比较，所以 heap 里应该存(freq, num),  heapq 默认按照 tuple 的第一个元素排序。这样 heap[0] 永远是当前 heap 里 frequency 最小的那个。
-        #     # 只想保留频率最高的 k 个元素。如果 heap 里超过 k 个，就把频率最小的那个踢出去。
-        #     if len(heap) > k: # 如果heap size 超过 k个，就 pop 最小频率的元素
-        #         heapq.heappop(heap)
-        # # 此时heap = [(2, 2), (3, 1)]
-        # return [num for freq, num in heap] # 最后 heap 里剩下的就是 top k frequent, 只需取出num. eg:取出 [2, 1]
-        # 最后返回的这行是list comprehension，列表推导式。意思遍历 heap 里的每一个 (freq, num)，只取 num，组成一个新的 list。但要求 nums 里面每个元素都是类似 (freq, num) 的二元组。
+        for num, freq in count.items():
+            heapq.heappush(heap, (freq, num)) # heap 里不要只存 num需要按 frequency 比较，所以 heap 里应该存(freq, num),  heapq 默认按照 tuple 的第一个元素排序。这样 heap[0] 永远是当前 heap 里 frequency 最小的那个。
+            # 只想保留频率最高的 k 个元素。如果 heap 里超过 k 个，就把频率最小的那个踢出去。
+            if len(heap) > k: # 如果heap size 超过 k个，就 pop 最小频率的元素
+                heapq.heappop(heap)
+        # 此时heap = [(2, 2), (3, 1)]
+        return [num for freq, num in heap] # 最后 heap 里剩下的就是 top k frequent, 只需取出num. eg:取出 [2, 1]
+        # 最后返回的这行是list comprehension，列表推导式。意思遍历 heap 里的每一个 (freq, num)，只取 num，组成一个新的 list。
         # [...]手动构造list eg: return [i, j]
         # [expr for x in iterable] 边遍历边加工生成list eg: [num for freq, num in heap]
         # list(iterable) 把现成iterable可迭代对象转成list eg: list(groups.values())
@@ -204,6 +207,7 @@ class Solution:
         # 此处区别于LC215的target = start + k - 1, 215题里的k是需要将全局排名转为局域排名, 而本题关注的是全局k
         if target <= right:
             self.quick_select(unique_nums, start, right, k, freq_map)
+            # 注意这里没有return, 直接调用自己即可, 本函数返回值为None
         elif target >= left:
             self.quick_select(unique_nums, left, end, k, freq_map)
         else:

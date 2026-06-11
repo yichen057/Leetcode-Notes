@@ -25,19 +25,19 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 | Folder | Count |
 |--------|-------|
-| array | 11 |
-| 2D_array_Matrix | 3 |
+| array | 10 |
+| 2D_array_Matrix | 4 |
 | binary-search | 13 |
 | binary-tree | 42 |
-| hash-table | 13 |
+| hash-table | 17 |
 | linked-list | 8 |
 | stack-queue | 6 |
 | string | 9 |
 | two-pointers | 14 |
 | graph | 4 |
 | sorting-and-selection | 9 |
-| sliding-window | 7 |
-| **Total** | **139** |
+| sliding-window | 8 |
+| **Total** | **144** |
 
 - Language: Python
 
@@ -57,28 +57,28 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 ## Problem List by Topic
 
-_Total: **139** problems_
+_Total: **144** problems_
 
-### array (11)
-
-| # | Problem | Difficulty | Last Updated |
-|---|---------|------------|--------------|
-| 1 | [Two Sum](array/1.Two%20Sum.py) | 🟢 Easy | 2026-05-27 |
-| 59 | [Spiral Matrix II](array/59.spiral-matrix-ii.py) | 🟡 Medium | 2025-09-20 |
-| 163 | [Missing Ranges](array/163.missing-ranges.py) | 🟢 Easy | 2026-02-24 |
-| 209 | [Minimum Size Subarray Sum](array/209.minimum-size-subarray-sum.py) | 🟡 Medium | 2026-05-30 |
-| 238 | [Product of Array Except Self](array/238.product-of-array-except-self.py) | 🟡 Medium | 2026-05-22 |
-| 268 | [Missing Number](array/268.missing-number.py) | 🟢 Easy | 2026-05-12 |
-| 665 | [Non-decreasing Array](array/665.non-decreasing-array.py) | 🟡 Medium | 2026-02-23 |
-| 977 | [Squares of a Sorted Array](array/977.squares-of-a-sorted-array.py) | 🟢 Easy | 2025-09-19 |
-| 3162 | [Find the Number of Good Pairs I](array/3162.find-the-number-of-good-pairs-i.py) | 🟢 Easy | 2026-02-24 |
-| 3507 | [Minimum Pair Removal to Sort Array I](array/3507.minimum-pair-removal-to-sort-array-i.py) | 🟢 Easy | 2026-01-22 |
-| 3511 | [Make a Positive Array](array/3511.Make%20a%20Positive%20Array.py) | 🟡 Medium | 2026-05-15 |
-
-### 2D_array_Matrix (3)
+### array (10)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
+| 59 | [Spiral Matrix II](array/Simulation/59.spiral-matrix-ii.py) | 🟡 Medium | 2025-09-20 |
+| 163 | [Missing Ranges](array/Simulation/163.missing-ranges.py) | 🟢 Easy | 2026-02-24 |
+| 238 | [Product of Array Except Self](array/Prefix%20Sum/238.product-of-array-except-self.py) | 🟡 Medium | 2026-05-22 |
+| 268 | [Missing Number](array/Traversal/268.missing-number.py) | 🟢 Easy | 2026-05-12 |
+| 303 | [Range Sum Query - Immutable](array/Prefix%20Sum/303.range-sum-query-immutable.py) | 🟢 Easy | 2026-06-09 |
+| 665 | [Non-decreasing Array](array/Simulation/665.non-decreasing-array.py) | 🟡 Medium | 2026-02-23 |
+| 977 | [Squares of a Sorted Array](array/Traversal/977.squares-of-a-sorted-array.py) | 🟢 Easy | 2025-09-19 |
+| 3162 | [Find the Number of Good Pairs I](array/Traversal/3162.find-the-number-of-good-pairs-i.py) | 🟢 Easy | 2026-02-24 |
+| 3507 | [Minimum Pair Removal to Sort Array I](array/Simulation/3507.minimum-pair-removal-to-sort-array-i.py) | 🟢 Easy | 2026-01-22 |
+| 3511 | [Make a Positive Array](array/Simulation/3511.Make%20a%20Positive%20Array.py) | 🟡 Medium | 2026-05-15 |
+
+### 2D_array_Matrix (4)
+
+| # | Problem | Difficulty | Last Updated |
+|---|---------|------------|--------------|
+| 304 | [Range Sum Query 2D - Immutable](2D_array_Matrix/304.range-sum-query-2-d-immutable.py) | 🟡 Medium | 2026-06-10 |
 | 463 | [Island Perimeter](2D_array_Matrix/463.island-perimeter.py) | 🟢 Easy | 2026-02-24 |
 | 1672 | [Richest Customer Wealth](2D_array_Matrix/1672.richest-customer-wealth.py) | 🟢 Easy | 2026-02-24 |
 | 2373 | [Largest Local Values in a Matrix](2D_array_Matrix/2373.largest-local-values-in-a-matrix.py) | 🟢 Easy | 2026-02-23 |
@@ -148,23 +148,27 @@ _Total: **139** problems_
 | 700 | [Search in a Binary Search Tree](binary-tree/700.search-in-a-binary-search-tree.py) | 🟢 Easy | 2026-05-07 |
 | 701 | [Insert into a Binary Search Tree](binary-tree/701.insert-into-a-binary-search-tree.py) | 🟡 Medium | 2026-03-02 |
 
-### hash-table (13)
+### hash-table (17)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 49 | [Group Anagrams](hash-table/49.group-anagrams.py) | 🟡 Medium | 2026-05-21 |
-| 128 | [Longest Consecutive Sequence](hash-table/128.longest-consecutive-sequence.py) | 🟡 Medium | 2026-05-23 |
-| 202 | [Happy Number](hash-table/202.happy-number.py) | 🟢 Easy | 2026-02-01 |
-| 217 | [Contains Duplicate](hash-table/217.contains-duplicate.py) | 🟢 Easy | 2026-05-20 |
-| 242 | [Valid Anagram](hash-table/242.valid-anagram.py) | 🟢 Easy | 2026-05-21 |
-| 347 | [Top K Frequent Elements](hash-table/347.top-k-frequent-elements.py) | 🟡 Medium | 2026-06-07 |
-| 349 | [Intersection of Two Arrays](hash-table/349.intersection-of-two-arrays.py) | 🟢 Easy | 2026-05-09 |
-| 383 | [Ransom Note](hash-table/383.ransom-note.py) | 🟢 Easy | 2026-04-09 |
-| 389 | [Find the Difference](hash-table/389.find-the-difference.py) | 🟢 Easy | 2026-04-09 |
-| 454 | [4Sum II](hash-table/454.Four%20sum-ii.py) | 🟡 Medium | 2026-01-07 |
-| 560 | [Subarray Sum Equals K](hash-table/560.subarray-sum-equals-k.py) | 🟡 Medium | 2026-05-09 |
-| 705 | [Design HashSet](hash-table/705.design-hash-set.py) | 🟢 Easy | 2026-05-20 |
-| 706 | [Design HashMap](hash-table/706.design-hash-map.py) | 🟢 Easy | 2026-05-20 |
+| 1 | [Two Sum](hash-table/Pair%20Sum%20%3A%20Complement/1.Two%20Sum.py) | 🟢 Easy | 2026-05-27 |
+| 49 | [Group Anagrams](hash-table/Counting/49.group-anagrams.py) | 🟡 Medium | 2026-05-21 |
+| 128 | [Longest Consecutive Sequence](hash-table/Lookup/128.longest-consecutive-sequence.py) | 🟡 Medium | 2026-05-23 |
+| 202 | [Happy Number](hash-table/Counting/202.happy-number.py) | 🟢 Easy | 2026-02-01 |
+| 217 | [Contains Duplicate](hash-table/Lookup/217.contains-duplicate.py) | 🟢 Easy | 2026-05-20 |
+| 242 | [Valid Anagram](hash-table/Counting/242.valid-anagram.py) | 🟢 Easy | 2026-05-21 |
+| 325 | [Maximum Size Subarray Sum Equals k](hash-table/Pair%20Sum%20%3A%20Complement/325.maximum-size-subarray-sum-equals-k.py) | 🟡 Medium | 2026-06-10 |
+| 347 | [Top K Frequent Elements](hash-table/Counting/347.top-k-frequent-elements.py) | 🟡 Medium | 2026-06-08 |
+| 349 | [Intersection of Two Arrays](hash-table/Lookup/349.intersection-of-two-arrays.py) | 🟢 Easy | 2026-05-09 |
+| 383 | [Ransom Note](hash-table/Counting/383.ransom-note.py) | 🟢 Easy | 2026-04-09 |
+| 389 | [Find the Difference](hash-table/Counting/389.find-the-difference.py) | 🟢 Easy | 2026-04-09 |
+| 454 | [4Sum II](hash-table/Pair%20Sum%20%3A%20Complement/454.Four%20sum-ii.py) | 🟡 Medium | 2026-01-07 |
+| 523 | [Continuous Subarray Sum](hash-table/Pair%20Sum%20%3A%20Complement/523.continuous-subarray-sum.py) | 🟡 Medium | 2026-06-09 |
+| 525 | [Contiguous Array](hash-table/Pair%20Sum%20%3A%20Complement/525.contiguous-array.py) | 🟡 Medium | 2026-06-10 |
+| 560 | [Subarray Sum Equals K](hash-table/Pair%20Sum%20%3A%20Complement/560.subarray-sum-equals-k.py) | 🟡 Medium | 2026-06-09 |
+| 705 | [Design HashSet](hash-table/Lookup/705.design-hash-set.py) | 🟢 Easy | 2026-05-20 |
+| 706 | [Design HashMap](hash-table/Lookup/706.design-hash-map.py) | 🟢 Easy | 2026-05-20 |
 
 ### linked-list (8)
 
@@ -236,21 +240,22 @@ _Total: **139** problems_
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 56 | [Merge Intervals](sorting-and-selection/interval%20problems/56.merge-intervals.py) | 🟡 Medium | 2026-06-06 |
+| 56 | [Merge Intervals](sorting-and-selection/interval%20problems/56.merge-intervals.py) | 🟡 Medium | 2026-06-10 |
 | 57 | [Insert Interval](sorting-and-selection/interval%20problems/57.insert-interval.py) | 🟡 Medium | 2026-06-06 |
-| 215 | [Kth Largest Element in an Array](sorting-and-selection/quick_select/215.%20kth-largest-element-in-an-array.py) | 🟡 Medium | 2026-06-07 |
+| 215 | [Kth Largest Element in an Array](sorting-and-selection/quick_select/215.%20kth-largest-element-in-an-array.py) | 🟡 Medium | 2026-06-08 |
 | 252 | [Meeting Rooms](sorting-and-selection/interval%20problems/252.meeting-rooms.py) | 🟢 Easy | 2026-06-06 |
 | 435 | [Non-overlapping Intervals](sorting-and-selection/interval%20problems/435.non-overlapping-intervals.py) | 🟡 Medium | 2026-06-06 |
-| 703 | [Kth Largest Element in a Stream](sorting-and-selection/heap/703.kth-largest-element-in-a-stream.py) | 🟢 Easy | 2026-06-07 |
+| 703 | [Kth Largest Element in a Stream](sorting-and-selection/heap/703.kth-largest-element-in-a-stream.py) | 🟢 Easy | 2026-06-08 |
 | 912 | [Sort an Array](sorting-and-selection/merge-sort/912.sort-an-array.py) | 🟡 Medium | 2026-06-03 |
-| 973 | [K Closest Points to Origin](sorting-and-selection/quick_select/973.k-closest-points-to-origin.py) | 🟡 Medium | 2026-06-07 |
+| 973 | [K Closest Points to Origin](sorting-and-selection/quick_select/973.k-closest-points-to-origin.py) | 🟡 Medium | 2026-06-08 |
 | 2848 | [Points That Intersect With Cars](sorting-and-selection/interval%20problems/2848.points-that-intersect-with-cars.py) | 🟢 Easy | 2026-06-05 |
 
-### sliding-window (7)
+### sliding-window (8)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 3 | [Longest Substring Without Repeating Characters](sliding-window/3.longest-substring-without-repeating-characters.py) | 🟡 Medium | 2026-05-28 |
+| 3 | [Longest Substring Without Repeating Characters](sliding-window/3.longest-substring-without-repeating-characters.py) | 🟡 Medium | 2026-06-08 |
+| 209 | [Minimum Size Subarray Sum](sliding-window/209.minimum-size-subarray-sum.py) | 🟡 Medium | 2026-06-10 |
 | 219 | [Contains Duplicate II](sliding-window/219.contains-duplicate-ii.py) | 🟢 Easy | 2026-05-21 |
 | 424 | [Longest Repeating Character Replacement](sliding-window/424.longest-repeating-character-replacement.py) | 🟡 Medium | 2026-05-28 |
 | 438 | [Find All Anagrams in a String](sliding-window/438.find-all-anagrams-in-a-string.py) | 🟡 Medium | 2026-05-29 |
@@ -258,5 +263,5 @@ _Total: **139** problems_
 | 643 | [Maximum Average Subarray I](sliding-window/643.maximum-average-subarray-i.py) | 🟢 Easy | 2026-05-29 |
 | 1004 | [Max Consecutive Ones III](sliding-window/1004.max-consecutive-ones-iii.py) | 🟡 Medium | 2026-06-01 |
 
-_Last updated: 2026-06-07_
+_Last updated: 2026-06-10_
 

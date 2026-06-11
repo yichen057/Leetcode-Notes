@@ -84,7 +84,12 @@ class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         l = 0
         window_sum = 0
-        minLen =float('inf')
+        minLen =float('inf') # 求最短，用 inf。最后没更新过，再返回 0 或空结果。
+# 极值初始化口诀:
+# 最长长度从 0 开始。
+# 最短长度从 inf 开始。
+# 最大/最小数值最好用第一个真实窗口初始化。
+# 如果可能全负数，max 不要初始化为 0。
 
         for r in range(len(nums)):
             #print("r:",r)

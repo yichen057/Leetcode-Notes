@@ -158,7 +158,8 @@ class Solution:
             print("char_idx[s[r]]:",char_idx.get(s[r]))
             print("l:",l)
             if s[r] in char_idx and char_idx[s[r]] >= l: # 注意第二个条件也要判断, 否则start可能走到string末尾后又重新回撤到前面去, eg: str = "abba"
-                l = char_idx[s[r]] + 1
+                l = char_idx[s[r]] + 1 
+                # 注意: 这里不是l = r + 1, 因为在现在的r基础上再加一, l的位置就不对了可能就超出range了, l得在之前r的位置+1, 之前的位置就是hashmap记录的value: char_idx[s[r]]
                 print("inside l:",l)
             # Update the most recent index of the current character.
             char_idx[s[r]] = r

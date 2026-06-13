@@ -931,3 +931,352 @@ longest存firstIndex
 这些最核心的东西。
 
 现在缺的不是新知识，而是通过几道经典题把这套模板固化下来。
+
+
+
+我看了你截图里的目录，目前有：
+
+```text
+2D_array_Matrix
+
+304. Range Sum Query 2D - Immutable
+463. Island Perimeter
+1672. Richest Customer Wealth
+2373. Largest Local Values in a Matrix
+```
+
+从面试准备角度来说：
+
+### **值得复习**
+
+✅ LC304 Range Sum Query 2D Immutable
+
+- 2D Prefix Sum
+- 面试中属于经典模板题
+
+✅ LC463 Island Perimeter
+
+- Matrix遍历
+- 边界判断
+- DFS/BFS学习前的入门题
+
+------
+
+### **可以快速过一遍**
+
+✅ LC1672 Richest Customer Wealth
+
+- 纯Matrix遍历
+- 5分钟题
+
+✅ LC2373 Largest Local Values in a Matrix
+
+- 3×3窗口遍历
+- Matrix坐标练习
+
+------
+
+# **如果你明天主题是**
+
+```text
+Prefix Sum + Matrix
+```
+
+我建议按下面顺序。
+
+------
+
+# **第一部分：Prefix Sum Pattern总结**
+
+把这几题整理成一页笔记：
+
+### **LC303**
+
+```text
+Range Query
+
+prefix[right+1]
+-
+prefix[left]
+```
+
+------
+
+### **LC304**
+
+```text
+2D Prefix Sum
+
+BR
+-
+Above
+-
+Left
++
+TopLeft
+```
+
+------
+
+### **LC560**
+
+```text
+Count
+
+prefixSum -> frequency
+```
+
+------
+
+### **LC325**
+
+```text
+Longest
+
+prefixSum -> firstIndex
+
+need = prefixSum - k
+```
+
+------
+
+### **LC525**
+
+```text
+Longest
+
+0 -> -1
+
+need = prefixSum
+```
+
+------
+
+### **LC523**
+
+```text
+Modulo
+
+prefixSum % k
+
+remainder -> firstIndex
+```
+
+------
+
+最后总结成：
+
+```text
+Prefix Sum
+
+Range Query
+│
+├── 303
+└── 304
+
+Prefix Sum + HashMap
+│
+├── Count
+│   ├── 560
+│   └── 974
+│
+├── Longest
+│   ├── 325
+│   └── 525
+│
+└── Mod
+    └── 523
+```
+
+这个图你一定要自己画一次。
+
+------
+
+# **第二部分：Matrix Pattern**
+
+你现在其实最缺的是 Matrix 坐标感。
+
+我建议刷：
+
+## **Level 1（坐标练习）**
+
+### **LC1672**
+
+```text
+遍历矩阵
+```
+
+5分钟
+
+------
+
+### **LC2373**
+
+```text
+3×3窗口
+```
+
+练习：
+
+```python
+for r in range(...)
+    for c in range(...)
+```
+
+------
+
+### **LC463**
+
+```text
+上下左右
+```
+
+练习：
+
+```python
+dirs = [
+ (1,0),
+ (-1,0),
+ (0,1),
+ (0,-1)
+]
+```
+
+------
+
+# **Level 2（面试常见）**
+
+如果时间够：
+
+### **LC54 Spiral Matrix**
+
+经典高频
+
+练：
+
+```text
+top
+bottom
+left
+right
+```
+
+------
+
+### **LC73 Set Matrix Zeroes**
+
+经典高频
+
+练：
+
+```text
+Matrix原地修改
+```
+
+------
+
+### **LC48 Rotate Image**
+
+Meta / Amazon 高频
+
+练：
+
+```text
+Transpose
++
+Reverse
+```
+
+------
+
+### **LC289 Game of Life**
+
+微软偶尔会问
+
+练：
+
+```text
+周围8个方向
+```
+
+------
+
+# **我觉得最适合你当前阶段的明天计划**
+
+上午：
+
+```text
+303
+560
+325
+525
+523
+
+总结成一页Pattern
+```
+
+预计：
+
+```text
+2小时
+```
+
+------
+
+下午：
+
+```text
+304
+1672
+2373
+463
+```
+
+预计：
+
+```text
+2小时
+```
+
+------
+
+如果还有时间：
+
+```text
+54 Spiral Matrix
+```
+
+因为 Spiral Matrix 是 Matrix 面试里出现频率最高的题之一。
+
+------
+
+按照你最近的学习情况，我不会让你继续学新的 Prefix Sum 题了。
+
+你现在最需要的是把：
+
+```text
+303
+304
+560
+325
+525
+523
+```
+
+真正串成一个体系。
+
+一旦这个体系建立起来，以后看到 Prefix Sum 题，你就会先问：
+
+```text
+这是：
+
+Range Query？
+
+Count？
+
+Longest？
+
+Modulo？
+```
+
+而不是从零开始想。这样才算真正掌握了 Prefix Sum Pattern。

@@ -20,6 +20,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | `sliding-window/` | Sliding window problems |
 | `daily/` | Daily learning notes by topic |
 | `notes/` | General study notes |
+| `notes/Interview-Knowledge-Base/` | Bilingual (EN/中文) interview prep: language internals, OS, network, system design, behavioral, cheat sheets |
 
 ## Progress
 
@@ -32,12 +33,12 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 | hash-table | 17 |
 | linked-list | 8 |
 | stack-queue | 6 |
-| string | 9 |
+| string | 10 |
 | two-pointers | 14 |
 | graph | 4 |
 | sorting-and-selection | 9 |
 | sliding-window | 8 |
-| **Total** | **144** |
+| **Total** | **145** |
 
 - Language: Python
 
@@ -57,7 +58,7 @@ This repository contains my solutions to LeetCode problems, organized by topic a
 
 ## Problem List by Topic
 
-_Total: **144** problems_
+_Total: **145** problems_
 
 ### array (10)
 
@@ -194,11 +195,11 @@ _Total: **144** problems_
 | 739 | [Daily Temperatures](stack-queue/739.daily-temperatures.py) | 🟡 Medium | 2026-05-07 |
 | 1047 | [Remove All Adjacent Duplicates In String](stack-queue/1047.remove-all-adjacent-duplicates-in-string.py) | 🟢 Easy | 2026-01-19 |
 
-### string (9)
+### string (10)
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 5 | [Longest Palindromic Substring](string/5.longest-palindromic-substring.py) | 🟡 Medium | 2025-08-22 |
+| 5 | [Longest Palindromic Substring](string/5.longest-palindromic-substring.py) | 🟡 Medium | 2026-06-12 |
 | 13 | [Implement strStr()](string/Lintcode13.%20Implement%20str%28%29.py) | 🟢 Easy | 2025-08-25 |
 | 28 | [Find the Index of the First Occurrence in a String](string/28.find-the-index-of-the-first-occurrence-in-a-string.py) | 🟢 Easy | 2026-01-15 |
 | 125 | [Valid Palindrome](string/125.Valid%20Palindrome.py) | 🟢 Easy | 2025-08-26 |
@@ -206,6 +207,7 @@ _Total: **144** problems_
 | 344 | [Reverse String](string/344.reverse-string.py) | 🟢 Easy | 2026-01-12 |
 | 459 | [Repeated Substring Pattern](string/459.repeated-substring-pattern.py) | 🟢 Easy | 2026-01-15 |
 | 541 | [Reverse String II](string/541.reverse-string-ii.py) | 🟢 Easy | 2026-01-13 |
+| 647 | [Palindromic Substrings](string/647.palindromic-substrings.py) | 🟡 Medium | 2026-06-12 |
 | 680 | [Valid Palindrome II](string/680.Valid%20Palindrome%20II.py) | 🟢 Easy | 2026-05-26 |
 
 ### two-pointers (14)
@@ -213,8 +215,8 @@ _Total: **144** problems_
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
 | 11 | [Container With Most Water](two-pointers/11.container-with-most-water.py) | 🟡 Medium | 2026-05-18 |
-| 15 | [3Sum](two-pointers/15.3-sum.py) | 🟡 Medium | 2026-05-21 |
-| 18 | [4Sum](two-pointers/18.4-sum.py) | 🟡 Medium | 2026-01-12 |
+| 15 | [3Sum](two-pointers/15.3-sum.py) | 🟡 Medium | 2026-06-12 |
+| 18 | [4Sum](two-pointers/18.4-sum.py) | 🟡 Medium | 2026-06-12 |
 | 26 | [Remove Duplicates from Sorted Array](two-pointers/26.Remove%20Duplicates%20from%20Sorted%20Array.py) | 🟢 Easy | 2026-05-27 |
 | 27 | [Remove Element](two-pointers/27.remove-element.py) | 🟢 Easy | 2026-05-16 |
 | 42 | [Trapping Rain Water](two-pointers/42.trapping-rain-water.py) | 🔴 Hard | 2026-05-18 |
@@ -240,7 +242,7 @@ _Total: **144** problems_
 
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
-| 56 | [Merge Intervals](sorting-and-selection/interval%20problems/56.merge-intervals.py) | 🟡 Medium | 2026-06-10 |
+| 56 | [Merge Intervals](sorting-and-selection/interval%20problems/56.merge-intervals.py) | 🟡 Medium | 2026-06-11 |
 | 57 | [Insert Interval](sorting-and-selection/interval%20problems/57.insert-interval.py) | 🟡 Medium | 2026-06-06 |
 | 215 | [Kth Largest Element in an Array](sorting-and-selection/quick_select/215.%20kth-largest-element-in-an-array.py) | 🟡 Medium | 2026-06-08 |
 | 252 | [Meeting Rooms](sorting-and-selection/interval%20problems/252.meeting-rooms.py) | 🟢 Easy | 2026-06-06 |
@@ -255,7 +257,7 @@ _Total: **144** problems_
 | # | Problem | Difficulty | Last Updated |
 |---|---------|------------|--------------|
 | 3 | [Longest Substring Without Repeating Characters](sliding-window/3.longest-substring-without-repeating-characters.py) | 🟡 Medium | 2026-06-08 |
-| 209 | [Minimum Size Subarray Sum](sliding-window/209.minimum-size-subarray-sum.py) | 🟡 Medium | 2026-06-10 |
+| 209 | [Minimum Size Subarray Sum](sliding-window/209.minimum-size-subarray-sum.py) | 🟡 Medium | 2026-06-11 |
 | 219 | [Contains Duplicate II](sliding-window/219.contains-duplicate-ii.py) | 🟢 Easy | 2026-05-21 |
 | 424 | [Longest Repeating Character Replacement](sliding-window/424.longest-repeating-character-replacement.py) | 🟡 Medium | 2026-05-28 |
 | 438 | [Find All Anagrams in a String](sliding-window/438.find-all-anagrams-in-a-string.py) | 🟡 Medium | 2026-05-29 |
@@ -263,5 +265,5 @@ _Total: **144** problems_
 | 643 | [Maximum Average Subarray I](sliding-window/643.maximum-average-subarray-i.py) | 🟢 Easy | 2026-05-29 |
 | 1004 | [Max Consecutive Ones III](sliding-window/1004.max-consecutive-ones-iii.py) | 🟡 Medium | 2026-06-01 |
 
-_Last updated: 2026-06-10_
+_Last updated: 2026-06-12_
 

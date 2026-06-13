@@ -69,9 +69,11 @@ from typing import *
 # @lc code=start
 # 本题使用双指针方法: 3Sum用双指针是因为排序后自动去重最简洁(排序后相同的数相邻，continue跳过即可, 自动去重)，而字典需要额外的集合去重逻辑
 class Solution:
-# method 1该方法的去重思路是: 找到一个答案后，都先离开当前用过的位置, 然后跳过和刚才用过的值相同的元素，避免重复答案。
-# Time complexity: O(n^2)
-# Space complexity: O(n), Depends on language you use. In python, sorting algorithm use Timsort which uses O(n) space.
+# method 1: Sort + opposite-direction two pointers
+# 3Sum 的结构是：固定一个数 + 剩下两个数做 Two Sum
+#该方法的去重思路是: 找到一个答案后，都先离开当前用过的位置, 然后跳过和刚才用过的值相同的元素，避免重复答案。面试里更推荐你写不用 set 的标准版本，通过跳过重复值去重
+# Time complexity: O(n^2): 外层for loop固定一个数最多 n 次:O(n), 对每一个i, while left<right, left/right 总共最多走 n 次: O(n)
+# Space complexity: O(n) including output, Depends on language you use. In python, sorting algorithm use Timsort which uses O(n) space. O(1) excluding output
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         # List[List[int]]: 表示“整数列表的列表”——即外层是一个列表，里面每个元素又是一个 List[int]（一个整数序列）。用来表示多个三元组/数组的集合很常见。
         result = []
@@ -83,11 +85,15 @@ class Solution:
                 return result
             
             # 获取第一个数, 并对第一个数去重
+            # 如果当前固定值和上一个固定值一样，那这一轮不需要再做了，因为之前已经用同样的固定值找过所有可能组合。
             # 如果当前数和上一个数一样，说明这个数的情况已经处理过了，跳过。
             # 比如 [-1, -1, 0, 1]，处理完第一个 -1 后，第二个 -1 就不用再处理了。
             # Check if the current element is a duplicate of the previous element and skip it if it is
             if i > 0 and nums[i] == nums[i-1]:
                 continue
+
+            # 外层 continue 是为了避免重复固定第一个数；
+            # 内层 while 是为了避免同一个固定数下重复生成相同的 left/right 组合。
 
             # 初始化双指针Initialize two pointers to point to the elements next to the current element i and at the end of the array, respectively.
             left = i + 1
@@ -137,7 +143,7 @@ class Solution:
             print("i:", i)
             left, right = i + 1, len(nums)-1 # 注意left和right的初始化是在for loop里while loop外, left依赖于i
             while left < right: # 对每个固定的 i，left 和 right 总共最多移动 n 次。
-                total = a + nums[left] + nums[right]
+                total = a + nums[left] + nums[right] # 只有当这个值在整个 while 过程中不会变化时，才可以放外面。但是此处nums[left]和nums[right]会随着left 和 right 变化，所以必须放进 while 里。
                 if total < 0:
                     left += 1
                 elif total > 0:
